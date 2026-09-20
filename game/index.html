@@ -18,7 +18,7 @@
     .toast{position:absolute;z-index:6;top:19%;left:50%;width:88%;translate:-50% 0;text-align:center;font-size:clamp(20px,6vw,34px);color:#fff;text-shadow:0 4px 0 #82104c,0 6px 12px #000;transform:scale(0);transition:.15s;pointer-events:none}.toast.show{transform:scale(1)}
     .overlay{position:absolute;z-index:10;inset:0;display:grid;place-items:center;padding:24px;background:#170818d9;backdrop-filter:blur(7px);text-align:center}.card{width:min(100%,420px);background:linear-gradient(145deg,#fff8e8,#ffd6e8);color:var(--ink);border:5px solid white;border-radius:28px;padding:24px 20px;box-shadow:0 18px 0 #7c124f,0 25px 55px #000b;transform:rotate(-1deg)}
     h1{margin:0;color:var(--hot);font-size:clamp(36px,12vw,66px);line-height:.83;letter-spacing:-3px;text-shadow:3px 3px 0 white,6px 6px 0 #ff99c8}.tag{margin:15px 0 10px;font-size:17px}.how{margin:14px 0;background:#fff;border-radius:16px;padding:11px;font:700 14px Arial;line-height:1.4}.play{width:100%;border:0;border-radius:18px;padding:16px;background:linear-gradient(#ff4c9a,#f00068);color:white;font-size:24px;box-shadow:0 7px 0 #9c0648;cursor:pointer}.play:active{translate:0 5px;box-shadow:0 2px 0 #9c0648}.tiny{font:12px Arial;margin:13px 0 0;opacity:.7}.hidden{display:none}.final-score{font-size:52px;color:var(--hot);line-height:1;margin:10px}.newbest{color:#a06a00;font-size:18px}
-    .share{margin-top:13px;background:#111;box-shadow:0 7px 0 #555;font-size:18px}.share:active{box-shadow:0 2px 0 #555}
+    .share{margin-top:13px;background:#111;box-shadow:0 7px 0 #555;font-size:18px}.share:active{box-shadow:0 2px 0 #555}.back{display:block;margin-top:13px;background:linear-gradient(145deg,#7d176f,#ff3297);box-shadow:0 7px 0 #5b0b4d;font-size:16px;text-decoration:none}.back:active{box-shadow:0 2px 0 #5b0b4d}
     @media (prefers-reduced-motion:reduce){.toast{transition:none}}
   </style>
 </head>
@@ -48,6 +48,7 @@
       <div class="newbest hidden" id="newBest">🏆 NEW HIGH SCORE!</div>
       <button class="play" id="again">ONE MORE ROUND</button>
       <button class="play share" id="share">SHARE SCORE ON 𝕏</button>
+      <a class="play back" href="/">← BACK TO YOURMOMS.XYZ</a>
       <p class="tiny">Best score: <span id="bestOver">0</span></p>
     </div>
   </section>
