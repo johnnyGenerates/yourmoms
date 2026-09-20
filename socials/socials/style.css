@@ -1,0 +1,614 @@
+/* =========================================================
+   YOUR $MOMS — SOCIALS PAGE
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: Arial Black, Impact, Arial, sans-serif;
+  color: white;
+
+  background:
+    radial-gradient(circle at 50% 10%, rgba(255, 0, 200, 0.8), transparent 25%),
+    radial-gradient(circle at 10% 50%, rgba(255, 0, 140, 0.45), transparent 28%),
+    radial-gradient(circle at 90% 55%, rgba(122, 0, 255, 0.55), transparent 30%),
+    linear-gradient(180deg, #16001f 0%, #450044 40%, #10001d 100%);
+}
+
+
+/* =========================================================
+   WHOLE PAGE
+   ========================================================= */
+
+.socials-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   STAR / GLITTER BACKGROUND
+   ========================================================= */
+
+.stars,
+.stars::before,
+.stars::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+}
+
+.stars {
+  z-index: -5;
+
+  background-image:
+    radial-gradient(circle, white 0 1px, transparent 2px),
+    radial-gradient(circle, #ff9bea 0 2px, transparent 3px),
+    radial-gradient(circle, #ffffff 0 1px, transparent 2px);
+
+  background-size:
+    75px 75px,
+    130px 130px,
+    180px 180px;
+
+  background-position:
+    10px 20px,
+    50px 80px,
+    100px 40px;
+
+  opacity: 0.7;
+
+  animation: starMove 18s linear infinite;
+}
+
+.stars::before {
+  background:
+    radial-gradient(circle at 20% 20%, white 0 2px, transparent 3px),
+    radial-gradient(circle at 75% 30%, #ffb9f1 0 2px, transparent 4px),
+    radial-gradient(circle at 35% 70%, white 0 2px, transparent 3px),
+    radial-gradient(circle at 85% 80%, #ff52d9 0 3px, transparent 5px);
+
+  animation: sparkle 3s ease-in-out infinite alternate;
+}
+
+.stars::after {
+  background:
+    radial-gradient(circle at 8% 45%, rgba(255,255,255,.9) 0 1px, transparent 3px),
+    radial-gradient(circle at 92% 18%, rgba(255,255,255,.9) 0 1px, transparent 3px),
+    radial-gradient(circle at 62% 78%, rgba(255,130,230,.9) 0 2px, transparent 4px);
+
+  animation: sparkle 2s ease-in-out infinite alternate-reverse;
+}
+
+
+/* =========================================================
+   GIANT BACKGROUND GLOWS
+   ========================================================= */
+
+.glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: -4;
+}
+
+.glow-one {
+  background: #ff008c;
+  top: -200px;
+  left: -250px;
+}
+
+.glow-two {
+  background: #8b00ff;
+  right: -250px;
+  bottom: -200px;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.socials-container {
+  position: relative;
+  width: min(94%, 850px);
+  margin: 0 auto;
+  padding: 50px 20px 70px;
+  text-align: center;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.socials-header {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.follow-text {
+  font-size: clamp(2.8rem, 10vw, 6rem);
+  line-height: 0.9;
+  letter-spacing: 4px;
+  color: #ff83df;
+
+  text-shadow:
+    0 4px 0 #a7006f,
+    0 8px 0 #650044,
+    0 0 15px #ff00b7,
+    0 0 35px #ff00b7;
+
+  transform: rotate(-2deg);
+}
+
+.moms-title {
+  display: inline-block;
+  margin: 5px 0;
+
+  font-size: clamp(4rem, 16vw, 9rem);
+  line-height: 0.9;
+
+  color: #ff19a8;
+
+  -webkit-text-stroke: 3px white;
+
+  text-shadow:
+    0 5px 0 #e30091,
+    0 10px 0 #9b0068,
+    0 15px 0 #5d0041,
+    0 0 15px white,
+    0 0 30px #ff00b7,
+    0 0 60px #ff00b7;
+
+  transform: rotate(1deg);
+
+  animation: titlePulse 2.5s ease-in-out infinite;
+}
+
+.everywhere-text {
+  margin-top: 12px;
+
+  font-size: clamp(2rem, 8vw, 4.7rem);
+  letter-spacing: 5px;
+
+  color: white;
+
+  text-shadow:
+    0 3px 0 #ff008c,
+    0 6px 0 #7b004e,
+    0 0 15px #ff00b7,
+    0 0 35px #ff00b7;
+}
+
+
+/* =========================================================
+   BUTTON AREA
+   ========================================================= */
+
+.social-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+
+  width: 100%;
+  max-width: 620px;
+
+  margin: 55px auto 0;
+}
+
+.social-button {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  width: 100%;
+  min-height: 110px;
+
+  padding: 18px 30px;
+
+  text-decoration: none;
+  color: white;
+
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease,
+    box-shadow 0.2s ease;
+
+  cursor: pointer;
+}
+
+.social-button:hover {
+  transform: scale(1.06) rotate(-1deg);
+  filter: brightness(1.15);
+}
+
+.social-button:active {
+  transform: scale(0.97);
+}
+
+.button-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.button-text small {
+  font-family: Arial, sans-serif;
+  font-weight: 900;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.button-text strong {
+  font-size: clamp(2rem, 7vw, 3.6rem);
+  letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   X BUTTON
+   BLACK GLOSSY PILL
+   ========================================================= */
+
+.x-button {
+  width: 92%;
+
+  border: 5px solid white;
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #333 0%,
+      #050505 35%,
+      #000 65%,
+      #222 100%
+    );
+
+  box-shadow:
+    0 10px 0 #6f0064,
+    0 15px 25px rgba(0,0,0,.6),
+    0 0 30px rgba(255,255,255,.3);
+}
+
+.x-button::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10%;
+  width: 80%;
+  height: 20%;
+
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+
+  pointer-events: none;
+}
+
+.x-button .social-icon {
+  font-size: 4.5rem;
+}
+
+
+/* =========================================================
+   TELEGRAM BUTTON
+   BIG BLUE CHUNKY SHAPE
+   ========================================================= */
+
+.telegram-button {
+  width: 100%;
+
+  border: 5px solid white;
+
+  border-radius:
+    35px 80px 35px 80px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #61d8ff,
+      #168fe5 50%,
+      #0066b8
+    );
+
+  box-shadow:
+    0 10px 0 #004a88,
+    0 16px 25px rgba(0,0,0,.45),
+    0 0 35px #2abfff;
+
+  transform: rotate(1deg);
+}
+
+.telegram-button:hover {
+  transform: scale(1.06) rotate(2deg);
+}
+
+.telegram-button .social-icon {
+  display: grid;
+  place-items: center;
+
+  width: 80px;
+  height: 80px;
+
+  border-radius: 50%;
+
+  background: white;
+  color: #168fe5;
+
+  font-size: 3.5rem;
+
+  box-shadow:
+    0 5px 0 rgba(0,0,0,.2);
+}
+
+
+/* =========================================================
+   YOUTUBE BUTTON
+   RED RETRO SHAPE
+   ========================================================= */
+
+.youtube-button {
+  width: 94%;
+
+  border: 5px solid white;
+
+  border-radius:
+    60px 25px 60px 25px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ff5050 0%,
+      #ff0000 45%,
+      #a80000 100%
+    );
+
+  box-shadow:
+    0 10px 0 #720000,
+    0 16px 25px rgba(0,0,0,.45),
+    0 0 35px #ff3434;
+
+  transform: rotate(-1deg);
+}
+
+.youtube-button:hover {
+  transform: scale(1.06) rotate(-2deg);
+}
+
+.youtube-icon {
+  display: grid;
+  place-items: center;
+
+  width: 95px;
+  height: 68px;
+
+  border-radius: 22px;
+
+  background: white;
+  color: red;
+
+  font-size: 2.8rem;
+
+  box-shadow:
+    0 5px 0 rgba(0,0,0,.25);
+}
+
+
+/* =========================================================
+   HOME BUTTON
+   ========================================================= */
+
+.home-section {
+  margin-top: 60px;
+}
+
+.home-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  min-width: 280px;
+
+  padding: 18px 30px;
+
+  border: 4px solid white;
+  border-radius: 40px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff74dc,
+      #ff008c 55%,
+      #a90072
+    );
+
+  color: white;
+  text-decoration: none;
+
+  font-family: Arial Black, Arial, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.15;
+
+  box-shadow:
+    0 8px 0 #72004e,
+    0 0 25px #ff00b7;
+
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.home-button:hover {
+  transform: scale(1.07);
+  filter: brightness(1.15);
+}
+
+.heart {
+  font-size: 3rem;
+
+  animation: heartBeat 1.3s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes titlePulse {
+
+  0%,
+  100% {
+    transform: rotate(1deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(1deg) scale(1.035);
+  }
+}
+
+@keyframes heartBeat {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes sparkle {
+
+  from {
+    opacity: 0.4;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes starMove {
+
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(75px);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .socials-container {
+    width: 100%;
+    padding: 35px 15px 50px;
+  }
+
+  .socials-header {
+    margin-bottom: 25px;
+  }
+
+  .follow-text {
+    letter-spacing: 2px;
+  }
+
+  .everywhere-text {
+    letter-spacing: 2px;
+  }
+
+  .social-buttons {
+    margin-top: 40px;
+    gap: 25px;
+  }
+
+  .social-button {
+    min-height: 95px;
+    padding: 15px 20px;
+    gap: 14px;
+  }
+
+  .x-button {
+    width: 96%;
+  }
+
+  .x-button .social-icon {
+    font-size: 3.4rem;
+  }
+
+  .telegram-button .social-icon {
+    width: 65px;
+    height: 65px;
+    font-size: 2.8rem;
+  }
+
+  .youtube-icon {
+    width: 75px;
+    height: 55px;
+    font-size: 2rem;
+  }
+
+  .button-text small {
+    font-size: 0.7rem;
+  }
+
+  .home-section {
+    margin-top: 45px;
+  }
+
+  .home-button {
+    min-width: 250px;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.social-button:focus-visible,
+.home-button:focus-visible {
+  outline: 5px solid #fff700;
+  outline-offset: 7px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
