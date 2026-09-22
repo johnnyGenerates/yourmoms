@@ -5,7 +5,6 @@ const copyButton = document.getElementById("copyButton");
 const copyMessage = document.getElementById("copyMessage");
 const floatingWorld = document.getElementById("floatingWorld");
 const effectsLayer = document.getElementById("effectsLayer");
-const cigaretteCount = 3;
 const wineGlassCount = 3;
 const floatingItems = [];
 
@@ -31,13 +30,6 @@ function createWineGlass() {
   const item = document.createElement("div");
   item.className = "floating-item wine-glass";
   item.innerHTML = `<div class="wine-bowl"><div class="wine-liquid"></div><div class="wine-shine"></div></div><div class="wine-stem"></div><div class="wine-base"></div>`;
-  setupFloatingItem(item);
-}
-
-function createCigarette() {
-  const item = document.createElement("div");
-  item.className = "floating-item cigarette";
-  item.innerHTML = `<div class="cigarette-smoke"></div><div class="cigarette-smoke-second"></div><div class="cigarette-fire"></div><div class="cigarette-ash"></div><div class="cigarette-paper"></div><div class="cigarette-filter"></div>`;
   setupFloatingItem(item);
 }
 
@@ -121,6 +113,5 @@ function createBlast(x, y) {
   setTimeout(() => smoke.remove(), 850);
 }
 
-for (let i = 0; i < cigaretteCount; i += 1) createCigarette();
 for (let i = 0; i < wineGlassCount; i += 1) createWineGlass();
 animateFloatingItems();
