@@ -6,49 +6,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Genesis Moms NFT Collection</title>
 
-  <script
-    data-goatcounter="https://yourmoms.goatcounter.com/count"
-    async
-    src="//gc.zgo.at/count.js">
-  </script>
-
+  <script data-goatcounter="https://yourmoms.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   <script type="module" crossorigin src="/mint/assets/index-D08mQgcm.js"></script>
   <link rel="stylesheet" crossorigin href="/mint/assets/index-9dTyh-P0.css">
+
   <style>
+    body {
+      background-color:#3b2100 !important;
+      background-image:
+        radial-gradient(circle at 50% 0%,rgba(255,205,69,.24),transparent 31%),
+        radial-gradient(circle at 12% 32%,rgba(190,118,0,.24),transparent 27%),
+        radial-gradient(circle at 88% 68%,rgba(255,188,31,.18),transparent 30%),
+        linear-gradient(145deg,#1d1000 0%,#4b2a00 28%,#704300 52%,#3b2100 76%,#241300 100%) !important;
+      background-attachment:fixed !important;
+    }
+    .mint-card {
+      background:linear-gradient(145deg,rgba(255,239,159,.97),rgba(220,158,27,.98) 27%,rgba(121,69,0,.98) 59%,rgba(235,184,57,.98) 100%) !important;
+      box-shadow:0 28px 80px #130a00c9,0 0 36px #ffd84d,0 0 100px #ffb3007a,inset 0 0 60px #fff4bd55 !important;
+    }
+    .wallet-button {
+      color:#fff !important;
+      background:linear-gradient(110deg,#a60074,#ff2da8,#ff72c8) !important;
+      border:2px solid #ffc7eb !important;
+      box-shadow:0 0 18px #ff2da899,0 7px 20px #32102073 !important;
+    }
+    .wallet-button:hover { box-shadow:0 0 34px #ff7ccc,0 9px 28px #3210208c !important; }
+    .mint-button {
+      color:#fff !important;
+      background:linear-gradient(110deg,#0066b3,#00a6ff,#47d7ff,#0077cf) !important;
+      background-size:220% 100% !important;
+      border:2px solid #bdeeff !important;
+      box-shadow:0 0 20px #00a6ffaa,0 8px 25px #002f5f73 !important;
+    }
+    .mint-button:hover { box-shadow:0 0 38px #6fe3ff,0 10px 30px #002f5f8c !important; }
+    .disconnect-button {
+      color:#fff !important;
+      background:linear-gradient(110deg,#6b154a,#a52270) !important;
+      border:1px solid #ff9ed7 !important;
+    }
     .mint-home-link {
-      position: fixed;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%);
-      z-index: 20;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 150px;
-      padding: 12px 24px;
-      border: 2px solid #fff0a0;
-      border-radius: 999px;
-      color: #2b1900;
-      background: linear-gradient(110deg,#c98500,#fff7c9,#ffd84d,#fff,#e3a20d);
-      box-shadow: 0 0 18px rgba(255,240,160,.85), 0 8px 25px rgba(90,49,0,.45);
-      font-family: Arial,Helvetica,sans-serif;
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      text-decoration: none;
-      transition: transform .15s ease, box-shadow .15s ease;
+      position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:30;
+      display:inline-flex;align-items:center;justify-content:center;min-width:150px;padding:12px 24px;
+      border:2px solid #ffd5ee;border-radius:999px;color:#fff;
+      background:linear-gradient(110deg,#8f0c63,#e31b95,#ff65bd);
+      box-shadow:0 0 22px #ff3da5a6,0 8px 25px #160b12a6;
+      font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:900;letter-spacing:1.5px;text-decoration:none;
+      transition:transform .15s ease,box-shadow .15s ease;
     }
-    .mint-home-link:hover {
-      transform: translateX(-50%) translateY(-2px);
-      box-shadow: 0 0 30px #fff3ad, 0 10px 30px rgba(90,49,0,.5);
-    }
-    @media (max-width:520px) {
-      .mint-home-link { bottom: 10px; min-width: 130px; padding: 10px 20px; }
-    }
+    .mint-home-link:hover {transform:translateX(-50%) translateY(-2px);box-shadow:0 0 38px #ff79c8,0 10px 30px #160b12bf}
+    .twinkle-field {position:fixed;inset:0;z-index:8;pointer-events:none;overflow:hidden}
+    .twinkle {position:absolute;color:#fff8bd;text-shadow:0 0 5px #fff,0 0 13px #ffd84d,0 0 27px #ffb300;animation:extraTwinkle var(--speed) ease-in-out infinite;animation-delay:var(--delay)}
+    @keyframes extraTwinkle {0%,100%{opacity:.08;transform:scale(.35) rotate(0deg)}45%{opacity:1;transform:scale(1.35) rotate(35deg)}65%{opacity:.45;transform:scale(.75) rotate(60deg)}}
+    @media(max-width:520px){.mint-home-link{bottom:10px;min-width:130px;padding:10px 20px}}
+    @media(prefers-reduced-motion:reduce){.twinkle{animation:none;opacity:.55}}
   </style>
 </head>
 <body>
+  <div class="twinkle-field" aria-hidden="true" id="twinkleField"></div>
   <div id="app"></div>
   <a class="mint-home-link" href="/">← HOME</a>
+  <script>
+    (function(){
+      const field=document.getElementById('twinkleField');
+      const symbols=['✦','✧','·','✶'];
+      for(let i=0;i<70;i++){
+        const star=document.createElement('span');
+        star.className='twinkle';
+        star.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+        star.style.left=(Math.random()*100)+'%';
+        star.style.top=(Math.random()*100)+'%';
+        star.style.fontSize=(8+Math.random()*24)+'px';
+        star.style.setProperty('--speed',(1.1+Math.random()*3.4)+'s');
+        star.style.setProperty('--delay',(-Math.random()*4)+'s');
+        field.appendChild(star);
+      }
+    })();
+  </script>
 </body>
 </html>
