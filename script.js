@@ -126,10 +126,10 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let panicTimer;
 let previousFocus;
 let alarmContext;
-let alarmTimer;
+let alarmOscillators = [];
 function stopAlarm() {
-  clearInterval(alarmTimer);
-  alarmTimer = undefined;
+  alarmOscillators.forEach((oscillator) => { try { oscillator.stop(); } catch {} });
+  alarmOscillators = [];
   if (alarmContext) {
     const context = alarmContext;
     alarmContext = undefined;
@@ -142,24 +142,46 @@ function startAlarm() {
   try {
     alarmContext = new AudioContextType();
     const context = alarmContext;
-    let high = false;
-    const beep = () => {
-      if (context.state === "closed") return;
+    const master = context.createGain();
+    const compressor = context.createDynamicsCompressor();
+    compressor.threshold.value = -18;
+    compressor.ratio.value = 8;
+    master.gain.value = 0.8;
+    master.connect(compressor).connect(context.destination);
+    const now = context.currentTime;
+    const duration = 3.6;
+
+    // Two detuned sirens sweep together for a broad, urgent sound.
+    [0, 1].forEach((layer) => {
       const oscillator = context.createOscillator();
       const volume = context.createGain();
-      oscillator.type = "sawtooth";
-      oscillator.frequency.value = high ? 760 : 580;
-      high = !high;
-      volume.gain.setValueAtTime(0.0001, context.currentTime);
-      volume.gain.exponentialRampToValueAtTime(0.055, context.currentTime + 0.025);
-      volume.gain.exponentialRampToValueAtTime(0.0001, context.currentTime + 0.32);
-      oscillator.connect(volume).connect(context.destination);
-      oscillator.start();
-      oscillator.stop(context.currentTime + 0.33);
-    };
-    beep();
-    alarmTimer = setInterval(beep, 430);
-    setTimeout(() => { if (alarmContext === context) stopAlarm(); }, 3000);
+      oscillator.type = layer ? "square" : "sawtooth";
+      volume.gain.value = layer ? 0.055 : 0.12;
+      oscillator.connect(volume).connect(master);
+      for (let i = 0; i < 5; i += 1) {
+        const time = now + i * 0.7;
+        oscillator.frequency.setValueAtTime(layer ? 390 : 520, time);
+        oscillator.frequency.exponentialRampToValueAtTime(layer ? 690 : 920, time + 0.35);
+        oscillator.frequency.exponentialRampToValueAtTime(layer ? 390 : 520, time + 0.7);
+      }
+      oscillator.start(now);
+      oscillator.stop(now + duration);
+      alarmOscillators.push(oscillator);
+    });
+
+    // A low impact thump makes the first beat feel like an emergency alarm.
+    const impact = context.createOscillator();
+    const impactGain = context.createGain();
+    impact.type = "sine";
+    impact.frequency.setValueAtTime(135, now);
+    impact.frequency.exponentialRampToValueAtTime(45, now + 0.35);
+    impactGain.gain.setValueAtTime(0.6, now);
+    impactGain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+    impact.connect(impactGain).connect(master);
+    impact.start(now);
+    impact.stop(now + 0.4);
+    alarmOscillators.push(impact);
+    setTimeout(() => { if (alarmContext === context) stopAlarm(); }, 3800);
   } catch { stopAlarm(); }
 }
 
