@@ -30,3 +30,16 @@ body.panic-active .website{animation:panicShake .22s linear infinite}
 @keyframes panicFly{from{opacity:0;transform:translate(0,0) scale(.2)}30%{opacity:1}to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.8) rotate(260deg)}}
 @keyframes panicShake{25%{transform:translate(4px,-3px) rotate(.4deg)}75%{transform:translate(-4px,3px) rotate(-.4deg)}}
 @media(prefers-reduced-motion:reduce){.panic-button,.panic-alert,.panic-flash,.panic-card,.panic-moms,.panic-star,body.panic-active .website{animation:none}}
+
+/* Red emergency button with electric arcs */
+.panic-section{position:relative;isolation:isolate;display:grid;justify-items:center;padding:32px 12px 12px}
+.panic-button{position:relative;z-index:1;width:min(260px,75vw);height:min(260px,75vw);min-height:0;max-width:none;border:7px solid #ffdbdb;border-radius:50%;background:radial-gradient(circle at 37% 26%,#ff8888 0%,#f30919 35%,#a50013 78%,#650009 100%);color:#fff;font-size:clamp(1.1rem,4vw,1.65rem);line-height:1.25;box-shadow:inset 0 8px 14px #ffb5b5,inset 0 -15px 24px #680009,0 12px 0 #650009,0 18px 22px #250013,0 0 38px #ff263a;animation:electricButton 1.8s ease-in-out infinite}
+.panic-button::before,.panic-button::after{content:"";position:absolute;inset:-20px;border:3px dashed #aaf5ff;border-radius:50%;pointer-events:none;filter:drop-shadow(0 0 7px #4beaff);animation:electricArc 2s linear infinite}
+.panic-button::after{inset:-32px;border-color:#fff0a0;border-style:dotted;border-width:4px;animation-duration:1.4s;animation-direction:reverse}
+.panic-button:hover{transform:translateY(-4px) scale(1.04);filter:brightness(1.15)}
+.panic-button:active{transform:translateY(6px) scale(.98)}
+.panic-count{margin-top:47px}
+.panic-moms{aspect-ratio:1;object-fit:cover;max-height:min(42vh,450px)}
+@keyframes electricButton{0%,100%{box-shadow:inset 0 8px 14px #ffb5b5,inset 0 -15px 24px #680009,0 12px 0 #650009,0 18px 22px #250013,0 0 25px #ff263a}50%{box-shadow:inset 0 8px 14px #ffb5b5,inset 0 -15px 24px #680009,0 12px 0 #650009,0 18px 22px #250013,0 0 55px #ff263a,0 0 75px #83ebff}}
+@keyframes electricArc{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.panic-button,.panic-button::before,.panic-button::after{animation:none}}

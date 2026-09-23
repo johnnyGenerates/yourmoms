@@ -120,20 +120,52 @@ const panicButton = document.getElementById("panicButton");
 const panicOverlay = document.getElementById("panicOverlay");
 const panicClose = document.getElementById("panicClose");
 const panicStars = document.getElementById("panicStars");
-const panicCount = document.getElementById("panicCount");
-const panicResult = document.getElementById("panicResult");
 const panicAlert = document.getElementById("panicAlert");
 const panicGoodbye = document.getElementById("panicGoodbye");
-const panicKey = "moms-panic-summons";
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-let summons = 0;
 let panicTimer;
 let previousFocus;
-try { summons = Math.max(0, Number(localStorage.getItem(panicKey)) || 0); } catch {}
-panicCount.textContent = summons.toLocaleString();
+let alarmContext;
+let alarmTimer;
+function stopAlarm() {
+  clearInterval(alarmTimer);
+  alarmTimer = undefined;
+  if (alarmContext) {
+    const context = alarmContext;
+    alarmContext = undefined;
+    context.close().catch(() => {});
+  }
+}
+function startAlarm() {
+  const AudioContextType = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextType) return;
+  try {
+    alarmContext = new AudioContextType();
+    const context = alarmContext;
+    let high = false;
+    const beep = () => {
+      if (context.state === "closed") return;
+      const oscillator = context.createOscillator();
+      const volume = context.createGain();
+      oscillator.type = "sawtooth";
+      oscillator.frequency.value = high ? 760 : 580;
+      high = !high;
+      volume.gain.setValueAtTime(0.0001, context.currentTime);
+      volume.gain.exponentialRampToValueAtTime(0.055, context.currentTime + 0.025);
+      volume.gain.exponentialRampToValueAtTime(0.0001, context.currentTime + 0.32);
+      oscillator.connect(volume).connect(context.destination);
+      oscillator.start();
+      oscillator.stop(context.currentTime + 0.33);
+    };
+    beep();
+    alarmTimer = setInterval(beep, 430);
+    setTimeout(() => { if (alarmContext === context) stopAlarm(); }, 3000);
+  } catch { stopAlarm(); }
+}
 
 function closePanic() {
   clearTimeout(panicTimer);
+  stopAlarm();
   panicOverlay.hidden = true;
   panicOverlay.setAttribute("aria-hidden", "true");
   panicOverlay.classList.remove("is-rare", "is-settling");
@@ -145,11 +177,8 @@ function closePanic() {
 
 function startPanic() {
   if (!panicOverlay.hidden) return;
+  startAlarm();
   previousFocus = document.activeElement;
-  summons += 1;
-  try { localStorage.setItem(panicKey, String(summons)); } catch {}
-  panicCount.textContent = summons.toLocaleString();
-  panicResult.textContent = "Your summons: " + summons.toLocaleString();
   const rare = Math.random() < 0.05;
   panicAlert.textContent = rare ? "✦ RARE MOMS EVENT ✦" : "🚨 MOMS ALERT 🚨";
   panicGoodbye.textContent = rare ? "You found the rare MOMS moment. She’ll be back." : "She’ll be back.";
