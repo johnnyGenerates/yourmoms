@@ -33,11 +33,29 @@
       <a class="main-button contact-button" href="mailto:yourmomsonsol@gmail.com">✉️ CONTACT</a>
     </nav>
 
+    <section class="panic-section" aria-label="Summon your MOMS">
+      <button class="panic-button" id="panicButton" type="button" aria-controls="panicOverlay">🚨 DO NOT PRESS 🚨</button>
+      <p class="panic-count">Your summons: <span id="panicCount">0</span></p>
+    </section>
+
     <footer class="site-footer">
       <div class="footer-title">💗 YOUR $MOMS © 2026</div>
       <div class="footer-tagline">Built with love, memes &amp; questionable decisions.</div>
     </footer>
   </main>
+
+  <div class="panic-overlay" id="panicOverlay" role="dialog" aria-modal="true" aria-labelledby="panicTitle" aria-hidden="true" hidden>
+    <div class="panic-flash" aria-hidden="true"></div>
+    <div class="panic-stars" id="panicStars" aria-hidden="true"></div>
+    <div class="panic-card">
+      <button class="panic-close" id="panicClose" type="button" aria-label="Close MOMS event">×</button>
+      <p class="panic-alert" id="panicAlert">MOMS ALERT</p>
+      <h2 id="panicTitle">YOU HAVE SUMMONED YOUR $MOMS</h2>
+      <img class="panic-moms" src="images/banner.jpg" alt="Your MOMS arrives">
+      <p class="panic-result" id="panicResult">Your summons: 0</p>
+      <p class="panic-goodbye" id="panicGoodbye">She’ll be back.</p>
+    </div>
+  </div>
 
   <script src="script.js"></script>
   <script data-goatcounter="https://yourmoms.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
