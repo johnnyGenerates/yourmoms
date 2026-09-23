@@ -115,3 +115,75 @@ function createBlast(x, y) {
 
 for (let i = 0; i < wineGlassCount; i += 1) createWineGlass();
 animateFloatingItems();
+
+const panicButton = document.getElementById("panicButton");
+const panicOverlay = document.getElementById("panicOverlay");
+const panicClose = document.getElementById("panicClose");
+const panicStars = document.getElementById("panicStars");
+const panicCount = document.getElementById("panicCount");
+const panicResult = document.getElementById("panicResult");
+const panicAlert = document.getElementById("panicAlert");
+const panicGoodbye = document.getElementById("panicGoodbye");
+const panicKey = "moms-panic-summons";
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+let summons = 0;
+let panicTimer;
+let previousFocus;
+try { summons = Math.max(0, Number(localStorage.getItem(panicKey)) || 0); } catch {}
+panicCount.textContent = summons.toLocaleString();
+
+function closePanic() {
+  clearTimeout(panicTimer);
+  panicOverlay.hidden = true;
+  panicOverlay.setAttribute("aria-hidden", "true");
+  panicOverlay.classList.remove("is-rare", "is-settling");
+  document.body.classList.remove("panic-active");
+  panicStars.replaceChildren();
+  panicButton.disabled = false;
+  if (previousFocus && typeof previousFocus.focus === "function") previousFocus.focus();
+}
+
+function startPanic() {
+  if (!panicOverlay.hidden) return;
+  previousFocus = document.activeElement;
+  summons += 1;
+  try { localStorage.setItem(panicKey, String(summons)); } catch {}
+  panicCount.textContent = summons.toLocaleString();
+  panicResult.textContent = "Your summons: " + summons.toLocaleString();
+  const rare = Math.random() < 0.05;
+  panicAlert.textContent = rare ? "✦ RARE MOMS EVENT ✦" : "🚨 MOMS ALERT 🚨";
+  panicGoodbye.textContent = rare ? "You found the rare MOMS moment. She’ll be back." : "She’ll be back.";
+  panicOverlay.classList.toggle("is-rare", rare);
+  panicOverlay.classList.remove("is-settling");
+  panicOverlay.hidden = false;
+  panicOverlay.setAttribute("aria-hidden", "false");
+  panicButton.disabled = true;
+  panicClose.focus();
+  if (!reducedMotion.matches) {
+    document.body.classList.add("panic-active");
+    for (let i = 0; i < 55; i += 1) {
+      const star = document.createElement("span");
+      star.className = "panic-star";
+      star.textContent = i % 3 === 0 ? "✦" : "✧";
+      star.style.setProperty("--x", Math.random() * 100 + "%");
+      star.style.setProperty("--y", Math.random() * 100 + "%");
+      star.style.setProperty("--dx", (Math.random() - .5) * 500 + "px");
+      star.style.setProperty("--dy", (Math.random() - .5) * 500 + "px");
+      star.style.setProperty("--size", (12 + Math.random() * 30) + "px");
+      star.style.setProperty("--duration", (1.5 + Math.random() * 2) + "s");
+      star.style.setProperty("--color", i % 2 ? "#ffe66f" : "#ff85d5");
+      panicStars.appendChild(star);
+    }
+  }
+  panicTimer = setTimeout(() => {
+    document.body.classList.remove("panic-active");
+    panicOverlay.classList.add("is-settling");
+    panicTimer = setTimeout(closePanic, reducedMotion.matches ? 2500 : 2700);
+  }, reducedMotion.matches ? 1500 : 5300);
+}
+panicButton.addEventListener("click", startPanic);
+panicClose.addEventListener("click", closePanic);
+panicOverlay.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closePanic();
+  if (event.key === "Tab") { event.preventDefault(); panicClose.focus(); }
+});
