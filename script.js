@@ -4,6 +4,7 @@ const contractAddress = "HDYP5e1dUM3zjqw3tQvDHDxtt6CKxkgyEN3NdNcXTRiX";
 
 const copyButton = document.getElementById("copyButton");
 const copyMessage = document.getElementById("copyMessage");
+const contractSection = document.getElementById("contractSection");
 
 const floatingWorld = document.getElementById("floatingWorld");
 const effectsLayer = document.getElementById("effectsLayer");
@@ -11,15 +12,12 @@ const effectsLayer = document.getElementById("effectsLayer");
 const wineGlassCount = 3;
 const floatingItems = [];
 
-
 function randomNumber(min, max) {
   return Math.random() * (max - min) + min;
 }
 
 
-/* =========================================================
-   COPY CONTRACT ADDRESS
-   ========================================================= */
+/* COPY CA */
 
 copyButton.addEventListener("click", async () => {
 
@@ -29,32 +27,22 @@ copyButton.addEventListener("click", async () => {
 
     copyButton.textContent = "✅ COPIED!";
     copyButton.classList.add("copied");
-
     copyMessage.textContent = "Contract address copied!";
 
     setTimeout(() => {
 
       copyButton.textContent = "📋 COPY CA";
-
       copyButton.classList.remove("copied");
-
       copyMessage.textContent = "";
 
     }, 2200);
 
   } catch {
 
-    /*
-      Fallback for browsers that do not allow
-      navigator.clipboard.
-    */
-
     const temporaryInput = document.createElement("textarea");
 
     temporaryInput.value = contractAddress;
-
     temporaryInput.setAttribute("readonly", "");
-
     temporaryInput.style.position = "fixed";
     temporaryInput.style.opacity = "0";
 
@@ -68,15 +56,12 @@ copyButton.addEventListener("click", async () => {
 
       copyButton.textContent = "✅ COPIED!";
       copyButton.classList.add("copied");
-
       copyMessage.textContent = "Contract address copied!";
 
       setTimeout(() => {
 
         copyButton.textContent = "📋 COPY CA";
-
         copyButton.classList.remove("copied");
-
         copyMessage.textContent = "";
 
       }, 2200);
@@ -95,9 +80,7 @@ copyButton.addEventListener("click", async () => {
 });
 
 
-/* =========================================================
-   FLOATING WINE GLASSES
-   ========================================================= */
+/* FLOATING WINE GLASSES */
 
 function createWineGlass() {
 
@@ -136,11 +119,9 @@ function setupFloatingItem(element) {
     ),
 
     speedX: randomNumber(-0.45, 0.45),
-
     speedY: randomNumber(-0.35, 0.35),
 
     rotation: randomNumber(-18, 18),
-
     rotationSpeed: randomNumber(-0.15, 0.15),
 
     scale: randomNumber(0.72, 1.05),
@@ -151,22 +132,12 @@ function setupFloatingItem(element) {
 
 
   if (Math.abs(item.speedX) < 0.18) {
-
-    item.speedX =
-      item.speedX < 0
-        ? -0.18
-        : 0.18;
-
+    item.speedX = item.speedX < 0 ? -0.18 : 0.18;
   }
 
 
   if (Math.abs(item.speedY) < 0.14) {
-
-    item.speedY =
-      item.speedY < 0
-        ? -0.14
-        : 0.14;
-
+    item.speedY = item.speedY < 0 ? -0.14 : 0.14;
   }
 
 
@@ -183,6 +154,79 @@ function setupFloatingItem(element) {
 }
 
 
+/* CHECK IF GLASS WOULD ENTER CONTRACT AREA */
+
+function glassHitsContract(item, nextX, nextY) {
+
+  if (!contractSection) {
+    return false;
+  }
+
+
+  const contractRect =
+    contractSection.getBoundingClientRect();
+
+
+  const glassWidth =
+    item.element.offsetWidth * item.scale;
+
+
+  const glassHeight =
+    item.element.offsetHeight * item.scale;
+
+
+  /*
+    Extra safety space around the contract box.
+    This keeps the wine glasses clearly away from it.
+  */
+
+  const safety = 22;
+
+
+  const contractLeft =
+    contractRect.left - safety;
+
+
+  const contractRight =
+    contractRect.right + safety;
+
+
+  const contractTop =
+    contractRect.top - safety;
+
+
+  const contractBottom =
+    contractRect.bottom + safety;
+
+
+  const glassLeft =
+    nextX;
+
+
+  const glassRight =
+    nextX + glassWidth;
+
+
+  const glassTop =
+    nextY;
+
+
+  const glassBottom =
+    nextY + glassHeight;
+
+
+  return (
+    glassRight > contractLeft &&
+    glassLeft < contractRight &&
+    glassBottom > contractTop &&
+    glassTop < contractBottom
+  );
+
+}
+
+
+/* MOVE WINE GLASSES */
+
 function animateFloatingItems() {
 
   floatingItems.forEach((item) => {
@@ -195,15 +239,89 @@ function animateFloatingItems() {
     const width =
       item.element.offsetWidth;
 
+
     const height =
       item.element.offsetHeight;
 
 
-    item.x += item.speedX;
+    let nextX =
+      item.x + item.speedX;
 
-    item.y += item.speedY;
 
-    item.rotation += item.rotationSpeed;
+    let nextY =
+      item.y + item.speedY;
+
+
+    /*
+      If the next movement would put the glass
+      inside the contract box, reverse direction.
+    */
+
+    if (glassHitsContract(item, nextX, nextY)) {
+
+      const contractRect =
+        contractSection.getBoundingClientRect();
+
+
+      const glassCenterX =
+        nextX + width / 2;
+
+
+      const glassCenterY =
+        nextY + height / 2;
+
+
+      const contractCenterX =
+        contractRect.left +
+        contractRect.width / 2;
+
+
+      const contractCenterY =
+        contractRect.top +
+        contractRect.height / 2;
+
+
+      const horizontalDistance =
+        Math.abs(
+          glassCenterX -
+          contractCenterX
+        );
+
+
+      const verticalDistance =
+        Math.abs(
+          glassCenterY -
+          contractCenterY
+        );
+
+
+      if (horizontalDistance > verticalDistance) {
+
+        item.speedX *= -1;
+
+      } else {
+
+        item.speedY *= -1;
+
+      }
+
+
+      nextX =
+        item.x + item.speedX * 3;
+
+
+      nextY =
+        item.y + item.speedY * 3;
+
+    }
+
+
+    item.x = nextX;
+    item.y = nextY;
+
+
+    item.rotation +=
+      item.rotationSpeed;
 
 
     if (
@@ -263,6 +381,8 @@ function animateFloatingItems() {
 }
 
 
+/* SHOOT GLASS */
+
 function shootItem(item) {
 
   if (item.shooting) {
@@ -280,6 +400,7 @@ function shootItem(item) {
   const centerX =
     item.x +
     item.element.offsetWidth / 2;
+
 
   const centerY =
     item.y +
@@ -335,6 +456,22 @@ function shootItem(item) {
       randomNumber(-20, 20);
 
 
+    /*
+      If it respawns inside the contract area,
+      put it near the bottom of the screen instead.
+    */
+
+    if (glassHitsContract(item, item.x, item.y)) {
+
+      item.y =
+        Math.max(
+          20,
+          window.innerHeight - 150
+        );
+
+    }
+
+
     item.element.style.opacity = "1";
 
 
@@ -350,9 +487,7 @@ function shootItem(item) {
 }
 
 
-/* =========================================================
-   FLOATING ITEM BLAST
-   ========================================================= */
+/* BLAST */
 
 function createBlast(x, y) {
 
@@ -450,7 +585,7 @@ function createBlast(x, y) {
 }
 
 
-/* CREATE FLOATING GLASSES */
+/* CREATE GLASSES */
 
 for (
   let i = 0;
@@ -466,9 +601,9 @@ for (
 animateFloatingItems();
 
 
-/* =========================================================
+/* =========================
    PANIC BUTTON
-   ========================================================= */
+   ========================= */
 
 const panicButton =
   document.getElementById("panicButton");
@@ -488,25 +623,16 @@ const panicAlert =
 const panicGoodbye =
   document.getElementById("panicGoodbye");
 
-
 const reducedMotion =
   window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   );
 
-
 let panicTimer;
-
 let previousFocus;
-
 let alarmContext;
-
 let alarmOscillators = [];
 
-
-/* =========================================================
-   ALARM
-   ========================================================= */
 
 function stopAlarm() {
 
@@ -514,9 +640,7 @@ function stopAlarm() {
     (oscillator) => {
 
       try {
-
         oscillator.stop();
-
       } catch {}
 
     }
@@ -600,11 +724,6 @@ function startAlarm() {
       3.6;
 
 
-    /*
-      Two detuned sirens sweep together
-      for a broad emergency sound.
-    */
-
     [0, 1].forEach((layer) => {
 
       const oscillator =
@@ -679,10 +798,6 @@ function startAlarm() {
     });
 
 
-    /*
-      Low impact thump.
-    */
-
     const impact =
       context.createOscillator();
 
@@ -742,12 +857,8 @@ function startAlarm() {
 
     setTimeout(() => {
 
-      if (
-        alarmContext === context
-      ) {
-
+      if (alarmContext === context) {
         stopAlarm();
-
       }
 
     }, 3800);
@@ -762,46 +873,31 @@ function startAlarm() {
 }
 
 
-/* =========================================================
-   CLOSE PANIC
-   ========================================================= */
-
 function closePanic() {
 
-  clearTimeout(
-    panicTimer
-  );
-
+  clearTimeout(panicTimer);
 
   stopAlarm();
 
-
-  panicOverlay.hidden =
-    true;
-
+  panicOverlay.hidden = true;
 
   panicOverlay.setAttribute(
     "aria-hidden",
     "true"
   );
 
-
   panicOverlay.classList.remove(
     "is-rare",
     "is-settling"
   );
 
-
   document.body.classList.remove(
     "panic-active"
   );
 
-
   panicStars.replaceChildren();
 
-
-  panicButton.disabled =
-    false;
+  panicButton.disabled = false;
 
 
   if (
@@ -815,10 +911,6 @@ function closePanic() {
 
 }
 
-
-/* =========================================================
-   START PANIC
-   ========================================================= */
 
 function startPanic() {
 
@@ -861,8 +953,7 @@ function startPanic() {
   );
 
 
-  panicOverlay.hidden =
-    false;
+  panicOverlay.hidden = false;
 
 
   panicOverlay.setAttribute(
@@ -871,9 +962,7 @@ function startPanic() {
   );
 
 
-  panicButton.disabled =
-    true;
-
+  panicButton.disabled = true;
 
   panicClose.focus();
 
@@ -987,10 +1076,6 @@ function startPanic() {
 
 }
 
-
-/* =========================================================
-   PANIC EVENTS
-   ========================================================= */
 
 panicButton.addEventListener(
   "click",
