@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="The official Your $MOMS website.">
   <title>Your $MOMS</title>
-  <link rel="stylesheet" href="style.css?v=chart-20260923-1">
+  <link rel="stylesheet" href="style.css?v=contract-pink-20260924-1">
 </head>
 <body>
   <div class="floating-world" id="floatingWorld" aria-hidden="true"></div>
@@ -18,18 +18,41 @@
     </header>
 
     <section class="contract-section" aria-labelledby="contractTitle">
-      <p class="contract-label" id="contractTitle">CONTRACT ADDRESS</p>
-      <div class="contract-address" id="contractAddress">HDYP5e1dUM3zjqw3tQvDHDxtt6CKxkgyEN3NdNcXTRiX</div>
+      <div class="contract-sparkles" aria-hidden="true">
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>✧</span>
+      </div>
+
+      <div class="contract-content">
+        <span class="contract-label" id="contractTitle">CONTRACT ADDRESS</span>
+
+        <span class="contract-address" id="contractAddress">
+          HDYP5e1dUM3zjqw3tQvDHDxtt6CKxkgyEN3NdNcXTRiX
+        </span>
+
+        <button class="contract-copy-button" id="copyButton" type="button">
+          📋 COPY CA
+        </button>
+      </div>
+
       <p class="copy-message" id="copyMessage" aria-live="polite"></p>
     </section>
 
     <nav class="main-links" aria-label="Your MOMS links">
       <a class="main-button mint-nft-button" href="/mint/"><span class="button-sparkles" aria-hidden="true">✦ ✧ ✦</span>🔥 MINT GENESIS MOMS NFT</a>
-      <button class="main-button copy-ca-button" id="copyButton" type="button">📋 COPY CA</button>
+
       <a class="main-button buy-button" href="https://jup.ag/?sell=So11111111111111111111111111111111111111112&buy=HDYP5e1dUM3zjqw3tQvDHDxtt6CKxkgyEN3NdNcXTRiX" target="_blank" rel="noopener noreferrer">🟢 BUY $MOMS</a>
+
       <a class="main-button chart-button" href="https://dexscreener.com/search?q=HDYP5e1dUM3zjqw3tQvDHDxtt6CKxkgyEN3NdNcXTRiX" target="_blank" rel="noopener noreferrer">📈 DEXSCREENER</a>
+
       <a class="main-button game-button" href="/game/">🎮 PLAY MOMS WINE RUSH</a>
+
       <a class="main-button socials-button" href="/socials/"><span class="heart-pop heart-one" aria-hidden="true">♥</span><span class="heart-pop heart-two" aria-hidden="true">♥</span>💖 SOCIALS</a>
+
       <a class="main-button contact-button" href="mailto:yourmomsonsol@gmail.com">✉️ CONTACT</a>
     </nav>
 
@@ -42,6 +65,7 @@
         <span class="live-dot" aria-hidden="true"></span>
         <h2 id="liveChartTitle">LIVE $MOMS CHART</h2>
       </div>
+
       <div class="chart-frame">
         <iframe
           src="https://dexscreener.com/solana/C7saQrX3feJRESyC3ggSkCDPAKLPYrwcFuFNRcPk9wUo?embed=1&info=0&theme=dark&trades=0"
@@ -62,6 +86,7 @@
   <div class="panic-overlay" id="panicOverlay" role="dialog" aria-modal="true" aria-labelledby="panicTitle" aria-hidden="true" hidden>
     <div class="panic-flash" aria-hidden="true"></div>
     <div class="panic-stars" id="panicStars" aria-hidden="true"></div>
+
     <div class="panic-card">
       <button class="panic-close" id="panicClose" type="button" aria-label="Close MOMS event">×</button>
       <p class="panic-alert" id="panicAlert">MOMS ALERT</p>
