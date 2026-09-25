@@ -1,220 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The official Your $MOMS website.">
-  <title>Your $MOMS</title>
-  <link rel="stylesheet" href="style.css?v=hotpink-20260924-2">
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon.png?v=2" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genesis Moms NFT Collection</title>
+
+  <script data-goatcounter="https://yourmoms.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script type="module" crossorigin src="/mint/assets/index-D08mQgcm.js"></script>
+  <link rel="stylesheet" crossorigin href="/mint/assets/index-9dTyh-P0.css">
+
+  <style>
+    body {
+      background-color:#1d1000 !important;
+      background-image:radial-gradient(circle at 50% 0%,rgba(224,160,28,.15),transparent 31%),radial-gradient(circle at 12% 32%,rgba(148,86,0,.15),transparent 27%),radial-gradient(circle at 88% 68%,rgba(210,140,10,.12),transparent 30%),linear-gradient(145deg,#0d0700 0%,#241300 28%,#3b2100 52%,#1b0e00 76%,#100800 100%) !important;
+      background-attachment:fixed !important;
+    }
+    .mint-card {background:linear-gradient(145deg,rgba(255,239,159,.97),rgba(220,158,27,.98) 27%,rgba(121,69,0,.98) 59%,rgba(235,184,57,.98) 100%) !important;box-shadow:0 28px 80px #080400e0,0 0 40px #ffd84d,0 0 110px #ffb30085,inset 0 0 60px #fff4bd55 !important}
+    .network {display:none !important}
+    .wallet-button {color:#fff !important;background:linear-gradient(110deg,#a60074,#ff2da8,#ff72c8) !important;border:2px solid #ffc7eb !important;box-shadow:0 0 18px #ff2da899,0 7px 20px #32102073 !important}
+    .wallet-button:hover {box-shadow:0 0 34px #ff7ccc,0 9px 28px #3210208c !important}
+    .mint-button {color:#fff !important;background:linear-gradient(110deg,#0066b3,#00a6ff,#47d7ff,#0077cf) !important;background-size:220% 100% !important;border:2px solid #bdeeff !important;box-shadow:0 0 20px #00a6ffaa,0 8px 25px #002f5f73 !important}
+    .mint-button:hover {box-shadow:0 0 38px #6fe3ff,0 10px 30px #002f5f8c !important}
+    .disconnect-button {color:#fff !important;background:linear-gradient(110deg,#6b154a,#a52270) !important;border:1px solid #ff9ed7 !important}
+    .mint-home-link {position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:30;display:inline-flex;align-items:center;justify-content:center;min-width:150px;padding:12px 24px;border:2px solid #ffd5ee;border-radius:999px;color:#fff;background:linear-gradient(110deg,#8f0c63,#e31b95,#ff65bd);box-shadow:0 0 22px #ff3da5a6,0 8px 25px #160b12a6;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:900;letter-spacing:1.5px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
+    .mint-home-link:hover {transform:translateX(-50%) translateY(-2px);box-shadow:0 0 38px #ff79c8,0 10px 30px #160b12bf}
+    .twinkle-field {position:absolute;top:0;left:0;width:100%;height:100%;min-height:100%;z-index:8;pointer-events:none;overflow:hidden}
+    .twinkle {position:absolute;color:#fff8bd;text-shadow:0 0 5px #fff,0 0 13px #ffd84d,0 0 27px #ffb300;animation:extraTwinkle var(--speed) ease-in-out infinite;animation-delay:var(--delay)}
+    @keyframes extraTwinkle {0%,100%{opacity:.08;transform:scale(.35) rotate(0deg)}45%{opacity:1;transform:scale(1.35) rotate(35deg)}65%{opacity:.45;transform:scale(.75) rotate(60deg)}}
+    @media(max-width:520px){.mint-home-link{bottom:10px;min-width:130px;padding:10px 20px}}
+    @media(prefers-reduced-motion:reduce){.twinkle{animation:none;opacity:.55}}
+  </style>
 </head>
-
 <body>
-
-  <div class="floating-world" id="floatingWorld" aria-hidden="true"></div>
-  <div class="effects-layer" id="effectsLayer" aria-hidden="true"></div>
-
-  <main class="website">
-
-    <header class="banner-section">
-      <img class="banner-image" src="images/banner.jpg" alt="I love Your MOMS banner">
-    </header>
-
-
-    <!-- HOT PINK CONTRACT BOX -->
-
-    <section class="contract-section" aria-labelledby="contractTitle">
-
-      <div class="gold-sparkles" aria-hidden="true">
-        <span class="sparkle sparkle-1">✦</span>
-        <span class="sparkle sparkle-2">✧</span>
-        <span class="sparkle sparkle-3">✦</span>
-        <span class="sparkle sparkle-4">✧</span>
-        <span class="sparkle sparkle-5">✦</span>
-        <span class="sparkle sparkle-6">✧</span>
-        <span class="sparkle sparkle-7">✦</span>
-        <span class="sparkle sparkle-8">✧</span>
-        <span class="sparkle sparkle-9">✦</span>
-        <span class="sparkle sparkle-10">✧</span>
-      </div>
-
-      <div class="contract-inner">
-
-        <span class="contract-label" id="contractTitle">
-          CONTRACT ADDRESS
-        </span>
-
-        <span class="contract-address" id="contractAddress">
-          HDYP5e1dUM3zjqw3tQvDHDxtt6CKxkgyEN3NdNcXTRiX
-        </span>
-
-        <button
-          class="contract-copy-button"
-          id="copyButton"
-          type="button"
-          aria-label="Copy contract address"
-        >
-          📋 COPY CA
-        </button>
-
-      </div>
-
-      <p class="copy-message" id="copyMessage" aria-live="polite"></p>
-
-    </section>
-
-
-    <!-- MAIN LINKS -->
-
-    <nav class="main-links" aria-label="Your MOMS links">
-
-      <a class="main-button mint-nft-button" href="/mint/">
-        <span class="button-sparkles" aria-hidden="true">✦ ✧ ✦</span>
-        🔥 MINT GENESIS MOMS NFT
-      </a>
-
-      <a
-        class="main-button buy-button"
-        href="https://jup.ag/?sell=So11111111111111111111111111111111111111112&buy=HDYP5e1dUM3zjqw3tQvDHDxtt6CKxkgyEN3NdNcXTRiX"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        🟢 BUY $MOMS
-      </a>
-
-      <a
-        class="main-button chart-button"
-        href="https://dexscreener.com/search?q=HDYP5e1dUM3zjqw3tQvDHDxtt6CKxkgyEN3NdNcXTRiX"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        📈 DEXSCREENER
-      </a>
-
-      <a class="main-button game-button" href="/game/">
-        🎮 PLAY MOMS WINE RUSH
-      </a>
-
-      <a class="main-button socials-button" href="/socials/">
-        <span class="heart-pop heart-one" aria-hidden="true">♥</span>
-        <span class="heart-pop heart-two" aria-hidden="true">♥</span>
-        💖 SOCIALS
-      </a>
-
-      <a class="main-button contact-button" href="mailto:yourmomsonsol@gmail.com">
-        ✉️ CONTACT
-      </a>
-
-    </nav>
-
-
-    <!-- PANIC BUTTON -->
-
-    <section class="panic-section" aria-label="Summon your MOMS">
-      <button
-        class="panic-button"
-        id="panicButton"
-        type="button"
-        aria-controls="panicOverlay"
-      >
-        DO NOT PRESS
-      </button>
-    </section>
-
-
-    <!-- LIVE CHART -->
-
-    <section class="live-chart-section" aria-labelledby="liveChartTitle">
-
-      <div class="live-chart-heading">
-        <span class="live-dot" aria-hidden="true"></span>
-        <h2 id="liveChartTitle">LIVE $MOMS CHART</h2>
-      </div>
-
-      <div class="chart-frame">
-        <iframe
-          src="https://dexscreener.com/solana/C7saQrX3feJRESyC3ggSkCDPAKLPYrwcFuFNRcPk9wUo?embed=1&info=0&theme=dark&trades=0"
-          title="Live $MOMS trading chart"
-          loading="lazy"
-          referrerpolicy="no-referrer"
-          allowfullscreen>
-        </iframe>
-      </div>
-
-    </section>
-
-
-    <footer class="site-footer">
-      <div class="footer-title">💗 YOUR $MOMS © 2026</div>
-      <div class="footer-tagline">
-        Built with love, memes &amp; questionable decisions.
-      </div>
-    </footer>
-
-  </main>
-
-
-  <!-- PANIC OVERLAY -->
-
-  <div
-    class="panic-overlay"
-    id="panicOverlay"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="panicTitle"
-    aria-hidden="true"
-    hidden
-  >
-
-    <div class="panic-flash" aria-hidden="true"></div>
-
-    <div
-      class="panic-stars"
-      id="panicStars"
-      aria-hidden="true">
-    </div>
-
-    <div class="panic-card">
-
-      <button
-        class="panic-close"
-        id="panicClose"
-        type="button"
-        aria-label="Close MOMS event"
-      >
-        ×
-      </button>
-
-      <p class="panic-alert" id="panicAlert">
-        MOMS ALERT
-      </p>
-
-      <h2 id="panicTitle">
-        You pressed it? Go to your room!!
-      </h2>
-
-      <img
-        class="panic-moms"
-        src="/images/shock.jpg?v=2"
-        alt="Shocked MOMS holding red wine as chaos erupts behind her"
-      >
-
-      <p class="panic-goodbye" id="panicGoodbye">
-        She’ll be back.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <script src="script.js?v=hotpink-20260924-2"></script>
-
-  <script
-    data-goatcounter="https://yourmoms.goatcounter.com/count"
-    async
-    src="//gc.zgo.at/count.js">
+  <div class="twinkle-field" aria-hidden="true" id="twinkleField"></div>
+  <div id="app"></div>
+  <a class="mint-home-link" href="/">← HOME</a>
+  <script>
+    (function(){
+      const field=document.getElementById('twinkleField');
+      const symbols=['✦','✧','·','✶'];
+      function buildStars(){
+        field.innerHTML='';
+        field.style.height=Math.max(document.documentElement.scrollHeight,document.body.scrollHeight)+'px';
+        const pageHeight=parseFloat(field.style.height);
+        for(let i=0;i<90;i++){
+          const star=document.createElement('span');
+          star.className='twinkle';
+          star.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+          star.style.left=(Math.random()*100)+'%';
+          star.style.top=(Math.random()*pageHeight)+'px';
+          star.style.fontSize=(8+Math.random()*24)+'px';
+          star.style.setProperty('--speed',(1.1+Math.random()*3.4)+'s');
+          star.style.setProperty('--delay',(-Math.random()*4)+'s');
+          field.appendChild(star);
+        }
+      }
+      window.addEventListener('load',buildStars);
+      window.addEventListener('resize',buildStars);
+      setTimeout(buildStars,600);
+    })();
   </script>
-
 </body>
 </html>
