@@ -1110,3 +1110,709 @@ panicOverlay.addEventListener(
 
   }
 );
+/* =========================
+   $MOMS 100-DAY BIRTHDAY
+   ========================= */
+
+const birthdaySection =
+  document.getElementById("birthdaySection");
+
+const birthdayCakeButton =
+  document.getElementById("birthdayCakeButton");
+
+const birthdayCandles =
+  document.getElementById("birthdayCandles");
+
+const birthdayOverlay =
+  document.getElementById("birthdayOverlay");
+
+const birthdayClose =
+  document.getElementById("birthdayClose");
+
+const birthdayChaos =
+  document.getElementById("birthdayChaos");
+
+const birthdayShareImage =
+  document.getElementById("birthdayShareImage");
+
+const birthdayNativeShare =
+  document.getElementById("birthdayNativeShare");
+
+const birthdayXShare =
+  document.getElementById("birthdayXShare");
+
+const birthdayShareNote =
+  document.getElementById("birthdayShareNote");
+
+const birthdayImages = [
+  "images/moms-100-1.png",
+  "images/moms-100-2.png",
+  "images/moms-100-3.png"
+];
+
+const birthdayPostText =
+  "I just wished YOUR $MOMS a Happy 100 Days! 🎂🥂\n\n" +
+  "100 days old. Still here. Still building. Still completely insane.\n\n" +
+  "Go wish your $MOMS a happy 100 days 👇\n\n" +
+  "yourmoms.xyz\n\n" +
+  "$MOMS";
+
+let birthdayRunning = false;
+let selectedBirthdayImage = birthdayImages[0];
+let birthdayPreviousFocus;
+
+
+/* 100-DAY EVENT AUTOMATIC EXPIRATION
+   Ends exactly at midnight Pacific time after September 26, 2026.
+   2026-09-27 00:00 America/Los_Angeles = 2026-09-27T07:00:00Z.
+*/
+const birthdayEventEndsAt =
+  new Date("2026-09-27T07:00:00Z").getTime();
+
+function birthdayEventIsActive() {
+  return Date.now() < birthdayEventEndsAt;
+}
+
+function enforceBirthdayExpiration() {
+
+  if (birthdayEventIsActive()) {
+    return;
+  }
+
+  if (birthdaySection) {
+    birthdaySection.hidden = true;
+  }
+
+  if (birthdayOverlay) {
+    birthdayOverlay.hidden = true;
+    birthdayOverlay.setAttribute("aria-hidden", "true");
+  }
+
+  document.body.classList.remove(
+    "birthday-active",
+    "birthday-rumble"
+  );
+}
+
+
+
+/* BUILD EXACTLY 100 CANDLES */
+
+function buildBirthdayCandles() {
+
+  if (!birthdayCandles) {
+    return;
+  }
+
+  birthdayCandles.replaceChildren();
+
+  const columns = 20;
+  const rows = 5;
+
+  for (let index = 0; index < 100; index += 1) {
+
+    const candle =
+      document.createElement("span");
+
+    candle.className =
+      "birthday-candle";
+
+    const column =
+      index % columns;
+
+    const row =
+      Math.floor(index / columns);
+
+    const x =
+      3 + (column / (columns - 1)) * 94;
+
+    const y =
+      7 + row * 19;
+
+    const wiggle =
+      ((index * 17) % 9) - 4;
+
+    candle.style.left =
+      `calc(${x}% + ${wiggle}px)`;
+
+    candle.style.top =
+      `${y}px`;
+
+    candle.style.transform =
+      `rotate(${((index * 13) % 11) - 5}deg)`;
+
+    candle.style.zIndex =
+      String(10 + row);
+
+    birthdayCandles.appendChild(
+      candle
+    );
+
+  }
+
+}
+
+
+/* BIRTHDAY SOUND - CREATED IN THE BROWSER, NO AUDIO FILE NEEDED */
+
+function playBirthdayBlastSound() {
+
+  const AudioContextType =
+    window.AudioContext ||
+    window.webkitAudioContext;
+
+  if (!AudioContextType) {
+    return;
+  }
+
+  try {
+
+    const context =
+      new AudioContextType();
+
+    const master =
+      context.createGain();
+
+    master.gain.value =
+      0.32;
+
+    master.connect(
+      context.destination
+    );
+
+    const now =
+      context.currentTime;
+
+    const notes =
+      [261.63, 329.63, 392.00, 523.25];
+
+    notes.forEach(
+      (frequency, index) => {
+
+        const oscillator =
+          context.createOscillator();
+
+        const gain =
+          context.createGain();
+
+        oscillator.type =
+          index % 2
+            ? "triangle"
+            : "square";
+
+        oscillator.frequency
+          .setValueAtTime(
+            frequency,
+            now
+          );
+
+        oscillator.frequency
+          .exponentialRampToValueAtTime(
+            frequency * 1.55,
+            now + 1.15
+          );
+
+        gain.gain
+          .setValueAtTime(
+            0.0001,
+            now
+          );
+
+        gain.gain
+          .exponentialRampToValueAtTime(
+            0.12,
+            now + 0.03 + index * 0.025
+          );
+
+        gain.gain
+          .exponentialRampToValueAtTime(
+            0.0001,
+            now + 1.3
+          );
+
+        oscillator
+          .connect(gain)
+          .connect(master);
+
+        oscillator.start(
+          now + index * 0.045
+        );
+
+        oscillator.stop(
+          now + 1.35
+        );
+
+      }
+    );
+
+    setTimeout(
+      () => context.close().catch(() => {}),
+      1600
+    );
+
+  } catch {}
+
+}
+
+
+/* CREATE CONFETTI + FIREWORKS IN RESULT SCREEN */
+
+function buildBirthdayChaos() {
+
+  birthdayChaos.replaceChildren();
+
+  const colors = [
+    "#ff3fa9",
+    "#ffe75a",
+    "#ffffff",
+    "#8dfaff",
+    "#ff8cdd"
+  ];
+
+  for (let index = 0; index < 80; index += 1) {
+
+    const confetti =
+      document.createElement("span");
+
+    confetti.className =
+      "birthday-confetti";
+
+    confetti.style.setProperty(
+      "--x",
+      Math.random() * 100 + "%"
+    );
+
+    confetti.style.setProperty(
+      "--w",
+      (5 + Math.random() * 8) + "px"
+    );
+
+    confetti.style.setProperty(
+      "--h",
+      (10 + Math.random() * 15) + "px"
+    );
+
+    confetti.style.setProperty(
+      "--color",
+      colors[index % colors.length]
+    );
+
+    confetti.style.setProperty(
+      "--duration",
+      (2.4 + Math.random() * 2.8) + "s"
+    );
+
+    confetti.style.setProperty(
+      "--delay",
+      (-Math.random() * 4) + "s"
+    );
+
+    birthdayChaos.appendChild(
+      confetti
+    );
+
+  }
+
+  for (let index = 0; index < 22; index += 1) {
+
+    const firework =
+      document.createElement("span");
+
+    firework.className =
+      "birthday-firework";
+
+    firework.textContent =
+      index % 2
+        ? "✦"
+        : "✧";
+
+    firework.style.setProperty(
+      "--x",
+      Math.random() * 100 + "%"
+    );
+
+    firework.style.setProperty(
+      "--y",
+      Math.random() * 100 + "%"
+    );
+
+    firework.style.setProperty(
+      "--size",
+      (18 + Math.random() * 44) + "px"
+    );
+
+    firework.style.setProperty(
+      "--color",
+      colors[index % colors.length]
+    );
+
+    firework.style.setProperty(
+      "--duration",
+      (1.1 + Math.random() * 1.8) + "s"
+    );
+
+    birthdayChaos.appendChild(
+      firework
+    );
+
+  }
+
+}
+
+
+/* X TEXT LINK */
+
+function updateBirthdayXLink() {
+
+  const xUrl =
+    "https://twitter.com/intent/tweet?text=" +
+    encodeURIComponent(
+      birthdayPostText
+    );
+
+  birthdayXShare.href =
+    xUrl;
+
+}
+
+
+/* RANDOMLY PICK ONE OF THE THREE APPROVED CARDS */
+
+function chooseBirthdayImage() {
+
+  const randomIndex =
+    Math.floor(
+      Math.random() *
+      birthdayImages.length
+    );
+
+  selectedBirthdayImage =
+    birthdayImages[randomIndex];
+
+  birthdayShareImage.src =
+    selectedBirthdayImage;
+
+}
+
+
+/* OPEN RESULT */
+
+function openBirthdayResult() {
+
+  chooseBirthdayImage();
+
+  updateBirthdayXLink();
+
+  buildBirthdayChaos();
+
+  birthdayOverlay.hidden =
+    false;
+
+  birthdayOverlay.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.classList.add(
+    "birthday-active"
+  );
+
+  birthdayClose.focus();
+
+}
+
+
+/* CLOSE RESULT */
+
+function closeBirthdayResult() {
+
+  birthdayOverlay.hidden =
+    true;
+
+  birthdayOverlay.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.classList.remove(
+    "birthday-active",
+    "birthday-rumble"
+  );
+
+  birthdaySection.classList.remove(
+    "is-blowing"
+  );
+
+  birthdayRunning =
+    false;
+
+  buildBirthdayCandles();
+
+  birthdayChaos.replaceChildren();
+
+  if (
+    birthdayPreviousFocus &&
+    typeof birthdayPreviousFocus.focus === "function"
+  ) {
+
+    birthdayPreviousFocus.focus();
+
+  }
+
+}
+
+
+/* THE BIG MOMENT */
+
+function startBirthdayCelebration() {
+
+  if (!birthdayEventIsActive()) {
+    enforceBirthdayExpiration();
+    return;
+  }
+
+  if (birthdayRunning) {
+    return;
+  }
+
+  birthdayRunning =
+    true;
+
+  birthdayPreviousFocus =
+    document.activeElement;
+
+  birthdayCakeButton.disabled =
+    true;
+
+  playBirthdayBlastSound();
+
+  birthdaySection.classList.add(
+    "is-blowing"
+  );
+
+  if (!reducedMotion.matches) {
+
+    document.body.classList.add(
+      "birthday-rumble"
+    );
+
+  }
+
+  const candles =
+    Array.from(
+      birthdayCandles.querySelectorAll(
+        ".birthday-candle"
+      )
+    );
+
+  candles.forEach(
+    (candle, index) => {
+
+      const delay =
+        reducedMotion.matches
+          ? 0
+          : Math.floor(index / 10) * 45 +
+            Math.random() * 100;
+
+      setTimeout(
+        () => candle.classList.add("is-out"),
+        delay
+      );
+
+    }
+  );
+
+  setTimeout(
+    () => {
+
+      document.body.classList.remove(
+        "birthday-rumble"
+      );
+
+      birthdaySection.classList.remove(
+        "is-blowing"
+      );
+
+      birthdayCakeButton.disabled =
+        false;
+
+      openBirthdayResult();
+
+    },
+    reducedMotion.matches
+      ? 500
+      : 1650
+  );
+
+}
+
+
+/* SHARE THE ACTUAL IMAGE THROUGH THE DEVICE SHARE SHEET */
+
+async function shareBirthdayImage() {
+
+  birthdayShareNote.textContent =
+    "Preparing your $MOMS celebration card…";
+
+  try {
+
+    const response =
+      await fetch(
+        selectedBirthdayImage
+      );
+
+    if (!response.ok) {
+      throw new Error("Image could not be loaded.");
+    }
+
+    const blob =
+      await response.blob();
+
+    const file =
+      new File(
+        [blob],
+        "moms-happy-100-days.png",
+        {
+          type:
+            blob.type ||
+            "image/png"
+        }
+      );
+
+    if (
+      navigator.share &&
+      navigator.canShare &&
+      navigator.canShare({
+        files: [file]
+      })
+    ) {
+
+      await navigator.share({
+        title:
+          "Happy 100 Days $MOMS!",
+        text:
+          birthdayPostText,
+        files:
+          [file]
+      });
+
+      birthdayShareNote.textContent =
+        "Shared! 🎂🥂";
+
+      return;
+
+    }
+
+    const temporaryLink =
+      document.createElement("a");
+
+    temporaryLink.href =
+      URL.createObjectURL(blob);
+
+    temporaryLink.download =
+      "moms-happy-100-days.png";
+
+    document.body.appendChild(
+      temporaryLink
+    );
+
+    temporaryLink.click();
+
+    temporaryLink.remove();
+
+    setTimeout(
+      () => URL.revokeObjectURL(
+        temporaryLink.href
+      ),
+      1000
+    );
+
+    birthdayShareNote.textContent =
+      "Your card was saved. Tap “POST ON X” and attach the saved image.";
+
+  } catch {
+
+    birthdayShareNote.textContent =
+      "Could not share the image automatically. Tap “POST ON X” to open the post text.";
+
+  }
+
+}
+
+
+buildBirthdayCandles();
+
+updateBirthdayXLink();
+
+enforceBirthdayExpiration();
+
+if (birthdayEventIsActive()) {
+  setTimeout(
+    enforceBirthdayExpiration,
+    Math.max(
+      0,
+      birthdayEventEndsAt - Date.now()
+    )
+  );
+}
+
+birthdayCakeButton.addEventListener(
+  "click",
+  startBirthdayCelebration
+);
+
+birthdayClose.addEventListener(
+  "click",
+  closeBirthdayResult
+);
+
+birthdayNativeShare.addEventListener(
+  "click",
+  shareBirthdayImage
+);
+
+birthdayOverlay.addEventListener(
+  "keydown",
+  (event) => {
+
+    if (event.key === "Escape") {
+      closeBirthdayResult();
+    }
+
+    if (event.key === "Tab") {
+
+      const focusable =
+        [
+          birthdayClose,
+          birthdayNativeShare,
+          birthdayXShare
+        ];
+
+      const currentIndex =
+        focusable.indexOf(
+          document.activeElement
+        );
+
+      if (event.shiftKey) {
+
+        if (currentIndex <= 0) {
+          event.preventDefault();
+          focusable[
+            focusable.length - 1
+          ].focus();
+        }
+
+      } else if (
+        currentIndex ===
+        focusable.length - 1
+      ) {
+
+        event.preventDefault();
+        focusable[0].focus();
+
+      }
+
+    }
+
+  }
+);
