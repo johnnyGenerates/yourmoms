@@ -1652,7 +1652,7 @@ function startBirthdayCelebration() {
 async function shareBirthdayImage() {
 
   birthdayShareNote.textContent =
-    "Preparing the actual image… When the share menu opens, choose X.";
+    "Saving your $MOMS celebration image…";
 
   try {
 
@@ -1668,46 +1668,14 @@ async function shareBirthdayImage() {
     const blob =
       await response.blob();
 
-    const file =
-      new File(
-        [blob],
-        "moms-happy-100-days.png",
-        {
-          type:
-            blob.type ||
-            "image/png"
-        }
-      );
-
-    if (
-      navigator.share &&
-      navigator.canShare &&
-      navigator.canShare({
-        files: [file]
-      })
-    ) {
-
-      await navigator.share({
-        title:
-          "Happy 100 Days $MOMS!",
-        text:
-          birthdayPostText,
-        files:
-          [file]
-      });
-
-      birthdayShareNote.textContent =
-        "Share menu opened with the image. Choose X to post it. 🎂🥂";
-
-      return;
-
-    }
+    const imageUrl =
+      URL.createObjectURL(blob);
 
     const temporaryLink =
       document.createElement("a");
 
     temporaryLink.href =
-      URL.createObjectURL(blob);
+      imageUrl;
 
     temporaryLink.download =
       "moms-happy-100-days.png";
@@ -1722,18 +1690,18 @@ async function shareBirthdayImage() {
 
     setTimeout(
       () => URL.revokeObjectURL(
-        temporaryLink.href
+        imageUrl
       ),
-      1000
+      1500
     );
 
     birthdayShareNote.textContent =
-      "Your browser cannot send image files directly to X. The image was saved instead. Open X with the button below and attach the saved image.";
+      "Image saved! Now tap “POST ON X”, attach the image you just saved, and post. 🎂🥂";
 
   } catch {
 
     birthdayShareNote.textContent =
-      "This browser blocked image sharing. Use the X button below for the text and attach the celebration image manually.";
+      "Could not save automatically. Press and hold the image above to save it, then tap “POST ON X”.";
 
   }
 
