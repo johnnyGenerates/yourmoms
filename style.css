@@ -2521,3 +2521,25 @@ body.birthday-rumble .website{
     animation:none;
   }
 }
+
+
+/* 100-DAY SHARE FLOW CLARITY */
+.birthday-share-primary{
+  min-width:min(330px,100%);
+  background:linear-gradient(145deg,#ff2da5,#8d1dff);
+  border-color:#fff3a0;
+  box-shadow:
+    0 7px 0 rgba(73,0,63,.55),
+    0 0 22px rgba(255,230,95,.5);
+  font-size:1.02rem;
+}
+
+.birthday-x-secondary{
+  opacity:.88;
+}
+
+.birthday-share-note{
+  padding:10px 12px;
+  border-radius:14px;
+  background:rgba(0,0,0,.22);
+}

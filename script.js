@@ -1652,7 +1652,7 @@ function startBirthdayCelebration() {
 async function shareBirthdayImage() {
 
   birthdayShareNote.textContent =
-    "Preparing your $MOMS celebration card…";
+    "Preparing the actual image… When the share menu opens, choose X.";
 
   try {
 
@@ -1697,7 +1697,7 @@ async function shareBirthdayImage() {
       });
 
       birthdayShareNote.textContent =
-        "Shared! 🎂🥂";
+        "Share menu opened with the image. Choose X to post it. 🎂🥂";
 
       return;
 
@@ -1728,12 +1728,12 @@ async function shareBirthdayImage() {
     );
 
     birthdayShareNote.textContent =
-      "Your card was saved. Tap “POST ON X” and attach the saved image.";
+      "Your browser cannot send image files directly to X. The image was saved instead. Open X with the button below and attach the saved image.";
 
   } catch {
 
     birthdayShareNote.textContent =
-      "Could not share the image automatically. Tap “POST ON X” to open the post text.";
+      "This browser blocked image sharing. Use the X button below for the text and attach the celebration image manually.";
 
   }
 
