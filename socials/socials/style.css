@@ -612,3 +612,40 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* FACEBOOK BUTTON */
+.facebook-button {
+  width: 94%;
+  border: 5px solid white;
+  border-radius: 28px 65px 28px 65px;
+  background: linear-gradient(145deg, #65adff 0%, #1877f2 45%, #084caa 100%);
+  color: white;
+  box-shadow: 0 10px 0 #063779, 0 16px 25px rgba(0,0,0,.45), 0 0 35px #318bff;
+  transform: rotate(1deg);
+}
+.facebook-button:hover { transform: scale(1.06) rotate(2deg); }
+.facebook-logo {
+  display: grid;
+  place-items: center;
+  flex: 0 0 76px;
+  width: 76px;
+  height: 76px;
+  border-radius: 18px;
+  background: white;
+  color: #1877f2;
+  font-family: Arial, sans-serif;
+  font-size: 4.5rem;
+  font-weight: 900;
+  line-height: 1;
+  box-shadow: 0 5px 0 rgba(0,0,0,.25);
+}
+.facebook-button .button-copy { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
+.facebook-button .button-small { font-family: Arial, sans-serif; font-size: .9rem; font-weight: 900; letter-spacing: 2px; }
+.facebook-button .button-big { font-size: clamp(1.7rem, 7vw, 3.2rem); font-weight: 900; letter-spacing: 1px; line-height: 1.1; }
+@media (max-width: 600px) {
+  .facebook-button { width: 96%; }
+  .facebook-logo { flex-basis: 58px; width: 58px; height: 58px; font-size: 3.5rem; }
+  .facebook-button .button-small { font-size: .7rem; }
+  .facebook-button .button-big { font-size: clamp(1.35rem, 6vw, 2.4rem); }
+}
