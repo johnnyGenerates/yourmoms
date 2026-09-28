@@ -2631,3 +2631,9 @@ body::after{background-image:radial-gradient(2px 2px at 38px 61px,#fff 98%,trans
 .social-icons .social-telegram{background:#229ed9}
 .social-icons .social-facebook{background:#0866ff}
 @media(max-width:560px){.social-icons span.social-x,.social-icons span.social-youtube,.social-icons span.social-telegram,.social-icons span.social-facebook{width:27px;height:27px}}
+
+/* Keep the complete wide banner visible at its natural ratio on mobile. */
+@media (max-width:800px){
+  .banner-section{height:auto;min-height:0;max-height:none}
+  .banner-image{width:100%;height:auto;object-fit:contain;object-position:center;aspect-ratio:2048 / 762}
+}
