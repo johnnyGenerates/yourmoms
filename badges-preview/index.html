@@ -7,7 +7,7 @@
   <meta name="description" content="The official Your $MOMS website.">
   <title>Your $MOMS</title>
   <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/badges-preview/badges.css?v=20">
+  <link rel="stylesheet" href="/badges-preview/badges.css?v=21">
 <style id="vault-v17-fix">
   .badge-earned{display:none!important}
   .badge-card{display:flex!important;flex-direction:column!important;align-items:center!important}
@@ -44,6 +44,33 @@
   .legend-badge-card > div:last-child{
     display:block!important;
     text-align:left!important;
+  }
+
+  .legend-wide{
+    box-sizing:border-box!important;
+    width:100%!important;
+    height:170px!important;
+    min-height:170px!important;
+    max-height:170px!important;
+    aspect-ratio:unset!important;
+    display:grid!important;
+    grid-template-columns:92px minmax(0,1fr)!important;
+    grid-template-rows:1fr!important;
+    flex-direction:initial!important;
+    align-items:center!important;
+    justify-items:stretch!important;
+    gap:18px!important;
+    padding:22px!important;
+    margin:0 0 22px!important;
+    text-align:left!important;
+  }
+  .legend-wide > div:last-child{display:block!important;text-align:left!important}
+  @media(max-width:560px){
+    .legend-wide{
+      height:155px!important;min-height:155px!important;max-height:155px!important;
+      grid-template-columns:70px minmax(0,1fr)!important;
+      gap:13px!important;padding:16px!important;
+    }
   }
 </style>
 </head>
@@ -240,7 +267,7 @@
       <h2 id="badgesTitle">THE <span>LEGACY VAULT</span></h2>
       <div class="badges-preview-pill">PRIVATE PREVIEW</div>
 
-      <section class="legend-badge-card" aria-label="Legend badge">
+      <section class="legend-badge-card legend-wide" aria-label="Legend badge">
         <div class="legend-crown">👑</div>
         <div>
           <div class="legend-label">LEGEND</div>
