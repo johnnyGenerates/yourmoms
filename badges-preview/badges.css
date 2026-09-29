@@ -336,3 +336,19 @@ linear-gradient(145deg,#2b1631,#120a17 72%);box-shadow:inset 0 1px #ffffff18,0 9
   .legend-badge-card:hover::after{animation:none!important;opacity:.3!important}
   .legend-badge-card:hover .legend-crown{animation:none!important}
 }
+
+/* Vault v20 — definitive wide rectangular LEGEND layout */
+.legend-badge-card{
+  width:100%!important;
+  max-width:none!important;
+  height:auto!important;
+  aspect-ratio:auto!important;
+  min-height:150px!important;
+  grid-template-columns:86px minmax(0,1fr)!important;
+}
+@media(max-width:560px){
+  .legend-badge-card{
+    min-height:132px!important;
+    grid-template-columns:66px minmax(0,1fr)!important;
+  }
+}
