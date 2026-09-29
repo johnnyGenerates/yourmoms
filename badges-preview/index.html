@@ -7,7 +7,7 @@
   <meta name="description" content="The official Your $MOMS website.">
   <title>Your $MOMS</title>
   <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/badges-preview/badges.css?v=19">
+  <link rel="stylesheet" href="/badges-preview/badges.css?v=20">
 <style id="vault-v17-fix">
   .badge-earned{display:none!important}
   .badge-card{display:flex!important;flex-direction:column!important;align-items:center!important}
@@ -25,6 +25,25 @@
     filter:drop-shadow(0 2px 2px #000) drop-shadow(0 0 8px #ffdf61aa);
   }  @media(max-width:560px){
     .trophy-glyph{font-size:3rem!important}
+  }
+
+  .legend-badge-card{
+    width:100%!important;
+    max-width:none!important;
+    height:auto!important;
+    aspect-ratio:auto!important;
+    min-height:150px!important;
+    display:grid!important;
+    grid-template-columns:86px minmax(0,1fr)!important;
+    align-items:center!important;
+    justify-content:initial!important;
+    text-align:left!important;
+    margin:0 0 22px!important;
+    border-radius:22px!important;
+  }
+  .legend-badge-card > div:last-child{
+    display:block!important;
+    text-align:left!important;
   }
 </style>
 </head>
