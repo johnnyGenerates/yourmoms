@@ -46,3 +46,12 @@ linear-gradient(145deg,#2b1631,#120a17 72%);box-shadow:inset 0 1px #ffffff18,0 9
 .legend-crown{animation:legendFloat 2.8s ease-in-out infinite}
 @keyframes legendFloat{50%{transform:translateY(-4px) scale(1.04);box-shadow:0 0 34px #ffda5c99}}
 @media(max-width:560px){.badge-card{min-height:195px;padding:15px 12px}.badge-earned{right:10px;top:12px}.badge-seal{width:58px;height:58px}.badge-icon{width:55px;height:55px;font-size:1.65rem}.vault-intro{margin-bottom:22px}}
+
+/* Vault v7 — larger emblem treatment, no checkmarks */
+.badge-seal{width:88px;height:88px;margin-bottom:15px}
+.badge-icon{width:84px;height:84px;font-size:2.55rem;border-width:2px}
+.badge-check{display:none!important}
+@media(max-width:560px){
+  .badge-seal{width:76px;height:76px}
+  .badge-icon{width:72px;height:72px;font-size:2.15rem}
+}
