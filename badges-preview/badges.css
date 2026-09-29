@@ -142,3 +142,6 @@ linear-gradient(145deg,#2b1631,#120a17 72%);box-shadow:inset 0 1px #ffffff18,0 9
 @media(max-width:560px){
   .badges-fab-count{top:30%;font-size:.63rem}
 }
+
+/* Vault v11 — trophy stands alone */
+.badges-fab-count{display:none!important}
