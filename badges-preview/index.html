@@ -232,8 +232,39 @@
     </div>
   </aside>
 
+  <script>
+(function () {
+  var fab = document.getElementById('badgesFab');
+  var panel = document.getElementById('badgesPanel');
+  var close = document.getElementById('badgesClose');
+  var backdrop = document.getElementById('badgesBackdrop');
 
-  <script src="/badges-preview/badges.js?v=4"></script>
+  function openBadges() {
+    backdrop.hidden = false;
+    panel.classList.add('is-open');
+    panel.setAttribute('aria-hidden', 'false');
+    fab.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('badges-open');
+  }
+
+  function closeBadges() {
+    panel.classList.remove('is-open');
+    panel.setAttribute('aria-hidden', 'true');
+    fab.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('badges-open');
+    backdrop.hidden = true;
+  }
+
+  if (fab && panel && close && backdrop) {
+    fab.onclick = openBadges;
+    close.onclick = closeBadges;
+    backdrop.onclick = closeBadges;
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeBadges();
+    });
+  }
+})();
+</script>
 
   <script
     data-goatcounter="https://yourmoms.goatcounter.com/count"
