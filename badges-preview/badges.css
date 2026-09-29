@@ -145,3 +145,8 @@ linear-gradient(145deg,#2b1631,#120a17 72%);box-shadow:inset 0 1px #ffffff18,0 9
 
 /* Vault v11 — trophy stands alone */
 .badges-fab-count{display:none!important}
+
+/* Vault v14 — clean centered badge emblems */
+.badge-earned{display:none!important}
+.badge-seal{margin-left:auto;margin-right:auto}
+.badge-card h3,.badge-card p{text-align:center;margin-left:auto;margin-right:auto}
