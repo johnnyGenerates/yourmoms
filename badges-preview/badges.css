@@ -234,3 +234,105 @@ linear-gradient(145deg,#2b1631,#120a17 72%);box-shadow:inset 0 1px #ffffff18,0 9
 @media(prefers-reduced-motion:reduce){
   .legend-badge-card,.legend-badge-card::before,.legend-badge-card .legend-crown{transition:none!important}
 }
+
+/* Vault v19 — restore original LEGEND feature card, add high-energy hover */
+.legend-badge-card{
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:86px 1fr!important;
+  gap:17px!important;
+  align-items:center!important;
+  width:auto!important;
+  max-width:none!important;
+  aspect-ratio:auto!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:22px!important;
+  margin:0 0 22px!important;
+  border:2px solid #ffd76a!important;
+  border-radius:22px!important;
+  background:linear-gradient(125deg,#5c3611,#b97a1d 38%,#63254f 100%)!important;
+  box-shadow:inset 0 0 28px #fff2a62b,0 0 30px #ffcf4d35!important;
+  overflow:visible!important;
+  text-align:left!important;
+  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease!important;
+}
+.legend-badge-card > div:last-child{
+  display:block!important;
+  text-align:left!important;
+  align-items:initial!important;
+}
+.legend-badge-card p{max-width:none!important}
+.legend-badge-card::before,
+.legend-badge-card::after{
+  content:""!important;
+  position:absolute!important;
+  pointer-events:none!important;
+  opacity:0!important;
+  z-index:5!important;
+}
+.legend-badge-card::before{
+  inset:-8px!important;
+  border-radius:27px!important;
+  border:2px solid transparent!important;
+  box-shadow:
+    8px -4px 0 -6px #fff6a4,
+    20px -10px 0 -8px #ffc400,
+    -10px 14px 0 -7px #fff09a,
+    -21px 4px 0 -9px #ffc400,
+    10px 17px 0 -8px #fff6a4,
+    26px 9px 0 -9px #ffd21f!important;
+  filter:drop-shadow(0 0 5px #ffd21f) drop-shadow(0 0 10px #ffb700)!important;
+}
+.legend-badge-card::after{
+  top:-60%!important;left:-40%!important;width:24%!important;height:220%!important;
+  background:linear-gradient(90deg,transparent,#fff8bd55,transparent)!important;
+  transform:rotate(22deg)!important;
+}
+.legend-badge-card:hover{
+  transform:translateY(-5px) scale(1.018)!important;
+  filter:saturate(1.22) brightness(1.08)!important;
+  box-shadow:inset 0 0 38px #fff2a64a,0 14px 38px #0008,0 0 24px #ffd84f88,0 0 55px #ffbd2e55!important;
+}
+.legend-badge-card:hover::before{
+  animation:legendElectric 0.34s steps(1,end) infinite!important;
+}
+.legend-badge-card:hover::after{
+  opacity:1!important;
+  animation:legendSweep .75s ease-in-out infinite!important;
+}
+.legend-badge-card:hover .legend-crown{
+  animation:legendCrownCharge .48s ease-in-out infinite alternate!important;
+}
+.legend-badge-card:hover .legend-label{
+  text-shadow:0 0 6px #fff6b0,0 0 14px #ffd447,0 0 24px #ffb700!important;
+}
+@keyframes legendElectric{
+  0%{opacity:.2;transform:translate(0,0) rotate(0deg)}
+  18%{opacity:1;transform:translate(2px,-1px) rotate(.5deg)}
+  37%{opacity:.35;transform:translate(-2px,1px) rotate(-.6deg)}
+  58%{opacity:1;transform:translate(1px,2px) rotate(.3deg)}
+  77%{opacity:.15;transform:translate(-1px,-2px) rotate(-.3deg)}
+  100%{opacity:.9;transform:translate(0,0)}
+}
+@keyframes legendSweep{
+  0%{left:-40%;opacity:0}
+  18%{opacity:1}
+  75%{opacity:.8}
+  100%{left:118%;opacity:0}
+}
+@keyframes legendCrownCharge{
+  from{transform:translateY(-2px) scale(1.04) rotate(-1deg);box-shadow:0 0 25px #ffda5c88}
+  to{transform:translateY(-7px) scale(1.12) rotate(1deg);box-shadow:0 0 46px #fff09dcc,0 0 70px #ffbf2f66}
+}
+@media(max-width:560px){
+  .legend-badge-card{
+    grid-template-columns:66px 1fr!important;
+    padding:17px 13px!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .legend-badge-card:hover::before{animation:none!important;opacity:.8!important}
+  .legend-badge-card:hover::after{animation:none!important;opacity:.3!important}
+  .legend-badge-card:hover .legend-crown{animation:none!important}
+}
