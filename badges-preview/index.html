@@ -318,7 +318,8 @@
     'heavy-hitter':'Made a single 5B+ $MOMS purchase.',
     'round-trip':'Sold $MOMS, then came back and bought again.',
     'committed':'Made 25+ genuine buys.',
-    'ancient-holder':'Held continuously for 6 calendar months.'
+    'ancient-holder':'Held continuously for 6 calendar months.',
+    'legend':'Manually awarded by the $MOMS team.'
   };
 
   function openBadges() {
@@ -344,10 +345,10 @@
   }
   function renderBadges(badges) {
     grid.innerHTML = '';
-    var visible = badges.filter(function(b){ return b.id !== 'legend'; });
+    var visible = badges.slice();
     visible.forEach(function(b) {
       var card=document.createElement('article');
-      card.className='badge-card'+(b.id==='diamond-hands'?' diamond':'');
+      card.className='badge-card'+(b.id==='diamond-hands'?' diamond':'')+(b.id==='legend'?' legend-wide':'');
       card.innerHTML='<div class="badge-seal"><div class="badge-icon"></div></div><h3></h3><p></p><div class="badge-shine" aria-hidden="true"></div>';
       card.querySelector('.badge-icon').textContent=b.icon || '🏆';
       card.querySelector('h3').textContent=b.name || b.id;
