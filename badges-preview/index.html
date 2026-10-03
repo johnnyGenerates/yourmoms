@@ -343,8 +343,10 @@
     backdrop.hidden = true;
   }
   function provider() {
+    if (window.solflare && window.solflare.isSolflare) return window.solflare;
     if (window.phantom && window.phantom.solana) return window.phantom.solana;
-    if (window.solana && window.solana.isPhantom) return window.solana;
+    if (window.solana && (window.solana.isPhantom || window.solana.isSolflare)) return window.solana;
+    if (window.solana && typeof window.solana.connect === 'function') return window.solana;
     return null;
   }
   function renderBadges(badges) {
@@ -371,7 +373,7 @@
   async function connectWallet() {
     var p=provider();
     if (!p) {
-      connectMessage.textContent='No compatible Solana wallet detected. Open this page in Phantom or install the Phantom browser extension.';
+      connectMessage.textContent='No compatible Solana wallet detected. Open this page inside Solflare or Phantom, or use a supported Solana wallet browser extension.';
       return;
     }
     connectButton.disabled=true;
