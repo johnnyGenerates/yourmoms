@@ -265,9 +265,19 @@
     <div class="badges-panel-inner">
       <button class="badges-close" id="badgesClose" type="button" aria-label="Close badges">×</button>
       <h2 id="badgesTitle">THE <span>LEGACY VAULT</span></h2>
-      <div class="badges-preview-pill">PRIVATE PREVIEW</div>
+      <div class="badges-preview-pill" id="vaultStatus">PRIVATE PREVIEW · WALLET DISCONNECTED</div>
 
-      <section class="legend-badge-card legend-wide" aria-label="Legend badge">
+      <div class="vault-connect-state" id="vaultConnectState">
+        <div class="vault-connect-icon" aria-hidden="true">🏆</div>
+        <h3>WHAT HAS YOUR WALLET EARNED?</h3>
+        <p>Connect your wallet to open your Vault and reveal the badges hidden in your $MOMS history.</p>
+        <button class="vault-connect-button" id="vaultConnectButton" type="button">CONNECT WALLET</button>
+        <p class="vault-connect-message" id="vaultConnectMessage" aria-live="polite"></p>
+      </div>
+
+      <div id="vaultResults" hidden>
+
+      <section class="legend-badge-card legend-wide" id="legendBadge" aria-label="Legend badge" hidden>
         <div class="legend-crown">👑</div>
         <div>
           <div class="legend-label">LEGEND</div>
@@ -276,59 +286,119 @@
         </div>
       </section>
 
-      <div class="badges-grid">
-        <article class="badge-card"><div class="badge-seal"><div class="badge-icon">🏆</div></div><h3>OG</h3><p>Held $MOMS during the first month.</p><div class="badge-shine" aria-hidden="true"></div></article>
-        <article class="badge-card diamond"><div class="badge-seal"><div class="badge-icon">💎</div></div><h3>DIAMOND HANDS</h3><p>Never sold. Sell and this badge disappears.</p><div class="badge-shine" aria-hidden="true"></div></article>
-        <article class="badge-card"><div class="badge-seal"><div class="badge-icon">❤️</div></div><h3>LOVER</h3><p>Reached 1B $MOMS.</p><div class="badge-shine" aria-hidden="true"></div></article>
-        <article class="badge-card"><div class="badge-seal"><div class="badge-icon">🐋</div></div><h3>WHALE</h3><p>Reached 15B $MOMS.</p><div class="badge-shine" aria-hidden="true"></div></article>
-        <article class="badge-card"><div class="badge-seal"><div class="badge-icon">🛒</div></div><h3>CAN'T STOP SHOPPING</h3><p>Made 10+ separate buys.</p><div class="badge-shine" aria-hidden="true"></div></article>
-        <article class="badge-card"><div class="badge-seal"><div class="badge-icon">🧟</div></div><h3>STILL HERE</h3><p>Held continuously for 100+ days.</p><div class="badge-shine" aria-hidden="true"></div></article>
-        <article class="badge-card"><div class="badge-seal"><div class="badge-icon">👶</div></div><h3>GENESIS MOMS</h3><p>Held a Genesis Moms NFT.</p><div class="badge-shine" aria-hidden="true"></div></article>
-        <article class="badge-card"><div class="badge-seal"><div class="badge-icon">🧺</div></div><h3>COLLECTOR</h3><p>Held 2+ Genesis Moms NFTs.</p><div class="badge-shine" aria-hidden="true"></div></article>
-        <article class="badge-card"><div class="badge-seal"><div class="badge-icon">🥂</div></div><h3>100 DAY CLUB</h3><p>Held $MOMS on the project's 100th day.</p><div class="badge-shine" aria-hidden="true"></div></article>
-        <article class="badge-card"><div class="badge-seal"><div class="badge-icon">🤝</div></div><h3>TRUE BELIEVER</h3><p>Made 5+ buys without selling.</p><div class="badge-shine" aria-hidden="true"></div></article>
-        <article class="badge-card"><div class="badge-seal"><div class="badge-icon">🔥</div></div><h3>HEAVY HITTER</h3><p>Made a single 5B+ $MOMS purchase.</p><div class="badge-shine" aria-hidden="true"></div></article>
-        <article class="badge-card"><div class="badge-seal"><div class="badge-icon">🔄</div></div><h3>ROUND TRIP</h3><p>Sold $MOMS, then came back and bought again.</p><div class="badge-shine" aria-hidden="true"></div></article>
-        <article class="badge-card"><div class="badge-seal"><div class="badge-icon">🎯</div></div><h3>COMMITTED</h3><p>Made 25+ separate buys.</p><div class="badge-shine" aria-hidden="true"></div></article>
-        <article class="badge-card"><div class="badge-seal"><div class="badge-icon">🦖</div></div><h3>ANCIENT HOLDER</h3><p>Held continuously for 6 months.</p><div class="badge-shine" aria-hidden="true"></div></article>
-      </div>
+      <div class="badges-grid" id="earnedBadgesGrid"></div>
+      <div class="vault-empty" id="vaultEmpty" hidden><div class="vault-empty-icon">👀</div><h3>YOUR VAULT IS EMPTY... FOR NOW.</h3><p>Moms is watching. 👀</p></div>
 
       <a class="badges-share-x" id="badgesShareX" href="https://twitter.com/intent/tweet?text=I%20just%20checked%20my%20%24MOMS%20Badges%20%F0%9F%8F%86%0A%0AMy%20wallet.%20My%20history.%20My%20%24MOMS%20legacy.%0A%0Ahttps%3A%2F%2Fyourmoms.xyz" target="_blank" rel="noopener noreferrer">𝕏 &nbsp; SHARE MY BADGES</a>
-      <p class="badges-footnote">Preview only — the live Vault will reveal only the badges belonging to the connected wallet.</p>
+      <p class="badges-footnote">Read-only wallet connection. The Vault never asks for spending permission.</p>
+      </div>
     </div>
   </aside>
 
   <script>
 (function () {
+  var WORKER = 'https://moms-legacy-vault.yourmomsonsol.workers.dev';
   var fab = document.getElementById('badgesFab');
   var panel = document.getElementById('badgesPanel');
   var close = document.getElementById('badgesClose');
   var backdrop = document.getElementById('badgesBackdrop');
+  var connectButton = document.getElementById('vaultConnectButton');
+  var connectState = document.getElementById('vaultConnectState');
+  var connectMessage = document.getElementById('vaultConnectMessage');
+  var results = document.getElementById('vaultResults');
+  var grid = document.getElementById('earnedBadgesGrid');
+  var empty = document.getElementById('vaultEmpty');
+  var status = document.getElementById('vaultStatus');
+  var share = document.getElementById('badgesShareX');
+
+  var descriptions = {
+    'og':'Held $MOMS during the first month.',
+    'diamond-hands':'Never sold. Sell and this badge disappears.',
+    'lover':'Reached 1B $MOMS.',
+    'whale':'Reached 15B $MOMS.',
+    'cant-stop-shopping':'Made 10+ genuine buys.',
+    'still-here':'Held continuously for 100+ days.',
+    'genesis-moms':'Currently holds a Genesis Moms NFT.',
+    'collector':'Currently holds 2+ Genesis Moms NFTs.',
+    '100-day-club':"Held $MOMS during the project's 100-day celebration.",
+    'true-believer':'Made 5+ genuine buys without selling.',
+    'heavy-hitter':'Made a single 5B+ $MOMS purchase.',
+    'round-trip':'Sold $MOMS, then came back and bought again.',
+    'committed':'Made 25+ genuine buys.',
+    'ancient-holder':'Held continuously for 6 calendar months.'
+  };
 
   function openBadges() {
     backdrop.hidden = false;
     panel.classList.add('is-open');
-    panel.setAttribute('aria-hidden', 'false');
-    fab.setAttribute('aria-expanded', 'true');
+    panel.setAttribute('aria-hidden','false');
+    fab.setAttribute('aria-expanded','true');
     document.body.classList.add('badges-open');
   }
-
   function closeBadges() {
     panel.classList.remove('is-open');
-    panel.setAttribute('aria-hidden', 'true');
-    fab.setAttribute('aria-expanded', 'false');
+    panel.setAttribute('aria-hidden','true');
+    fab.setAttribute('aria-expanded','false');
     document.body.classList.remove('badges-open');
     backdrop.hidden = true;
   }
-
-  if (fab && panel && close && backdrop) {
-    fab.onclick = openBadges;
-    close.onclick = closeBadges;
-    backdrop.onclick = closeBadges;
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') closeBadges();
-    });
+  function provider() {
+    if (window.phantom && window.phantom.solana) return window.phantom.solana;
+    if (window.solana && window.solana.isPhantom) return window.solana;
+    return null;
   }
+  function renderBadges(badges) {
+    grid.innerHTML = '';
+    var visible = badges.filter(function(b){ return b.id !== 'legend'; });
+    visible.forEach(function(b) {
+      var card=document.createElement('article');
+      card.className='badge-card'+(b.id==='diamond-hands'?' diamond':'');
+      card.innerHTML='<div class="badge-seal"><div class="badge-icon"></div></div><h3></h3><p></p><div class="badge-shine" aria-hidden="true"></div>';
+      card.querySelector('.badge-icon').textContent=b.icon || '🏆';
+      card.querySelector('h3').textContent=b.name || b.id;
+      card.querySelector('p').textContent=descriptions[b.id] || 'Earned in the $MOMS Legacy Vault.';
+      grid.appendChild(card);
+    });
+    empty.hidden = visible.length !== 0;
+    share.hidden = visible.length === 0;
+    if (visible.length) {
+      var lines=['🏆 I opened my $MOMS Legacy Vault...',''];
+      visible.forEach(function(b){ lines.push((b.icon||'🏆')+' '+(b.name||b.id)); });
+      lines.push('','What\'s hiding in your Legacy Vault? 👀','yourmoms.xyz','$MOMS');
+      share.href='https://twitter.com/intent/tweet?text='+encodeURIComponent(lines.join('\n'));
+    }
+  }
+  async function connectWallet() {
+    var p=provider();
+    if (!p) {
+      connectMessage.textContent='No compatible Solana wallet detected. Open this page in Phantom or install the Phantom browser extension.';
+      return;
+    }
+    connectButton.disabled=true;
+    connectButton.textContent='CONNECTING...';
+    connectMessage.textContent='';
+    try {
+      var response=await p.connect();
+      var wallet=(response.publicKey || p.publicKey).toString();
+      connectButton.textContent='CHECKING YOUR HISTORY...';
+      var api=await fetch(WORKER+'/api/analyze?wallet='+encodeURIComponent(wallet));
+      var data=await api.json();
+      if (!api.ok || !data.ok) throw new Error(data.error || 'Vault analysis failed');
+      renderBadges(Array.isArray(data.badges)?data.badges:[]);
+      connectState.hidden=true;
+      results.hidden=false;
+      status.textContent='WALLET CONNECTED · '+wallet.slice(0,4)+'…'+wallet.slice(-4);
+    } catch(err) {
+      connectMessage.textContent=(err && err.message) ? err.message : 'Wallet connection was cancelled.';
+      connectButton.disabled=false;
+      connectButton.textContent='CONNECT WALLET';
+    }
+  }
+  if (fab && panel && close && backdrop) {
+    fab.onclick=openBadges; close.onclick=closeBadges; backdrop.onclick=closeBadges;
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBadges();});
+  }
+  if (connectButton) connectButton.onclick=connectWallet;
 })();
 </script>
 
