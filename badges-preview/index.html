@@ -277,7 +277,7 @@
 
       <div id="vaultResults" hidden>
 
-      <section class="legend-badge-card legend-wide" id="legendBadge" aria-label="Legend badge" hidden>
+      <section class="legend-badge-card legend-wide vault-legend-manual" id="legendBadge" aria-label="Legend badge" hidden>
         <div class="legend-crown">👑</div>
         <div>
           <div class="legend-label">LEGEND</div>
@@ -289,7 +289,7 @@
       <div class="badges-grid" id="earnedBadgesGrid"></div>
       <div class="vault-empty" id="vaultEmpty" hidden><div class="vault-empty-icon">👀</div><h3>YOUR VAULT IS EMPTY... FOR NOW.</h3><p>Moms is watching. 👀</p></div>
 
-      <a class="badges-share-x" id="badgesShareX" href="https://twitter.com/intent/tweet?text=I%20just%20checked%20my%20%24MOMS%20Badges%20%F0%9F%8F%86%0A%0AMy%20wallet.%20My%20history.%20My%20%24MOMS%20legacy.%0A%0Ahttps%3A%2F%2Fyourmoms.xyz" target="_blank" rel="noopener noreferrer">𝕏 &nbsp; SHARE MY BADGES</a>
+      <button class="vault-disconnect-button" id="vaultDisconnectButton" type="button">DISCONNECT WALLET</button>\n      <a class="badges-share-x" id="badgesShareX" href="https://twitter.com/intent/tweet?text=I%20just%20checked%20my%20%24MOMS%20Badges%20%F0%9F%8F%86%0A%0AMy%20wallet.%20My%20history.%20My%20%24MOMS%20legacy.%0A%0Ahttps%3A%2F%2Fyourmoms.xyz" target="_blank" rel="noopener noreferrer">𝕏 &nbsp; SHARE MY BADGES</a>
       <p class="badges-footnote">Read-only wallet connection. The Vault never asks for spending permission.</p>
       </div>
     </div>
@@ -310,6 +310,7 @@
   var empty = document.getElementById('vaultEmpty');
   var status = document.getElementById('vaultStatus');
   var share = document.getElementById('badgesShareX');
+  var disconnectButton = document.getElementById('vaultDisconnectButton');
 
   var descriptions = {
     'og':'Held $MOMS during the first month.',
@@ -370,6 +371,20 @@
       share.href='https://twitter.com/intent/tweet?text='+encodeURIComponent(lines.join('\n'));
     }
   }
+  async function disconnectWallet() {
+    var p=provider();
+    try {
+      if (p && typeof p.disconnect === 'function') await p.disconnect();
+    } catch(e) {}
+    grid.innerHTML='';
+    empty.hidden=true;
+    results.hidden=true;
+    connectState.hidden=false;
+    status.textContent='PRIVATE PREVIEW · WALLET DISCONNECTED';
+    connectMessage.textContent='';
+    connectButton.disabled=false;
+    connectButton.textContent='CONNECT WALLET';
+  }
   async function connectWallet() {
     var p=provider();
     if (!p) {
@@ -401,6 +416,7 @@
     document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBadges();});
   }
   if (connectButton) connectButton.onclick=connectWallet;
+  if (disconnectButton) disconnectButton.onclick=disconnectWallet;
 })();
 </script>
 
