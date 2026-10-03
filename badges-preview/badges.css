@@ -369,3 +369,9 @@ linear-gradient(145deg,#2b1631,#120a17 72%);box-shadow:inset 0 1px #ffffff18,0 9
 
 /* Vault v23 — manual LEGEND stays hidden unless explicitly awarded */
 .legend-badge-card[hidden]{display:none!important}
+
+
+/* Vault v24 — hard-hide manual Legend and style disconnect */
+.vault-legend-manual[hidden]{display:none!important}
+.vault-disconnect-button{width:100%;margin-top:22px;min-height:52px;border-radius:999px;border:1px solid #ffffff38;background:#ffffff0b;color:#e9dbe6;font-weight:900;letter-spacing:.05em;cursor:pointer}
+.vault-disconnect-button:hover{border-color:#ff5eb8;color:#fff;background:#ff3da812}
