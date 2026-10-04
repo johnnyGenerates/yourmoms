@@ -321,7 +321,7 @@
     'round-trip':'Sold $MOMS, then came back and bought again.',
     'committed':'Made 25+ genuine buys.',
     'ancient-holder':'Held continuously for 6 calendar months.',
-    'legend':'Manually awarded by the $MOMS team.'
+    'legend':''
   };
 
   function openBadges() {
@@ -355,7 +355,11 @@
       card.innerHTML='<div class="badge-seal"><div class="badge-icon"></div></div><h3></h3><p></p><div class="badge-shine" aria-hidden="true"></div>';
       card.querySelector('.badge-icon').textContent=b.icon || '🏆';
       card.querySelector('h3').textContent=b.name || b.id;
-      card.querySelector('p').textContent=descriptions[b.id] || 'Earned in the $MOMS Legacy Vault.';
+      card.querySelector('p').textContent=b.id==='legend' ? '' : (descriptions[b.id] || 'Earned in the $MOMS Legacy Vault.');
+      if (b.id === 'legend') {
+        card.querySelector('h3').style.fontSize='1.65rem';
+        card.querySelector('p').remove();
+      }
       if (b.id === 'legend') legendSlot.appendChild(card);
       else grid.appendChild(card);
     });
