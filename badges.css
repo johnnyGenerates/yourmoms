@@ -1,0 +1,398 @@
+/* =========================================================
+   $MOMS BADGES — VISUAL PREVIEW
+   ========================================================= */
+.badges-fab{position:fixed;z-index:10000;top:18px;right:18px;width:70px;height:70px;border-radius:50%;border:2px solid #ffe17d;background:radial-gradient(circle at 35% 25%,#ff77c9,#ff198f 48%,#7d0c67);color:#fff;display:flex;align-items:center;justify-content:center;gap:2px;cursor:pointer;box-shadow:0 8px 26px #0008,0 0 24px #ff2a9c99,0 0 0 6px #ff2a9c20;transition:transform .2s ease,box-shadow .2s ease}
+.badges-fab:hover{transform:scale(1.08) rotate(-3deg);box-shadow:0 10px 32px #0009,0 0 38px #ff46b5}
+.badges-fab-trophy{font-size:1.55rem}.badges-fab-count{font-size:.92rem;font-weight:1000;background:#160818;border-radius:999px;min-width:24px;height:24px;display:grid;place-items:center;border:1px solid #ffe17d}
+.badges-backdrop{position:fixed;z-index:10001;inset:0;background:#07030bbb;backdrop-filter:blur(5px)}.badges-backdrop[hidden]{display:none}
+.badges-panel{position:fixed;z-index:10002;top:0;right:0;width:min(600px,100%);height:100dvh;overflow-y:auto;background:radial-gradient(circle at 75% 5%,#75215b 0,transparent 26%),linear-gradient(155deg,#1c0b24,#0c0712 65%);border-left:1px solid #ffffff2c;box-shadow:-20px 0 70px #000a;transform:translateX(105%);transition:transform .35s cubic-bezier(.2,.8,.2,1);color:#fff}
+.badges-panel.is-open{transform:translateX(0)}.badges-panel-inner{padding:56px 28px 42px;max-width:600px;margin:auto}.badges-close{position:absolute;top:16px;right:18px;width:42px;height:42px;border-radius:50%;border:1px solid #ffffff40;background:#ffffff12;color:#fff;font-size:1.7rem;cursor:pointer}
+.badges-kicker{font-size:.72rem;font-weight:1000;letter-spacing:.19em;color:#ffd978}.badges-panel h2{font-size:clamp(2.4rem,7vw,4.4rem);line-height:.9;letter-spacing:-.065em;margin:10px 0 13px}.badges-panel h2 span{color:#ff3da8}.badges-preview-pill{display:inline-block;padding:7px 11px;border:1px solid #ffffff30;border-radius:999px;color:#d8c4d5;font-size:.66rem;font-weight:900;letter-spacing:.08em}
+.badges-total{display:flex;align-items:baseline;gap:10px;margin:26px 0 22px}.badges-total strong{font-size:3.4rem;color:#ffd96d;line-height:1}.badges-total span{font-size:.8rem;font-weight:1000;letter-spacing:.13em;color:#f5ddea}
+.legend-badge-card{position:relative;display:grid;grid-template-columns:86px 1fr;gap:17px;align-items:center;padding:22px;margin-bottom:22px;border:2px solid #ffd76a;border-radius:22px;background:linear-gradient(125deg,#5c3611,#b97a1d 38%,#63254f 100%);box-shadow:inset 0 0 28px #fff2a62b,0 0 30px #ffcf4d35;overflow:hidden}.legend-badge-card::after{content:"✦  ✧  ✦";position:absolute;right:14px;top:9px;color:#fff1a8;letter-spacing:7px}.legend-crown{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;font-size:2.6rem;background:#1c0b19;border:2px solid #ffe895;box-shadow:0 0 24px #ffda5c77}.legend-label{font-size:1.35rem;font-weight:1000;letter-spacing:.04em;color:#fff0a7}.legend-badge-card p{margin-top:6px;font-size:.82rem;line-height:1.4;color:#fff8e6}.legend-powers{margin-top:9px;font-size:.62rem;font-weight:1000;letter-spacing:.09em;color:#ffd86b}
+.badges-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.badge-card{min-height:155px;padding:16px;border:1px solid #ffffff24;border-radius:17px;background:linear-gradient(145deg,#28152f,#160d1c);box-shadow:inset 0 1px #ffffff0d}.badge-card:hover{border-color:#ff54b1;background:linear-gradient(145deg,#3a1738,#1c0e22)}.badge-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:50%;font-size:1.55rem;background:#ff2d9820;border:1px solid #ff69bd66;margin-bottom:12px}.badge-card h3{font-size:.84rem;letter-spacing:.035em}.badge-card p{margin-top:6px;color:#cdb8ca;font-size:.73rem;line-height:1.35}.badge-card.diamond{border-color:#7de9ff66;background:linear-gradient(145deg,#15313b,#17111f)}.badge-card.diamond .badge-icon{background:#53dffb1c;border-color:#86edff}
+.badges-share-x{margin-top:22px;min-height:58px;border-radius:999px;background:#fff;color:#08080a;text-decoration:none;font-weight:1000;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 9px 25px #0007}.badges-share-x:hover{background:#ff3da8;color:#fff;border-color:#ff82c7}.badges-footnote{text-align:center;color:#a993a6;font-size:.7rem;line-height:1.4;margin:13px 15px 0}
+body.badges-open{overflow:hidden}
+@media(max-width:560px){.badges-fab{width:58px;height:58px;top:10px;right:10px}.badges-fab-trophy{font-size:1.25rem}.badges-fab-count{font-size:.78rem;min-width:21px;height:21px}.badges-panel-inner{padding:52px 14px 30px}.badges-grid{gap:8px}.badge-card{min-height:145px;padding:13px}.legend-badge-card{grid-template-columns:66px 1fr;padding:17px 13px}.legend-crown{width:62px;height:62px;font-size:2rem}.legend-label{font-size:1.1rem}}
+@media(prefers-reduced-motion:reduce){.badges-panel,.badges-fab{transition:none}}
+
+/* LEGACY VAULT — premium earned-badge treatment */
+.badges-panel{background:
+radial-gradient(circle at 78% 3%,#7a1959 0,transparent 23%),
+radial-gradient(circle at 10% 45%,#3c163f 0,transparent 32%),
+linear-gradient(160deg,#19091d,#08050c 72%);}
+.badges-panel-inner{padding-top:64px}
+.badges-panel h2{max-width:520px;margin:0 0 12px;font-size:clamp(2.65rem,7vw,4.8rem);line-height:.88;text-transform:uppercase}
+.badges-panel h2 span{display:block;color:#ff4fb4;text-shadow:0 0 28px #ff2b9c55}
+.badges-preview-pill{margin-top:5px}
+.vault-intro{max-width:470px;margin:18px 0 28px;color:#d7bfd2;font-size:.83rem;line-height:1.55;border-left:2px solid #ff4fb4;padding-left:13px}
+.badges-grid{gap:14px}
+.badge-card{position:relative;min-height:205px;padding:19px 17px 17px;overflow:hidden;border:1px solid #ffffff31;background:
+radial-gradient(circle at 22% 13%,#ff4caf20 0,transparent 30%),
+linear-gradient(145deg,#2b1631,#120a17 72%);box-shadow:inset 0 1px #ffffff18,0 9px 25px #0004;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.badge-card::before{content:"";position:absolute;inset:7px;border:1px solid #ffffff0e;border-radius:12px;pointer-events:none}
+.badge-card:hover{transform:translateY(-4px);border-color:#ff77c4;box-shadow:inset 0 1px #ffffff22,0 14px 34px #0007,0 0 25px #ff3baa20}
+.badge-seal{position:relative;width:66px;height:66px;margin-bottom:12px}
+.badge-icon{width:62px;height:62px;margin:0;font-size:1.9rem;background:radial-gradient(circle at 35% 28%,#633050,#271126 67%);border:2px solid #ff83ca;box-shadow:inset 0 0 15px #ff77c424,0 0 17px #ff3da82b}
+.badge-check{position:absolute;right:-1px;bottom:0;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#ffd96d;color:#281207;font-size:.75rem;font-weight:1000;border:2px solid #1a0c18;box-shadow:0 0 10px #ffd96d55}
+.badge-earned{position:absolute;right:14px;top:16px;font-size:.55rem;font-weight:1000;letter-spacing:.17em;color:#ffd96d;border:1px solid #ffd96d55;border-radius:999px;padding:5px 7px;background:#ffd96d0b}
+.badge-card h3{font-size:1rem;letter-spacing:.045em;color:#fff}
+.badge-card p{font-size:.75rem;line-height:1.42;color:#d2bdd0;max-width:220px}
+.badge-shine{position:absolute;top:-80%;left:-70%;width:45%;height:260%;transform:rotate(24deg);background:linear-gradient(90deg,transparent,#ffffff12,transparent);transition:left .55s ease;pointer-events:none}
+.badge-card:hover .badge-shine{left:135%}
+.badge-card.diamond{border-color:#79eaff70;background:radial-gradient(circle at 20% 10%,#57e7ff1e,transparent 32%),linear-gradient(145deg,#16323d,#130c19 74%)}
+.badge-card.diamond .badge-icon{border-color:#87edff;background:radial-gradient(circle at 35% 25%,#326a7b,#14262f 68%);box-shadow:0 0 19px #65e7ff33}
+.legend-badge-card{margin:0 0 25px;padding:24px;border-width:2px;box-shadow:inset 0 0 32px #fff2a630,0 0 35px #ffcf4d2c}
+.legend-crown{animation:legendFloat 2.8s ease-in-out infinite}
+@keyframes legendFloat{50%{transform:translateY(-4px) scale(1.04);box-shadow:0 0 34px #ffda5c99}}
+@media(max-width:560px){.badge-card{min-height:195px;padding:15px 12px}.badge-earned{right:10px;top:12px}.badge-seal{width:58px;height:58px}.badge-icon{width:55px;height:55px;font-size:1.65rem}.vault-intro{margin-bottom:22px}}
+
+/* Vault v7 — larger emblem treatment, no checkmarks */
+.badge-seal{width:88px;height:88px;margin-bottom:15px}
+.badge-icon{width:84px;height:84px;font-size:2.55rem;border-width:2px}
+.badge-check{display:none!important}
+@media(max-width:560px){
+  .badge-seal{width:76px;height:76px}
+  .badge-icon{width:72px;height:72px;font-size:2.15rem}
+}
+
+/* Vault v8 — black/gold trophy trigger with electric energy */
+.badges-fab{
+  width:82px;height:82px;top:18px;right:18px;padding:0;
+  display:grid;place-items:center;overflow:visible;
+  border:3px solid #ffd85a;
+  background:radial-gradient(circle at 40% 32%,#342b16 0,#100e0b 48%,#030303 78%);
+  box-shadow:0 10px 30px #000b,0 0 17px #ffd84f88,0 0 0 5px #ffd84f12;
+  isolation:isolate;
+}
+.badges-fab::before{
+  content:"";position:absolute;inset:-7px;border-radius:50%;
+  border:1px solid #ffe98b55;box-shadow:0 0 14px #ffd84f66;
+  animation:vaultPulse 2.2s ease-in-out infinite;pointer-events:none;
+}
+.badges-fab::after{
+  content:"";position:absolute;inset:5px;border-radius:50%;
+  border:1px solid #fff0a82b;pointer-events:none;
+}
+.badges-fab:hover{
+  transform:scale(1.08);
+  box-shadow:0 12px 34px #000c,0 0 30px #ffe15cbb,0 0 55px #ffc92855;
+}
+.badges-fab-trophy{
+  position:relative;z-index:3;display:grid;place-items:center;
+  width:62px;height:62px;font-size:3.35rem;line-height:1;
+  filter:drop-shadow(0 2px 2px #000) drop-shadow(0 0 8px #ffdf61aa);
+  transform:translateY(-1px);
+}
+.badges-fab-count{
+  position:absolute;z-index:4;left:50%;top:47%;transform:translate(-50%,-50%);
+  min-width:0;width:auto;height:auto;padding:0;border:0;background:transparent;border-radius:0;
+  color:#271704;font-size:.72rem;font-weight:1000;line-height:1;
+  text-shadow:0 1px 0 #ffeaa2;
+}
+.vault-electricity{
+  position:absolute;z-index:2;width:12px;height:27px;pointer-events:none;
+  border-left:2px solid #fff6a9;border-top:2px solid #ffd22e;
+  filter:drop-shadow(0 0 3px #fff36b) drop-shadow(0 0 7px #ffc400);
+  opacity:0;transform-origin:center;
+}
+.vault-electricity-a{left:-8px;top:11px;transform:rotate(-32deg);animation:vaultZapA 1.7s steps(1,end) infinite}
+.vault-electricity-b{right:-9px;top:29px;transform:rotate(29deg);animation:vaultZapB 2.15s steps(1,end) infinite}
+.vault-electricity-c{left:26px;bottom:-15px;transform:rotate(78deg);animation:vaultZapC 1.35s steps(1,end) infinite}
+.badges-fab:hover .vault-electricity{animation-duration:.65s}
+@keyframes vaultPulse{0%,100%{opacity:.45;transform:scale(.98)}50%{opacity:1;transform:scale(1.05)}}
+@keyframes vaultZapA{0%,14%,21%,100%{opacity:0}15%,17%,19%{opacity:1}16%,18%,20%{opacity:.25}}
+@keyframes vaultZapB{0%,43%,50%,100%{opacity:0}44%,46%,48%{opacity:1}45%,47%,49%{opacity:.2}}
+@keyframes vaultZapC{0%,68%,75%,100%{opacity:0}69%,71%,73%{opacity:1}70%,72%,74%{opacity:.25}}
+@media(max-width:560px){
+  .badges-fab{width:72px;height:72px;top:11px;right:11px}
+  .badges-fab-trophy{width:56px;height:56px;font-size:3rem}
+  .badges-fab-count{font-size:.66rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .vault-electricity{opacity:.65;animation:none}
+  .badges-fab::before{animation:none}
+}
+
+/* Vault v9 — center count on the trophy cup */
+.badges-fab-count{
+  left:50%;
+  top:39%;
+  transform:translate(-50%,-50%);
+  color:#241604;
+  font-size:.68rem;
+  font-weight:1000;
+  line-height:1;
+  text-align:center;
+  text-shadow:0 1px 0 #fff0a0,0 0 2px #ffd95a;
+}
+@media(max-width:560px){
+  .badges-fab-count{top:39%;font-size:.63rem}
+}
+
+/* Vault v10 — count sits in the center of the trophy cup */
+.badges-fab-count{
+  left:50%;
+  top:30%;
+  transform:translate(-50%,-50%);
+  font-size:.68rem;
+  color:#241604;
+  text-shadow:0 1px 0 #fff1a5,0 0 2px #ffd95a;
+}
+@media(max-width:560px){
+  .badges-fab-count{top:30%;font-size:.63rem}
+}
+
+/* Vault v11 — trophy stands alone */
+.badges-fab-count{display:none!important}
+
+/* Vault v14 — clean centered badge emblems */
+.badge-earned{display:none!important}
+.badge-seal{margin-left:auto;margin-right:auto}
+.badge-card h3,.badge-card p{text-align:center;margin-left:auto;margin-right:auto}
+
+/* Vault v16 — square Legend feature card + precisely centered trigger trophy */
+.legend-badge-card{
+  box-sizing:border-box;
+  width:100%;
+  aspect-ratio:2 / 1;
+  min-height:0;
+  border-radius:17px;
+  margin:0 0 14px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:8px;
+  padding:24px;
+}
+.legend-crown{
+  flex:0 0 auto;
+  margin:0 auto;
+}
+.legend-badge-card > div:last-child{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+.legend-badge-card p{max-width:390px}
+.badges-fab{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.badges-fab-trophy{
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  margin:0!important;
+  transform:translate(-50%,-50%)!important;
+  width:auto!important;
+  height:auto!important;
+  line-height:1!important;
+  display:block!important;
+}
+@media(max-width:560px){
+  .legend-badge-card{
+    aspect-ratio:2 / 1;
+    padding:18px;
+  }
+  .legend-badge-card p{max-width:310px}
+}
+
+/* Vault v18 — LEGEND hover interaction */
+.legend-badge-card{
+  position:relative!important;
+  overflow:hidden!important;
+  cursor:default;
+  transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease!important;
+}
+.legend-badge-card::before{
+  content:""!important;
+  position:absolute!important;
+  top:-55%!important;
+  left:-75%!important;
+  width:38%!important;
+  height:220%!important;
+  background:linear-gradient(90deg,transparent,#fff4a82e,transparent)!important;
+  transform:rotate(24deg)!important;
+  transition:left .65s ease!important;
+  pointer-events:none!important;
+}
+.legend-badge-card:hover{
+  transform:translateY(-5px) scale(1.012)!important;
+  border-color:#fff0a0!important;
+  box-shadow:inset 0 0 38px #fff2a63d,0 16px 38px #0008,0 0 38px #ffd34a55!important;
+}
+.legend-badge-card:hover::before{left:145%!important}
+.legend-badge-card:hover .legend-crown{
+  transform:translateY(-5px) scale(1.1)!important;
+  box-shadow:0 0 42px #ffda5cbb!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .legend-badge-card,.legend-badge-card::before,.legend-badge-card .legend-crown{transition:none!important}
+}
+
+/* Vault v19 — restore original LEGEND feature card, add high-energy hover */
+.legend-badge-card{
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:86px 1fr!important;
+  gap:17px!important;
+  align-items:center!important;
+  width:auto!important;
+  max-width:none!important;
+  aspect-ratio:auto!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:22px!important;
+  margin:0 0 22px!important;
+  border:2px solid #ffd76a!important;
+  border-radius:22px!important;
+  background:linear-gradient(125deg,#5c3611,#b97a1d 38%,#63254f 100%)!important;
+  box-shadow:inset 0 0 28px #fff2a62b,0 0 30px #ffcf4d35!important;
+  overflow:visible!important;
+  text-align:left!important;
+  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease!important;
+}
+.legend-badge-card > div:last-child{
+  display:block!important;
+  text-align:left!important;
+  align-items:initial!important;
+}
+.legend-badge-card p{max-width:none!important}
+.legend-badge-card::before,
+.legend-badge-card::after{
+  content:""!important;
+  position:absolute!important;
+  pointer-events:none!important;
+  opacity:0!important;
+  z-index:5!important;
+}
+.legend-badge-card::before{
+  inset:-8px!important;
+  border-radius:27px!important;
+  border:2px solid transparent!important;
+  box-shadow:
+    8px -4px 0 -6px #fff6a4,
+    20px -10px 0 -8px #ffc400,
+    -10px 14px 0 -7px #fff09a,
+    -21px 4px 0 -9px #ffc400,
+    10px 17px 0 -8px #fff6a4,
+    26px 9px 0 -9px #ffd21f!important;
+  filter:drop-shadow(0 0 5px #ffd21f) drop-shadow(0 0 10px #ffb700)!important;
+}
+.legend-badge-card::after{
+  top:-60%!important;left:-40%!important;width:24%!important;height:220%!important;
+  background:linear-gradient(90deg,transparent,#fff8bd55,transparent)!important;
+  transform:rotate(22deg)!important;
+}
+.legend-badge-card:hover{
+  transform:translateY(-5px) scale(1.018)!important;
+  filter:saturate(1.22) brightness(1.08)!important;
+  box-shadow:inset 0 0 38px #fff2a64a,0 14px 38px #0008,0 0 24px #ffd84f88,0 0 55px #ffbd2e55!important;
+}
+.legend-badge-card:hover::before{
+  animation:legendElectric 0.34s steps(1,end) infinite!important;
+}
+.legend-badge-card:hover::after{
+  opacity:1!important;
+  animation:legendSweep .75s ease-in-out infinite!important;
+}
+.legend-badge-card:hover .legend-crown{
+  animation:legendCrownCharge .48s ease-in-out infinite alternate!important;
+}
+.legend-badge-card:hover .legend-label{
+  text-shadow:0 0 6px #fff6b0,0 0 14px #ffd447,0 0 24px #ffb700!important;
+}
+@keyframes legendElectric{
+  0%{opacity:.2;transform:translate(0,0) rotate(0deg)}
+  18%{opacity:1;transform:translate(2px,-1px) rotate(.5deg)}
+  37%{opacity:.35;transform:translate(-2px,1px) rotate(-.6deg)}
+  58%{opacity:1;transform:translate(1px,2px) rotate(.3deg)}
+  77%{opacity:.15;transform:translate(-1px,-2px) rotate(-.3deg)}
+  100%{opacity:.9;transform:translate(0,0)}
+}
+@keyframes legendSweep{
+  0%{left:-40%;opacity:0}
+  18%{opacity:1}
+  75%{opacity:.8}
+  100%{left:118%;opacity:0}
+}
+@keyframes legendCrownCharge{
+  from{transform:translateY(-2px) scale(1.04) rotate(-1deg);box-shadow:0 0 25px #ffda5c88}
+  to{transform:translateY(-7px) scale(1.12) rotate(1deg);box-shadow:0 0 46px #fff09dcc,0 0 70px #ffbf2f66}
+}
+@media(max-width:560px){
+  .legend-badge-card{
+    grid-template-columns:66px 1fr!important;
+    padding:17px 13px!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .legend-badge-card:hover::before{animation:none!important;opacity:.8!important}
+  .legend-badge-card:hover::after{animation:none!important;opacity:.3!important}
+  .legend-badge-card:hover .legend-crown{animation:none!important}
+}
+
+/* Vault v20 — definitive wide rectangular LEGEND layout */
+.legend-badge-card{
+  width:100%!important;
+  max-width:none!important;
+  height:auto!important;
+  aspect-ratio:auto!important;
+  min-height:150px!important;
+  grid-template-columns:86px minmax(0,1fr)!important;
+}
+@media(max-width:560px){
+  .legend-badge-card{
+    min-height:132px!important;
+    grid-template-columns:66px minmax(0,1fr)!important;
+  }
+}
+
+
+/* Vault v22 — live wallet connection state */
+.vault-connect-state{text-align:center;margin:28px 0 8px;padding:30px 20px;border:1px solid #ffffff24;border-radius:22px;background:linear-gradient(145deg,#28152f,#120a17);box-shadow:inset 0 1px #ffffff12,0 12px 30px #0005}
+.vault-connect-icon{font-size:4rem;filter:drop-shadow(0 0 18px #ffd85a88)}
+.vault-connect-state h3{margin:14px 0 8px;font-size:1.25rem;letter-spacing:.035em}
+.vault-connect-state p{max-width:420px;margin:0 auto;color:#d2bdd0;line-height:1.5;font-size:.84rem}
+.vault-connect-button{margin-top:22px;min-height:58px;padding:0 28px;border-radius:999px;border:2px solid #ffd85a;background:linear-gradient(135deg,#ff3da8,#c31578);color:#fff;font-weight:1000;font-size:.9rem;letter-spacing:.06em;cursor:pointer;box-shadow:0 8px 24px #0007,0 0 22px #ff3da844}
+.vault-connect-button:hover{transform:translateY(-2px);box-shadow:0 11px 28px #0008,0 0 30px #ffd85a55}
+.vault-connect-button:disabled{opacity:.7;cursor:wait}
+.vault-connect-message{margin-top:14px!important;color:#ffd978!important;min-height:1.4em}
+.vault-empty{text-align:center;padding:38px 18px;border:1px solid #ffffff24;border-radius:20px;background:#ffffff08}
+.vault-empty-icon{font-size:3.2rem}.vault-empty h3{margin:12px 0 6px}.vault-empty p{color:#d2bdd0}
+
+
+/* Vault v23 — manual LEGEND stays hidden unless explicitly awarded */
+.legend-badge-card[hidden]{display:none!important}
+
+
+/* Vault v24 — hard-hide manual Legend and style disconnect */
+.vault-legend-manual[hidden]{display:none!important}
+.vault-disconnect-button{width:100%;margin-top:22px;min-height:52px;border-radius:999px;border:1px solid #ffffff38;background:#ffffff0b;color:#e9dbe6;font-weight:900;letter-spacing:.05em;cursor:pointer}
+.vault-disconnect-button:hover{border-color:#ff5eb8;color:#fff;background:#ff3da812}
+
+
+/* Vault v25 — compact secondary disconnect control */
+.vault-disconnect-button{
+  display:flex!important;align-items:center;justify-content:center;gap:7px;
+  width:auto!important;min-height:0!important;margin:15px auto 0!important;padding:8px 13px!important;
+  border:0!important;border-radius:999px!important;background:transparent!important;
+  color:#9f8b9b!important;font-size:.7rem!important;font-weight:800!important;letter-spacing:.035em!important;
+  box-shadow:none!important;cursor:pointer!important;transition:color .18s ease,background .18s ease!important;
+}
+.vault-disconnect-button:hover{color:#fff!important;background:#ffffff0b!important}
+
+
+/* Vault v26 — minimal disconnect link */
+.vault-disconnect-button{
+  display:block!important;width:max-content!important;margin:13px auto 0!important;padding:4px 2px!important;
+  min-height:0!important;border:0!important;border-radius:0!important;background:none!important;
+  color:#806f7d!important;font-size:.61rem!important;font-weight:900!important;letter-spacing:.16em!important;
+  text-decoration:none!important;box-shadow:none!important;opacity:.8!important;cursor:pointer!important;
+}
+.vault-disconnect-button:hover{background:none!important;color:#d8c7d4!important;opacity:1!important;text-decoration:underline!important;text-underline-offset:3px!important}
