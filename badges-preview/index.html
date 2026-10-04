@@ -348,7 +348,7 @@
     var visible = badges.slice();
     visible.forEach(function(b) {
       var card=document.createElement('article');
-      card.className='badge-card'+(b.id==='diamond-hands'?' diamond':'')+(b.id==='legend'?' legend-wide':'');
+      card.className='badge-card'+(b.id==='diamond-hands'?' diamond':'')+(b.id==='legend'?' legend-badge-card legend-wide':'');
       card.innerHTML='<div class="badge-seal"><div class="badge-icon"></div></div><h3></h3><p></p><div class="badge-shine" aria-hidden="true"></div>';
       card.querySelector('.badge-icon').textContent=b.icon || '🏆';
       card.querySelector('h3').textContent=b.name || b.id;
