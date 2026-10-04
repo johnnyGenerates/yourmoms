@@ -6,7 +6,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="The official Your $MOMS website.">
   <title>Your $MOMS</title>
-  <link rel="stylesheet" href="style.css?v=mobile-banner-20261001-1">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/badges.css?v=1">
+<style id="vault-v17-fix">
+  .badge-earned{display:none!important}
+  .badge-card{display:flex!important;flex-direction:column!important;align-items:center!important}
+  .badge-seal{margin:0 auto 15px!important}
+  .badge-card h3,.badge-card p{text-align:center!important;margin-left:auto!important;margin-right:auto!important}
+  .badges-fab{display:grid!important;place-items:center!important;padding:0!important}
+  .badges-fab-trophy{
+    position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+    display:grid!important;place-items:center!important;margin:0!important;transform:none!important;
+    font-size:0!important;line-height:1!important;
+  }
+  .trophy-glyph{
+    display:block!important;font-size:3.35rem!important;line-height:1!important;
+    transform:translate(0,-1px)!important;
+    filter:drop-shadow(0 2px 2px #000) drop-shadow(0 0 8px #ffdf61aa);
+  }  @media(max-width:560px){
+    .trophy-glyph{font-size:3rem!important}
+  }
+
+  .legend-badge-card{
+    width:100%!important;
+    max-width:none!important;
+    height:auto!important;
+    aspect-ratio:auto!important;
+    min-height:150px!important;
+    display:grid!important;
+    grid-template-columns:86px minmax(0,1fr)!important;
+    align-items:center!important;
+    justify-content:initial!important;
+    text-align:left!important;
+    margin:0 0 22px!important;
+    border-radius:22px!important;
+  }
+  .legend-badge-card > div:last-child{
+    display:block!important;
+    text-align:left!important;
+  }
+
+  .legend-wide{
+    box-sizing:border-box!important;
+    width:100%!important;
+    height:170px!important;
+    min-height:170px!important;
+    max-height:170px!important;
+    aspect-ratio:unset!important;
+    display:grid!important;
+    grid-template-columns:92px minmax(0,1fr)!important;
+    grid-template-rows:1fr!important;
+    flex-direction:initial!important;
+    align-items:center!important;
+    justify-items:stretch!important;
+    gap:18px!important;
+    padding:22px!important;
+    margin:0 0 22px!important;
+    text-align:left!important;
+  }
+  .legend-wide > div:last-child{display:block!important;text-align:left!important}
+  @media(max-width:560px){
+    .legend-wide{
+      height:155px!important;min-height:155px!important;max-height:155px!important;
+      grid-template-columns:70px minmax(0,1fr)!important;
+      gap:13px!important;padding:16px!important;
+    }
+  }
+</style>
 </head>
 
 <body>
@@ -17,7 +83,7 @@
   <main class="website">
 
     <header class="banner-section">
-      <picture class="banner-picture"><source media="(max-width: 800px)" srcset="images/banner-mobile-v2.jpg"><img class="banner-image" src="images/banner.jpg" alt="MOMS laughing in her backyard holding a bottle marked I love your MOMS and a glass of red wine"></picture>
+      <img class="banner-image" src="/images/banner.jpg" alt="MOMS laughing in her backyard with a glass of red wine">
     </header>
 
     <div class="ticker" aria-hidden="true"><div>YOUR MOMS IS HERE <span>✳</span> YOUR MOMS IS HERE <span>✳</span> YOUR MOMS IS HERE <span>✳</span> YOUR MOMS IS HERE <span>✳</span></div></div>
@@ -111,31 +177,6 @@
 
     </nav>
 
-    <section class="birthday-section" id="birthdaySection" aria-labelledby="birthdayTitle">
-      <div class="birthday-kicker">🎉 LIMITED 100-DAY EVENT 🎉</div>
-      <h2 id="birthdayTitle">YOUR $MOMS IS 100 DAYS OLD!</h2>
-      <p class="birthday-intro">
-        Make a wish for your $MOMS. Tap the cake and blow out all 100 candles.
-      </p>
-
-      <button
-        class="birthday-cake-button"
-        id="birthdayCakeButton"
-        type="button"
-        aria-label="Wish MOMS a happy 100 days and blow out the candles"
-      >
-        <span class="birthday-candle-field" id="birthdayCandles" aria-hidden="true"></span>
-        <span class="birthday-cake-top" aria-hidden="true"></span>
-        <span class="birthday-cake-middle" aria-hidden="true">
-          <span class="birthday-cake-number">100</span>
-        </span>
-        <span class="birthday-cake-bottom" aria-hidden="true"></span>
-        <span class="birthday-cake-plate" aria-hidden="true"></span>
-      </button>
-
-      <div class="birthday-tap">👆 TAP THE CAKE 👆</div>
-    </section>
-
     <section class="panic-section" aria-label="Summon your MOMS">
       <div class="panic-copy"><h2>Come on, you know you want to push it!</h2></div>
       <button class="panic-button" id="panicButton" type="button" aria-controls="panicOverlay">
@@ -212,65 +253,166 @@
     </div>
 
   </div>
+  <!-- $MOMS LEGACY VAULT -->
+  <button class="badges-fab" id="badgesFab" aria-label="Open The Legacy Vault" aria-expanded="false">
+    <span class="vault-electricity vault-electricity-a" aria-hidden="true"></span>
+    <span class="vault-electricity vault-electricity-b" aria-hidden="true"></span>
+    <span class="vault-electricity vault-electricity-c" aria-hidden="true"></span>
+    <span class="badges-fab-trophy" aria-hidden="true"><span class="trophy-glyph">🏆</span></span>
+  </button>
+  <div class="badges-backdrop" id="badgesBackdrop" hidden></div>
+  <aside class="badges-panel" id="badgesPanel" aria-hidden="true" aria-labelledby="badgesTitle">
+    <div class="badges-panel-inner">
+      <button class="badges-close" id="badgesClose" type="button" aria-label="Close badges">×</button>
+      <h2 id="badgesTitle">THE <span>LEGACY VAULT</span></h2>
+      <div class="badges-preview-pill" id="vaultStatus">WALLET DISCONNECTED</div>
 
-  <div
-    class="birthday-overlay"
-    id="birthdayOverlay"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="birthdayOverlayTitle"
-    aria-hidden="true"
-    hidden
-  >
-    <div class="birthday-chaos" id="birthdayChaos" aria-hidden="true"></div>
-
-    <div class="birthday-result-card">
-      <button
-        class="birthday-close"
-        id="birthdayClose"
-        type="button"
-        aria-label="Close 100 day celebration"
-      >
-        ×
-      </button>
-
-      <div class="birthday-result-kicker">🎂 YOU DID IT! 🎂</div>
-      <h2 id="birthdayOverlayTitle">HAPPY 100 DAYS, $MOMS!</h2>
-
-      <img
-        class="birthday-share-image"
-        id="birthdayShareImage"
-        src="images/moms-100-1.png"
-        alt="Your MOMS 100 day celebration share image"
-      >
-
-      <p class="birthday-result-text">
-        Your celebration card has been randomly chosen.
-      </p>
-
-      <div class="birthday-share-actions">
-        <button class="birthday-share-button birthday-save-button" id="birthdayNativeShare" type="button">
-          ⬇️ SAVE IMAGE
-        </button>
-
-        <a
-          class="birthday-x-button"
-          id="birthdayXShare"
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          𝕏 POST ON X
-        </a>
+      <div class="vault-connect-state" id="vaultConnectState">
+        <div class="vault-connect-icon" aria-hidden="true">🏆</div>
+        <h3>WHAT HAS YOUR WALLET EARNED?</h3>
+        <p>Connect your wallet to open your Vault and reveal the badges hidden in your $MOMS history.</p>
+        <button class="vault-connect-button" id="vaultConnectButton" type="button">CONNECT WALLET</button>
+        <p class="badges-footnote">Read-only connection. The Legacy Vault only uses your public wallet address to check your $MOMS history and Genesis Moms. It cannot access your funds or make transactions.</p>
+        <p class="vault-connect-message" id="vaultConnectMessage" aria-live="polite"></p>
       </div>
 
-      <p class="birthday-share-note" id="birthdayShareNote" aria-live="polite">
-        Save your celebration image first. Then tap “POST ON X”, attach the image you just saved, and post!
-      </p>
-    </div>
-  </div>
+      <div id="vaultResults" hidden>
 
-  <script src="script.js?v=moms100-20260925-4"></script>
+
+      <div id="legendBadgeSlot"></div>
+      <div class="badges-grid" id="earnedBadgesGrid"></div>
+      <div class="vault-empty" id="vaultEmpty" hidden><div class="vault-empty-icon">👀</div><h3>YOUR VAULT IS EMPTY... FOR NOW.</h3><p>Moms is watching. 👀</p></div>
+
+      <button class="vault-disconnect-button" id="vaultDisconnectButton" type="button" aria-label="Disconnect wallet">DISCONNECT</button>
+      <p class="badges-footnote">Read-only wallet connection. The Vault never asks for spending permission.</p>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+(function () {
+  var WORKER = 'https://moms-legacy-vault.yourmomsonsol.workers.dev';
+  var fab = document.getElementById('badgesFab');
+  var panel = document.getElementById('badgesPanel');
+  var close = document.getElementById('badgesClose');
+  var backdrop = document.getElementById('badgesBackdrop');
+  var connectButton = document.getElementById('vaultConnectButton');
+  var connectState = document.getElementById('vaultConnectState');
+  var connectMessage = document.getElementById('vaultConnectMessage');
+  var results = document.getElementById('vaultResults');
+  var grid = document.getElementById('earnedBadgesGrid');
+  var legendSlot = document.getElementById('legendBadgeSlot');
+  var empty = document.getElementById('vaultEmpty');
+  var status = document.getElementById('vaultStatus');
+  var disconnectButton = document.getElementById('vaultDisconnectButton');
+
+  var descriptions = {
+    'og':'Held $MOMS during the first month.',
+    'diamond-hands':'Never sold. Sell and this badge disappears.',
+    'lover':'Reached 1B $MOMS.',
+    'whale':'Reached 15B $MOMS.',
+    'cant-stop-shopping':'Made 10+ genuine buys.',
+    'still-here':'Held continuously for 100+ days.',
+    'genesis-moms':'Currently holds a Genesis Moms NFT.',
+    'collector':'Currently holds 2+ Genesis Moms NFTs.',
+    '100-day-club':"Held $MOMS during the project's 100-day celebration.",
+    'true-believer':'Made 5+ genuine buys without selling.',
+    'heavy-hitter':'Made a single 5B+ $MOMS purchase.',
+    'round-trip':'Sold $MOMS, then came back and bought again.',
+    'committed':'Made 25+ genuine buys.',
+    'ancient-holder':'Held continuously for 6 calendar months.',
+    'legend':''
+  };
+
+  function openBadges() {
+    backdrop.hidden = false;
+    panel.classList.add('is-open');
+    panel.setAttribute('aria-hidden','false');
+    fab.setAttribute('aria-expanded','true');
+    document.body.classList.add('badges-open');
+  }
+  function closeBadges() {
+    panel.classList.remove('is-open');
+    panel.setAttribute('aria-hidden','true');
+    fab.setAttribute('aria-expanded','false');
+    document.body.classList.remove('badges-open');
+    backdrop.hidden = true;
+  }
+  function provider() {
+    if (window.solflare && window.solflare.isSolflare) return window.solflare;
+    if (window.phantom && window.phantom.solana) return window.phantom.solana;
+    if (window.solana && (window.solana.isPhantom || window.solana.isSolflare)) return window.solana;
+    if (window.solana && typeof window.solana.connect === 'function') return window.solana;
+    return null;
+  }
+  function renderBadges(badges) {
+    grid.innerHTML = '';
+    legendSlot.innerHTML = '';
+    var visible = badges.slice();
+    visible.forEach(function(b) {
+      var card=document.createElement('article');
+      card.className='badge-card'+(b.id==='diamond-hands'?' diamond':'')+(b.id==='legend'?' legend-badge-card legend-wide':'');
+      card.innerHTML='<div class="badge-seal"><div class="badge-icon"></div></div><h3></h3><p></p><div class="badge-shine" aria-hidden="true"></div>';
+      card.querySelector('.badge-icon').textContent=b.icon || '🏆';
+      card.querySelector('h3').textContent=b.name || b.id;
+      card.querySelector('p').textContent=b.id==='legend' ? '' : (descriptions[b.id] || 'Earned in the $MOMS Legacy Vault.');
+      if (b.id === 'legend') {
+        card.querySelector('h3').style.fontSize='1.65rem';
+        card.querySelector('p').remove();
+      }
+      if (b.id === 'legend') legendSlot.appendChild(card);
+      else grid.appendChild(card);
+    });
+    empty.hidden = visible.length !== 0;
+  }
+  async function disconnectWallet() {
+    var p=provider();
+    try {
+      if (p && typeof p.disconnect === 'function') await p.disconnect();
+    } catch(e) {}
+    grid.innerHTML='';
+    empty.hidden=true;
+    results.hidden=true;
+    connectState.hidden=false;
+    status.textContent='WALLET DISCONNECTED';
+    connectMessage.textContent='';
+    connectButton.disabled=false;
+    connectButton.textContent='CONNECT WALLET';
+  }
+  async function connectWallet() {
+    var p=provider();
+    if (!p) {
+      connectMessage.textContent='No compatible Solana wallet detected. Open this page inside Solflare or Phantom, or use a supported Solana wallet browser extension.';
+      return;
+    }
+    connectButton.disabled=true;
+    connectButton.textContent='CONNECTING...';
+    connectMessage.textContent='';
+    try {
+      var response=await p.connect();
+      var wallet=(response.publicKey || p.publicKey).toString();
+      connectButton.textContent='CHECKING YOUR HISTORY...';
+      var api=await fetch(WORKER+'/api/analyze?wallet='+encodeURIComponent(wallet));
+      var data=await api.json();
+      if (!api.ok || !data.ok) throw new Error(data.error || 'Vault analysis failed');
+      renderBadges(Array.isArray(data.badges)?data.badges:[]);
+      connectState.hidden=true;
+      results.hidden=false;
+      status.textContent='WALLET CONNECTED · '+wallet.slice(0,4)+'…'+wallet.slice(-4);
+    } catch(err) {
+      connectMessage.textContent=(err && err.message) ? err.message : 'Wallet connection was cancelled.';
+      connectButton.disabled=false;
+      connectButton.textContent='CONNECT WALLET';
+    }
+  }
+  if (fab && panel && close && backdrop) {
+    fab.onclick=openBadges; close.onclick=closeBadges; backdrop.onclick=closeBadges;
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBadges();});
+  }
+  if (connectButton) connectButton.onclick=connectWallet;
+  if (disconnectButton) disconnectButton.onclick=disconnectWallet;
+})();
+</script>
 
   <script
     data-goatcounter="https://yourmoms.goatcounter.com/count"
