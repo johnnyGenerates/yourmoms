@@ -283,7 +283,7 @@
       <div class="badges-grid" id="earnedBadgesGrid"></div>
       <div class="vault-empty" id="vaultEmpty" hidden><div class="vault-empty-icon">👀</div><h3>YOUR VAULT IS EMPTY... FOR NOW.</h3><p>Moms is watching. 👀</p></div>
 
-      <button class="vault-disconnect-button" id="vaultDisconnectButton" type="button" aria-label="Disconnect wallet">DISCONNECT</button>\n      <a class="badges-share-x" id="badgesShareX" href="https://twitter.com/intent/tweet?text=I%20just%20checked%20my%20%24MOMS%20Badges%20%F0%9F%8F%86%0A%0AMy%20wallet.%20My%20history.%20My%20%24MOMS%20legacy.%0A%0Ahttps%3A%2F%2Fyourmoms.xyz" target="_blank" rel="noopener noreferrer">𝕏 &nbsp; SHARE MY BADGES</a>
+      <button class="vault-disconnect-button" id="vaultDisconnectButton" type="button" aria-label="Disconnect wallet">DISCONNECT</button>
       <p class="badges-footnote">Read-only wallet connection. The Vault never asks for spending permission.</p>
       </div>
     </div>
@@ -304,7 +304,6 @@
   var legendSlot = document.getElementById('legendBadgeSlot');
   var empty = document.getElementById('vaultEmpty');
   var status = document.getElementById('vaultStatus');
-  var share = document.getElementById('badgesShareX');
   var disconnectButton = document.getElementById('vaultDisconnectButton');
 
   var descriptions = {
@@ -365,13 +364,6 @@
       else grid.appendChild(card);
     });
     empty.hidden = visible.length !== 0;
-    share.hidden = visible.length === 0;
-    if (visible.length) {
-      var lines=['🏆 I opened my $MOMS Legacy Vault...',''];
-      visible.forEach(function(b){ lines.push((b.icon||'🏆')+' '+(b.name||b.id)); });
-      lines.push('','What\'s hiding in your Legacy Vault? 👀','yourmoms.xyz','$MOMS');
-      share.href='https://twitter.com/intent/tweet?text='+encodeURIComponent(lines.join('\n'));
-    }
   }
   async function disconnectWallet() {
     var p=provider();
