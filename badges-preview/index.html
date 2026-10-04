@@ -278,6 +278,7 @@
       <div id="vaultResults" hidden>
 
 
+      <div id="legendBadgeSlot"></div>
       <div class="badges-grid" id="earnedBadgesGrid"></div>
       <div class="vault-empty" id="vaultEmpty" hidden><div class="vault-empty-icon">👀</div><h3>YOUR VAULT IS EMPTY... FOR NOW.</h3><p>Moms is watching. 👀</p></div>
 
@@ -299,6 +300,7 @@
   var connectMessage = document.getElementById('vaultConnectMessage');
   var results = document.getElementById('vaultResults');
   var grid = document.getElementById('earnedBadgesGrid');
+  var legendSlot = document.getElementById('legendBadgeSlot');
   var empty = document.getElementById('vaultEmpty');
   var status = document.getElementById('vaultStatus');
   var share = document.getElementById('badgesShareX');
@@ -345,6 +347,7 @@
   }
   function renderBadges(badges) {
     grid.innerHTML = '';
+    legendSlot.innerHTML = '';
     var visible = badges.slice();
     visible.forEach(function(b) {
       var card=document.createElement('article');
@@ -353,7 +356,8 @@
       card.querySelector('.badge-icon').textContent=b.icon || '🏆';
       card.querySelector('h3').textContent=b.name || b.id;
       card.querySelector('p').textContent=descriptions[b.id] || 'Earned in the $MOMS Legacy Vault.';
-      grid.appendChild(card);
+      if (b.id === 'legend') legendSlot.appendChild(card);
+      else grid.appendChild(card);
     });
     empty.hidden = visible.length !== 0;
     share.hidden = visible.length === 0;
