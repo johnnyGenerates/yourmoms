@@ -10,6 +10,27 @@
   <link rel="icon" type="image/png" href="/favicon.png">
 
   <link rel="stylesheet" href="socials/style.css?v=facebook-20260925-2">
+  <style>
+    .tiktok-button {
+      width:94%; border:5px solid white; border-radius:55px 28px 55px 28px;
+      background:linear-gradient(145deg,#252525,#080808 60%,#181818);
+      box-shadow:-4px 7px 0 #25f4ee,4px 11px 0 #fe2c55,0 16px 25px rgba(0,0,0,.45);
+    }
+    .tiktok-logo {
+      flex:0 0 76px; width:76px; height:76px; display:grid; place-items:center;
+      border-radius:18px; background:#000; color:#fff; font-family:Arial,sans-serif;
+      font-size:4.5rem; line-height:1; text-shadow:-3px -2px 0 #25f4ee,3px 2px 0 #fe2c55;
+    }
+    .tiktok-button .button-copy {display:flex;flex-direction:column;align-items:flex-start;text-align:left;min-width:0}
+    .tiktok-button .button-small {font-family:Arial,sans-serif;font-size:.9rem;font-weight:900;letter-spacing:2px}
+    .tiktok-button .button-big {font-size:clamp(1.7rem,7vw,3.2rem);font-weight:900;letter-spacing:1px;line-height:1.1}
+    @media(max-width:600px) {
+      .tiktok-button {width:96%}
+      .tiktok-logo {flex-basis:58px;width:58px;height:58px;font-size:3.5rem}
+      .tiktok-button .button-small {font-size:.875rem;letter-spacing:.5px}
+      .tiktok-button .button-big {font-size:clamp(1.35rem,6vw,2.4rem)}
+    }
+  </style>
 </head>
 
 <body>
@@ -85,6 +106,21 @@
           <span class="button-copy">
             <span class="button-small">FOLLOW $MOMS ON</span>
             <span class="button-big">FACEBOOK</span>
+          </span>
+        </a>
+
+        <!-- TIKTOK -->
+        <a
+          class="social-button tiktok-button"
+          href="https://www.tiktok.com/@yourmomsshow"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Follow $MOMS on TikTok"
+        >
+          <span class="tiktok-logo" aria-hidden="true">♪</span>
+          <span class="button-copy">
+            <span class="button-small">FOLLOW $MOMS ON</span>
+            <span class="button-big">TIKTOK</span>
           </span>
         </a>
       </section>
