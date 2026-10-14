@@ -14,6 +14,13 @@
 .social-card:last-child:nth-child(odd){grid-column:1/-1;width:min(100%,465px);justify-self:center}
 @media(max-width:740px){.social-grid{grid-template-columns:1fr;gap:16px}.social-card{min-height:240px;padding:24px 16px}.social-emblem{width:90px;height:90px;font-size:3.8rem}.social-card:last-child:nth-child(odd){grid-column:auto;width:100%}}
 @media(max-width:400px){.social-card{min-height:220px}.social-emblem{width:82px;height:82px;font-size:3.4rem}.social-copy strong{font-size:1.65rem}}
+
+/* Strict centered layout: override all legacy left-alignment */
+.social-grid .social-card{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;gap:12px!important}
+.social-grid .social-card .social-emblem{display:grid!important;place-items:center!important;align-self:center!important;margin:0 auto!important;flex-shrink:0}
+.social-grid .social-card .social-copy{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;width:100%!important;margin:0 auto!important}
+.social-grid .social-card .social-copy small,.social-grid .social-card .social-copy strong{display:block!important;width:100%!important;text-align:center!important;margin:0 auto!important}
+.social-grid .social-card .social-arrow{position:absolute!important;right:18px!important;top:14px!important;left:auto!important}
 </style></head><body><main class="shell"><header class="heading"><span class="spark" aria-hidden="true">✦</span><h1>FOLLOW YOUR $MOMS</h1><p>Everywhere. The family is waiting. ❤️</p></header><section class="social-grid" aria-label="Your Moms social channels"><a class="social-card x" href="https://x.com/Yourmomstoken" target="_blank" rel="noopener noreferrer" aria-label="FOLLOW $MOMS ON X"><span class="social-emblem" aria-hidden="true">𝕏</span><span class="social-copy"><small>FOLLOW $MOMS ON</small><strong>X</strong></span><span class="social-arrow" aria-hidden="true">↗</span></a>
 <a class="social-card telegram" href="https://t.me/MOMS_Solana" target="_blank" rel="noopener noreferrer" aria-label="JOIN OUR TELEGRAM"><span class="social-emblem" aria-hidden="true">➤</span><span class="social-copy"><small>JOIN OUR</small><strong>TELEGRAM</strong></span><span class="social-arrow" aria-hidden="true">↗</span></a>
 <a class="social-card youtube" href="https://youtube.com/@yourmomsshow" target="_blank" rel="noopener noreferrer" aria-label="SUBSCRIBE ON YOUTUBE"><span class="social-emblem" aria-hidden="true">▶</span><span class="social-copy"><small>SUBSCRIBE ON</small><strong>YOUTUBE</strong></span><span class="social-arrow" aria-hidden="true">↗</span></a>
