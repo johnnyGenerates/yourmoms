@@ -153,6 +153,11 @@
 #badgesFab.vault-portal{pointer-events:auto!important;cursor:pointer!important;z-index:10010!important;touch-action:manipulation}
 #badgesFab.vault-portal *,#badgesFab.vault-portal:before,#badgesFab.vault-portal:after{pointer-events:none!important}
 .badges-backdrop{z-index:10011!important}.badges-panel{z-index:10012!important}
+
+.vault-readonly-notice{display:flex;flex-direction:column;gap:10px;text-align:center;margin:22px auto 18px;padding:17px 16px;max-width:430px;border:1px solid #7bead18c;border-radius:16px;background:linear-gradient(145deg,#0c3936bb,#13202cdd);box-shadow:inset 0 0 22px #2cf3cf12}
+.vault-readonly-notice strong{font-size:.85rem;letter-spacing:.08em;color:#a8fff0}
+.vault-readonly-notice span{font-size:.83rem;line-height:1.5;color:#f2f7f5}
+.vault-readonly-notice b{font-size:.78rem;line-height:1.5;color:#d2ffe9}
 </style></head><body><div class="wrap"><section class="hero"><img src="/itsmoms2point0youmofo/moms2-royal-banner.webp?banner=royal-20261014" alt="Royal Moms laughing on her golden throne, holding red wine beneath the I love your MOMS headline" fetchpriority="high"></section><section class="section" id="contract"><div class="contract"><strong>OFFICIAL SOLANA CONTRACT</strong><div class="address" id="ca">HDYP5e1dUM3zjqw3tQvDHDxtt6CKxkgyEN3NdNcXTRiX</div><button class="copy" id="copyCa">COPY CONTRACT ADDRESS</button><p id="copyStatus" aria-live="polite"></p><div class="actions buy-inside-contract"><a class="button primary" href="https://jup.ag/?sell=So11111111111111111111111111111111111111112&buy=HDYP5e1dUM3zjqw3tQvDHDxtt6CKxkgyEN3NdNcXTRiX" target="_blank" rel="noopener noreferrer">BUY $MOMS ↗</a></div></div></section><section class="section" id="universe"><div class="grid moms-destinations"><a class="card social-card" href="/socials/"><span class="icon" aria-hidden="true">💖</span><h3>SOCIALS</h3><p>Follow your $MOMS everywhere. Join the family.</p></a><a class="card genesis-card" href="/mint/"><span class="icon" aria-hidden="true">👑</span><h3>GENESIS MOMS</h3><p>69 exclusive Genesis Moms NFTs. Only 69 will ever exist.</p></a><a class="card games-card" href="/game/"><span class="icon" aria-hidden="true">🎮</span><h3>GAMES</h3><p>Enter the arcade.</p></a></div></section><section class="section" id="chart"><iframe class="chart" title="Live MOMS chart" loading="eager" src="https://dexscreener.com/solana/C7saQrX3feJRESyC3ggSkCDPAKLPYrwcFuFNRcPk9wUo?embed=1&info=0&theme=dark&trades=0"></iframe><a class="chart-fallback" href="https://dexscreener.com/solana/C7saQrX3feJRESyC3ggSkCDPAKLPYrwcFuFNRcPk9wUo" target="_blank" rel="noopener noreferrer">OPEN LIVE CHART ON DEXSCREENER ↗</a></section><footer class="footer"><a class="footer-contact" href="mailto:yourmomsonsol@gmail.com" aria-label="Contact Your Moms by email"><span aria-hidden="true">✉️</span><span>CONTACT</span></a><div class="footer-copyright">YOUR $MOMS © 2026</div></footer></div>
   <!-- $MOMS LEGACY VAULT -->
   
@@ -167,8 +172,8 @@
         <div class="vault-connect-icon" aria-hidden="true">🏆</div>
         <h3>WHAT HAS YOUR WALLET EARNED?</h3>
         <p>Connect your wallet to open your Vault and reveal the badges hidden in your $MOMS history.</p>
+        <div class="vault-readonly-notice" role="note"><strong>🔒 READ-ONLY WALLET CONNECTION</strong><span>We check your public wallet address, $MOMS holdings, and transaction history to discover your badges.</span><b>No transactions. No signatures requested by the Vault. No access to your funds.</b></div>
         <button class="vault-connect-button" id="vaultConnectButton" type="button">CONNECT WALLET</button>
-        <p class="badges-footnote">Read-only connection. The Legacy Vault only uses your public wallet address to check your $MOMS history and Genesis Moms. It cannot access your funds or make transactions.</p>
         <p class="vault-connect-message" id="vaultConnectMessage" aria-live="polite"></p>
       </div>
 
