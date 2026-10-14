@@ -21,6 +21,28 @@
 .social-grid .social-card .social-copy{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;width:100%!important;margin:0 auto!important}
 .social-grid .social-card .social-copy small,.social-grid .social-card .social-copy strong{display:block!important;width:100%!important;text-align:center!important;margin:0 auto!important}
 .social-grid .social-card .social-arrow{position:absolute!important;right:18px!important;top:14px!important;left:auto!important}
+
+/* Social Portals 2.0 — vivid, full, centered, animated */
+.social-grid{gap:20px}
+.social-grid .social-card{min-height:295px!important;padding:25px 20px 26px!important;gap:9px!important;overflow:hidden;isolation:isolate}
+.social-grid .social-card:after{content:"✦  ·  ✧  ·  ✦";position:absolute;bottom:18px;left:0;right:0;z-index:0;font-size:14px;letter-spacing:1.4em;text-indent:1.4em;color:#ffffffa8;text-shadow:0 0 15px #fff;pointer-events:none;animation:portalStars 3.6s ease-in-out infinite}
+.social-grid .social-card .social-emblem{width:118px!important;height:118px!important;border-radius:50%!important;margin:0 auto 8px!important;font-size:5rem!important;z-index:1;isolation:isolate;background:radial-gradient(circle at 28% 18%,#ffffffa8 0%,#ffffff30 31%,#ffffff0a 68%,#00000044 100%);border:2px solid #ffffffed;box-shadow:inset 0 0 20px #ffffff66,0 0 20px var(--glow),0 0 40px var(--glow),0 0 0 7px #ffffff10;animation:portalBob 3.2s ease-in-out infinite;transition:transform .3s,box-shadow .3s}
+.social-grid .social-card .social-emblem:before{content:"";position:absolute;inset:-15px;border:2px dashed #ffffffb8;border-radius:50%;box-shadow:0 0 18px var(--glow),inset 0 0 16px var(--glow);animation:portalOrbit 14s linear infinite;pointer-events:none}
+.social-grid .social-card .social-emblem:after{content:"✦";position:absolute;right:-17px;top:1px;font-size:21px;color:#fff;text-shadow:0 0 13px #fff,0 0 24px var(--glow);animation:portalStars 2.3s ease-in-out infinite;pointer-events:none}
+.social-grid .social-card .social-copy{z-index:1;gap:3px!important}
+.social-grid .social-card .social-copy strong{font-size:clamp(1.6rem,3vw,2.15rem)!important;line-height:1.14;letter-spacing:.035em;text-shadow:0 2px 13px #000a,0 0 16px var(--glow)}
+.social-grid .social-card .social-copy small{font-size:.68rem!important;letter-spacing:.17em!important;opacity:.96}
+.social-grid .social-card .social-copy:after{content:"FOLLOW  ✦";display:inline-block;margin:12px auto 18px;padding:7px 18px;border:1px solid #ffffffb5;border-radius:999px;background:linear-gradient(120deg,#ffffff33,#ffffff0c);color:#fff;box-shadow:0 0 15px var(--glow),inset 0 1px #ffffff55;font-size:.68rem;font-weight:950;letter-spacing:.17em;text-shadow:0 1px 5px #000a}
+.social-grid .telegram .social-copy:after{content:"JOIN  ✦"}
+.social-grid .youtube .social-copy:after{content:"SUBSCRIBE  ✦"}
+.social-grid .social-card .social-arrow{top:17px!important;right:20px!important;opacity:.72}
+.social-grid .social-card:hover .social-emblem,.social-grid .social-card:focus-visible .social-emblem{transform:scale(1.12);box-shadow:inset 0 0 28px #ffffff99,0 0 40px var(--glow),0 0 75px var(--glow)}
+@keyframes portalOrbit{to{transform:rotate(360deg)}}
+@keyframes portalBob{0%,100%{translate:0 0}50%{translate:0 -6px}}
+@keyframes portalStars{0%,100%{opacity:.35}50%{opacity:1}}
+@media(max-width:740px){.social-grid .social-card{min-height:280px!important}.social-grid .social-card .social-emblem{width:110px!important;height:110px!important;font-size:4.5rem!important}}
+@media(max-width:400px){.social-grid .social-card{min-height:268px!important}.social-grid .social-card .social-emblem{width:102px!important;height:102px!important;font-size:4.2rem!important}}
+@media(prefers-reduced-motion:reduce){.social-grid .social-card:after,.social-grid .social-card .social-emblem,.social-grid .social-card .social-emblem:before,.social-grid .social-card .social-emblem:after{animation:none!important}}
 </style></head><body><main class="shell"><header class="heading"><span class="spark" aria-hidden="true">✦</span><h1>FOLLOW YOUR $MOMS</h1><p>Everywhere. The family is waiting. ❤️</p></header><section class="social-grid" aria-label="Your Moms social channels"><a class="social-card x" href="https://x.com/Yourmomstoken" target="_blank" rel="noopener noreferrer" aria-label="FOLLOW $MOMS ON X"><span class="social-emblem" aria-hidden="true">𝕏</span><span class="social-copy"><small>FOLLOW $MOMS ON</small><strong>X</strong></span><span class="social-arrow" aria-hidden="true">↗</span></a>
 <a class="social-card telegram" href="https://t.me/MOMS_Solana" target="_blank" rel="noopener noreferrer" aria-label="JOIN OUR TELEGRAM"><span class="social-emblem" aria-hidden="true">➤</span><span class="social-copy"><small>JOIN OUR</small><strong>TELEGRAM</strong></span><span class="social-arrow" aria-hidden="true">↗</span></a>
 <a class="social-card youtube" href="https://youtube.com/@yourmomsshow" target="_blank" rel="noopener noreferrer" aria-label="SUBSCRIBE ON YOUTUBE"><span class="social-emblem" aria-hidden="true">▶</span><span class="social-copy"><small>SUBSCRIBE ON</small><strong>YOUTUBE</strong></span><span class="social-arrow" aria-hidden="true">↗</span></a>
