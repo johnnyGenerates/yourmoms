@@ -62,6 +62,11 @@ h1:after{color:#ffdda0!important;font-size:clamp(2rem,5vw,2.85rem)!important;let
 .twinkle{opacity:.65}
 @media(max-width:520px){.mint-card{padding:28px 18px 34px!important;border-radius:22px!important}.mint-page{padding:24px 12px 95px!important}h1:before{width:185px!important;height:185px!important}}
 @media(prefers-reduced-motion:reduce){.mint-card:before{animation:none!important}}
+    /* Keep HOME in normal page flow, below the mint experience. */
+    body{min-height:100vh!important;display:flex!important;flex-direction:column!important}
+    #app{flex:1 0 auto!important}
+    .mint-home-link{position:relative!important;left:auto!important;bottom:auto!important;transform:none!important;align-self:center!important;margin:18px auto 42px!important;z-index:2!important}
+    .mint-home-link:hover{transform:translateY(-2px)!important}
   </style>
 </head>
 <body>
