@@ -5,6 +5,7 @@
   <link rel="icon" type="image/png" href="/favicon.png?v=2" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Genesis Moms NFT Collection</title>
+  
 
   <script data-goatcounter="https://yourmoms.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   <script type="module" crossorigin src="/mint/assets/index-D08mQgcm.js"></script>
@@ -30,12 +31,48 @@
     @keyframes extraTwinkle {0%,100%{opacity:.08;transform:scale(.35) rotate(0deg)}45%{opacity:1;transform:scale(1.35) rotate(35deg)}65%{opacity:.45;transform:scale(.75) rotate(60deg)}}
     @media(max-width:520px){.mint-home-link{bottom:10px;min-width:130px;padding:10px 20px}}
     @media(prefers-reduced-motion:reduce){.twinkle{animation:none;opacity:.55}}
+
+
+/* MOMS 2.0 preview: visual overrides only; live mint scripts/assets untouched */
+body{color:#f8eaf7!important;background-color:#090711!important;background-image:radial-gradient(ellipse at 65% 5%,#44204d 0%,#170e27 40%,#090711 85%)!important;background-attachment:fixed!important}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.28;background-image:radial-gradient(1px 1px at 20px 30px,#fff 99%,transparent),radial-gradient(1px 1px at 120px 100px,#ffd68e 99%,transparent);background-size:179px 151px,263px 231px}
+.mint-page{padding:48px 18px 105px!important}
+.mint-page:before,.mint-page:after{opacity:.18!important;animation:none!important}
+.mint-card{max-width:610px!important;border:2px solid #f8d995!important;border-radius:28px!important;padding:38px 34px 42px!important;background:radial-gradient(circle at 50% 0%,#6e3b6b66,transparent 53%),linear-gradient(145deg,#30192e 0%,#180f28 53%,#0d0a18 100%)!important;box-shadow:0 24px 75px #000b,0 0 32px #f4c56d55,inset 0 1px #fff3bd66!important;animation:none!important}
+.mint-card:before{height:3px!important;background:linear-gradient(90deg,transparent,#ffe8a5,#ff8fc9,#ffe8a5,transparent)!important}
+.mint-card:after{color:#ffe8a5!important}
+h1:before{border:3px solid #f7d992!important;box-shadow:0 10px 30px #0009,0 0 27px #f5c96c99!important}
+h1:after{color:#ffdda0!important;font-size:clamp(2rem,5vw,2.85rem)!important;letter-spacing:-.045em!important;line-height:1.04!important;text-shadow:0 2px 18px #e9a85155!important}
+.tagline,.never-more,.wallet-status{color:#f3ddec!important;text-shadow:none!important}
+.supply strong{color:#ffe4a2!important;text-shadow:0 0 20px #e9bc7480!important}
+.supply span{color:#f5d9e8!important}
+.mint-counter{background:linear-gradient(120deg,#54264d99,#2a173b)!important;color:#fff1cb!important;border:1px solid #f6d58c99!important;box-shadow:0 0 18px #e9b65d30,inset 0 0 20px #ffffff0a!important}
+.details div{background:linear-gradient(145deg,#502748aa,#23132c)!important;border:1px solid #e8bb7d88!important;box-shadow:inset 0 1px #ffffff25!important}
+.details span{color:#f5cba1!important}
+.details strong{color:#fff5e2!important}
+.rarities span{background:#472a4c!important;border:1px solid #dfbb7b88!important;color:#fbe6c3!important;box-shadow:none!important}
+.wallet-button{background:linear-gradient(115deg,#ff67be,#d91b89)!important;border:2px solid #ffdeab!important;box-shadow:0 0 25px #ff3fa96b!important}
+.mint-button{background:linear-gradient(115deg,#ffdf94,#dba847,#fff0bc)!important;color:#281326!important;border:2px solid #fff0c2!important;box-shadow:0 0 27px #f2c26b77!important;animation:none!important}
+.mint-button:disabled{background:#62576a!important;color:#d7c9d5!important;border-color:#8d7c8e!important;box-shadow:none!important}
+.disconnect-button{background:#39223e!important;border:1px solid #ffacd7!important;color:#fff!important}
+.wallet-picker{background:#24162eea!important;border:1px solid #f5ce8b99!important}
+.wallet-picker-title{color:#ffe5a5!important}
+.message.success{color:#a7ffd4!important}.message.error{color:#ffadb8!important}
+.mint-home-link{background:linear-gradient(110deg,#482448,#26132e)!important;border:2px solid #f7d995!important;border-radius:14px!important;color:#ffe7b3!important;box-shadow:0 0 22px #f3bc6d55!important}
+.twinkle{opacity:.65}
+@media(max-width:520px){.mint-card{padding:28px 18px 34px!important;border-radius:22px!important}.mint-page{padding:24px 12px 95px!important}h1:before{width:185px!important;height:185px!important}}
+@media(prefers-reduced-motion:reduce){.mint-card:before{animation:none!important}}
+    /* Keep HOME in normal page flow, below the mint experience. */
+    body{min-height:100vh!important;display:flex!important;flex-direction:column!important}
+    #app{flex:1 0 auto!important}
+    .mint-home-link{position:relative!important;left:auto!important;bottom:auto!important;transform:none!important;align-self:center!important;margin:18px auto 42px!important;z-index:2!important}
+    .mint-home-link:hover{transform:translateY(-2px)!important}
   </style>
 </head>
 <body>
   <div class="twinkle-field" aria-hidden="true" id="twinkleField"></div>
   <div id="app"></div>
-  <a class="mint-home-link" href="/">← HOME</a>
+  <a class="mint-home-link" href="/">HOME</a>
   <script>
     (function(){
       const field=document.getElementById('twinkleField');
