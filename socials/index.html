@@ -1,149 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Follow Your $MOMS everywhere."><title>MOMS 2.0 — Socials</title><link rel="icon" href="/favicon.png">
+<style>
+:root{color-scheme:dark;--gold:#f6d58c}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:white;background:radial-gradient(ellipse at 65% 4%,#44204d 0%,#170e27 40%,#090711 85%)}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.28;background-image:radial-gradient(1px 1px at 20px 30px,#fff 99%,transparent),radial-gradient(1px 1px at 120px 100px,#ffd68e 99%,transparent);background-size:179px 151px,263px 231px}a{color:inherit;text-decoration:none}.shell{position:relative;width:min(950px,calc(100% - 32px));margin:0 auto;padding:45px 0 65px}.heading{text-align:center;margin:16px auto 38px}.heading .spark{display:block;color:#ffe9aa;font-size:32px;text-shadow:0 0 25px #ffc86b;animation:glint 3s ease-in-out infinite}.heading h1{font-size:clamp(2.4rem,7vw,5.2rem);line-height:1.05;letter-spacing:-.055em;margin:9px 0 11px;background:linear-gradient(105deg,#fff4cc,#ffdf90 45%,#ff8ecf 85%);color:transparent;background-clip:text;-webkit-background-clip:text}.heading p{margin:0;color:#e6cfdf;font-size:clamp(.96rem,2vw,1.1rem)}.social-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.social-card{position:relative;isolation:isolate;display:flex;align-items:center;gap:18px;min-height:150px;padding:25px 22px;border-radius:23px;border:2px solid var(--edge);background:radial-gradient(ellipse at 15% 0%,var(--shine),transparent 65%),linear-gradient(135deg,var(--top),var(--bottom));box-shadow:0 15px 34px #0009,0 0 22px var(--glow),inset 0 1px #ffffff44;overflow:hidden;transition:transform .24s ease,filter .24s ease,box-shadow .24s ease}.social-card:before{content:"";position:absolute;inset:-70% -50%;background:linear-gradient(115deg,transparent 38%,#ffffff32 49%,transparent 60%);transform:translateX(-100%) rotate(15deg);transition:transform .75s ease;pointer-events:none}.social-card:hover:before,.social-card:focus-visible:before{transform:translateX(100%) rotate(15deg)}.social-card:hover,.social-card:focus-visible{transform:translateY(-6px) scale(1.015);filter:brightness(1.13);box-shadow:0 18px 40px #000b,0 0 35px var(--glow)}.social-card:focus-visible,.back:focus-visible{outline:3px solid white;outline-offset:5px}.social-emblem{position:relative;flex:none;width:83px;height:83px;display:grid;place-items:center;border:2px solid #ffffffc0;border-radius:23px;background:radial-gradient(circle at 30% 20%,#ffffff85,#ffffff14 60%,#00000030);box-shadow:inset 0 0 20px #ffffff40,0 0 21px var(--glow);font-size:3.6rem;font-weight:900;line-height:1;text-shadow:0 3px 9px #0009;animation:float 3.7s ease-in-out infinite}.social-copy{position:relative;display:flex;flex-direction:column;gap:7px;min-width:0}.social-copy small{font-size:.69rem;letter-spacing:.12em;font-weight:900;color:#fff3e7}.social-copy strong{font-size:clamp(1.2rem,2.7vw,1.85rem);letter-spacing:.025em;font-weight:1000;text-shadow:0 2px 12px #0009;overflow-wrap:anywhere}.social-arrow{position:relative;margin-left:auto;align-self:flex-start;font-size:24px;color:#fff7e3}.x{--top:#303038;--bottom:#08090e;--edge:#e6e6ef;--shine:#ffffff55;--glow:#e0d9ff44}.telegram{--top:#167aab;--bottom:#082c53;--edge:#75d9ff;--shine:#9feeff99;--glow:#38c9ff77}.youtube{--top:#d61b3b;--bottom:#510b25;--edge:#ff9aa2;--shine:#ffc6c68a;--glow:#ff4d6e88}.facebook{--top:#266dd3;--bottom:#0b1e66;--edge:#92bfff;--shine:#b7d7ff88;--glow:#589aff88}.tiktok{--top:#2b263c;--bottom:#0a0c17;--edge:#7df7f4;--shine:#ff72b25e;--glow:#48f5e777}.tiktok .social-emblem{text-shadow:-4px -2px #31eaf2,4px 2px #ff3b7f}.back-row{display:flex;justify-content:center;margin:38px 0 0}.back{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:15px 27px;min-height:52px;border:2px solid #ffe2a1;border-radius:14px;background:linear-gradient(120deg,#6d2d65,#29112f);box-shadow:0 0 25px #f4be634c;color:#ffe7ae;font-size:.83rem;font-weight:950;letter-spacing:.1em;transition:transform .2s,box-shadow .2s}.back:hover{transform:translateY(-3px);box-shadow:0 0 35px #f4be6388}.footer{text-align:center;color:#c7b4c4;font-size:.79rem;letter-spacing:.09em;margin-top:42px}@keyframes float{0%,100%{translate:0 0}50%{translate:0 -5px}}@keyframes glint{0%,100%{opacity:.5}50%{opacity:1}}@media(max-width:740px){.shell{padding-top:28px}.social-grid{grid-template-columns:1fr;gap:15px}.social-card{min-height:124px;padding:18px}.social-emblem{width:68px;height:68px;font-size:2.9rem}.heading{margin-bottom:28px}}@media(max-width:400px){.social-card{gap:11px;padding:15px 12px}.social-emblem{width:58px;height:58px;font-size:2.4rem}.social-copy small{font-size:.6rem}.social-copy strong{font-size:1.15rem}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 
-  <meta name="description" content="Follow Your $MOMS everywhere.">
-  <title>Follow Your $MOMS</title>
+/* Match homepage: every social card is a centered, immersive destination */
+.social-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.social-card{flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:285px;padding:28px 20px;gap:12px}
+.social-emblem{width:104px;height:104px;border-radius:26px;font-size:4.6rem}
+.social-copy{align-items:center;text-align:center;gap:8px}
+.social-copy strong{font-size:clamp(1.55rem,3vw,2.15rem)}
+.social-copy small{font-size:.75rem}
+.social-arrow{position:absolute;top:16px;right:20px;margin:0;align-self:auto}
+.social-card:last-child:nth-child(odd){grid-column:1/-1;width:min(100%,465px);justify-self:center}
+@media(max-width:740px){.social-grid{grid-template-columns:1fr;gap:16px}.social-card{min-height:240px;padding:24px 16px}.social-emblem{width:90px;height:90px;font-size:3.8rem}.social-card:last-child:nth-child(odd){grid-column:auto;width:100%}}
+@media(max-width:400px){.social-card{min-height:220px}.social-emblem{width:82px;height:82px;font-size:3.4rem}.social-copy strong{font-size:1.65rem}}
 
-  <link rel="icon" type="image/png" href="/favicon.png">
+/* Strict centered layout: override all legacy left-alignment */
+.social-grid .social-card{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;gap:12px!important}
+.social-grid .social-card .social-emblem{display:grid!important;place-items:center!important;align-self:center!important;margin:0 auto!important;flex-shrink:0}
+.social-grid .social-card .social-copy{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;width:100%!important;margin:0 auto!important}
+.social-grid .social-card .social-copy small,.social-grid .social-card .social-copy strong{display:block!important;width:100%!important;text-align:center!important;margin:0 auto!important}
+.social-grid .social-card .social-arrow{position:absolute!important;right:18px!important;top:14px!important;left:auto!important}
 
-  <link rel="stylesheet" href="socials/style.css?v=facebook-20260925-2">
-  <style>
-    .tiktok-button {
-      width:94%; border:5px solid white; border-radius:55px 28px 55px 28px;
-      background:linear-gradient(145deg,#252525,#080808 60%,#181818);
-      box-shadow:-4px 7px 0 #25f4ee,4px 11px 0 #fe2c55,0 16px 25px rgba(0,0,0,.45);
-    }
-    .tiktok-logo {
-      flex:0 0 76px; width:76px; height:76px; display:grid; place-items:center;
-      border-radius:18px; background:#000; color:#fff; font-family:Arial,sans-serif;
-      font-size:4.5rem; line-height:1; text-shadow:-3px -2px 0 #25f4ee,3px 2px 0 #fe2c55;
-    }
-    .tiktok-button .button-copy {display:flex;flex-direction:column;align-items:flex-start;text-align:left;min-width:0}
-    .tiktok-button .button-small {font-family:Arial,sans-serif;font-size:.9rem;font-weight:900;letter-spacing:2px}
-    .tiktok-button .button-big {font-size:clamp(1.7rem,7vw,3.2rem);font-weight:900;letter-spacing:1px;line-height:1.1}
-    @media(max-width:600px) {
-      .tiktok-button {width:96%}
-      .tiktok-logo {flex-basis:58px;width:58px;height:58px;font-size:3.5rem}
-      .tiktok-button .button-small {font-size:.875rem;letter-spacing:.5px}
-      .tiktok-button .button-big {font-size:clamp(1.35rem,6vw,2.4rem)}
-    }
-  </style>
-</head>
+/* Social Portals 2.0 — vivid, full, centered, animated */
+.social-grid{gap:20px}
+.social-grid .social-card{min-height:295px!important;padding:25px 20px 26px!important;gap:9px!important;overflow:hidden;isolation:isolate}
+.social-grid .social-card:after{content:"✦  ·  ✧  ·  ✦";position:absolute;bottom:18px;left:0;right:0;z-index:0;font-size:14px;letter-spacing:1.4em;text-indent:1.4em;color:#ffffffa8;text-shadow:0 0 15px #fff;pointer-events:none;animation:portalStars 3.6s ease-in-out infinite}
+.social-grid .social-card .social-emblem{width:118px!important;height:118px!important;border-radius:50%!important;margin:0 auto 8px!important;font-size:5rem!important;z-index:1;isolation:isolate;background:radial-gradient(circle at 28% 18%,#ffffffa8 0%,#ffffff30 31%,#ffffff0a 68%,#00000044 100%);border:2px solid #ffffffed;box-shadow:inset 0 0 20px #ffffff66,0 0 20px var(--glow),0 0 40px var(--glow),0 0 0 7px #ffffff10;animation:portalBob 3.2s ease-in-out infinite;transition:transform .3s,box-shadow .3s}
+.social-grid .social-card .social-emblem:before{content:"";position:absolute;inset:-15px;border:2px dashed #ffffffb8;border-radius:50%;box-shadow:0 0 18px var(--glow),inset 0 0 16px var(--glow);animation:portalOrbit 14s linear infinite;pointer-events:none}
+.social-grid .social-card .social-emblem:after{content:"✦";position:absolute;right:-17px;top:1px;font-size:21px;color:#fff;text-shadow:0 0 13px #fff,0 0 24px var(--glow);animation:portalStars 2.3s ease-in-out infinite;pointer-events:none}
+.social-grid .social-card .social-copy{z-index:1;gap:3px!important}
+.social-grid .social-card .social-copy strong{font-size:clamp(1.6rem,3vw,2.15rem)!important;line-height:1.14;letter-spacing:.035em;text-shadow:0 2px 13px #000a,0 0 16px var(--glow)}
+.social-grid .social-card .social-copy small{font-size:.68rem!important;letter-spacing:.17em!important;opacity:.96}
+.social-grid .social-card .social-copy:after{content:"FOLLOW  ✦";display:inline-block;margin:12px auto 18px;padding:7px 18px;border:1px solid #ffffffb5;border-radius:999px;background:linear-gradient(120deg,#ffffff33,#ffffff0c);color:#fff;box-shadow:0 0 15px var(--glow),inset 0 1px #ffffff55;font-size:.68rem;font-weight:950;letter-spacing:.17em;text-shadow:0 1px 5px #000a}
+.social-grid .telegram .social-copy:after{content:"JOIN  ✦"}
+.social-grid .youtube .social-copy:after{content:"SUBSCRIBE  ✦"}
+.social-grid .social-card .social-arrow{top:17px!important;right:20px!important;opacity:.72}
+.social-grid .social-card:hover .social-emblem,.social-grid .social-card:focus-visible .social-emblem{transform:scale(1.12);box-shadow:inset 0 0 28px #ffffff99,0 0 40px var(--glow),0 0 75px var(--glow)}
+@keyframes portalOrbit{to{transform:rotate(360deg)}}
+@keyframes portalBob{0%,100%{translate:0 0}50%{translate:0 -6px}}
+@keyframes portalStars{0%,100%{opacity:.35}50%{opacity:1}}
+@media(max-width:740px){.social-grid .social-card{min-height:280px!important}.social-grid .social-card .social-emblem{width:110px!important;height:110px!important;font-size:4.5rem!important}}
+@media(max-width:400px){.social-grid .social-card{min-height:268px!important}.social-grid .social-card .social-emblem{width:102px!important;height:102px!important;font-size:4.2rem!important}}
+@media(prefers-reduced-motion:reduce){.social-grid .social-card:after,.social-grid .social-card .social-emblem,.social-grid .social-card .social-emblem:before,.social-grid .social-card .social-emblem:after{animation:none!important}}
 
-<body>
+/* Remove rotating dashed orbital lines for a cleaner premium look */
+.social-grid .social-card .social-emblem:before{content:none!important;display:none!important;animation:none!important}
 
-  <main class="socials-page">
-
-    <div class="stars" aria-hidden="true"></div>
-
-    <div class="socials-container">
-
-      <header class="socials-header">
-        <div class="follow-word">FOLLOW</div>
-        <div class="moms-word">$MOMS</div>
-        <div class="everywhere-word">EVERYWHERE</div>
-      </header>
-
-
-      <section class="social-buttons">
-
-        <!-- X -->
-        <a
-          class="social-button x-button"
-          href="https://x.com/Yourmomstoken"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="button-small">FOLLOW $MOMS ON</span>
-          <span class="x-logo">𝕏</span>
-        </a>
-
-
-        <!-- TELEGRAM -->
-        <a
-          class="social-button telegram-button"
-          href="https://t.me/MOMS_Solana"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="telegram-logo">➤</span>
-
-          <span class="button-copy">
-            <span class="button-small">JOIN OUR</span>
-            <span class="button-big">TELEGRAM</span>
-          </span>
-        </a>
-
-
-        <!-- YOUTUBE -->
-        <a
-          class="social-button youtube-button"
-          href="https://youtube.com/@yourmomsshow"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="youtube-logo">▶</span>
-
-          <span class="button-copy">
-            <span class="button-small">SUBSCRIBE ON</span>
-            <span class="button-big">YOUTUBE</span>
-          </span>
-        </a>
-
-
-        <!-- FACEBOOK -->
-        <a
-          class="social-button facebook-button"
-          href="https://www.facebook.com/share/1CJecmBx9e/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Follow $MOMS on Facebook"
-        >
-          <span class="facebook-logo" aria-hidden="true">f</span>
-          <span class="button-copy">
-            <span class="button-small">FOLLOW $MOMS ON</span>
-            <span class="button-big">FACEBOOK</span>
-          </span>
-        </a>
-
-        <!-- TIKTOK -->
-        <a
-          class="social-button tiktok-button"
-          href="https://www.tiktok.com/@yourmomsshow"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Follow $MOMS on TikTok"
-        >
-          <span class="tiktok-logo" aria-hidden="true">♪</span>
-          <span class="button-copy">
-            <span class="button-small">FOLLOW $MOMS ON</span>
-            <span class="button-big">TIKTOK</span>
-          </span>
-        </a>
-      </section>
-
-
-      <!-- HOME -->
-      <div class="home-section">
-        <a class="home-button" href="/">
-          <span class="heart">♥</span>
-          <span>HOME</span>
-        </a>
-      </div>
-
-    </div>
-
-  </main>
-
-
-  <script
-    data-goatcounter="https://yourmoms.goatcounter.com/count"
-    async
-    src="//gc.zgo.at/count.js">
-  </script>
-
-</body>
-</html>
+/* Clean card copy: remove redundant button-within-button CTA pills */
+.social-grid .social-card .social-copy:after{content:none!important;display:none!important}
+.social-grid .social-card{gap:16px!important}
+.social-grid .social-card .social-copy{gap:7px!important}
+</style></head><body><main class="shell"><header class="heading"><span class="spark" aria-hidden="true">✦</span><h1>FOLLOW YOUR $MOMS</h1><p>❤️ The family is waiting ❤️</p></header><section class="social-grid" aria-label="Your Moms social channels"><a class="social-card x" href="https://x.com/Yourmomstoken" target="_blank" rel="noopener noreferrer" aria-label="FOLLOW $MOMS ON X"><span class="social-emblem" aria-hidden="true">𝕏</span><span class="social-copy"><small>FOLLOW $MOMS ON</small><strong>X</strong></span></a>
+<a class="social-card telegram" href="https://t.me/MOMS_Solana" target="_blank" rel="noopener noreferrer" aria-label="JOIN OUR TELEGRAM"><span class="social-emblem" aria-hidden="true">➤</span><span class="social-copy"><small>JOIN OUR</small><strong>TELEGRAM</strong></span></a>
+<a class="social-card youtube" href="https://youtube.com/@yourmomsshow" target="_blank" rel="noopener noreferrer" aria-label="SUBSCRIBE ON YOUTUBE"><span class="social-emblem" aria-hidden="true">▶</span><span class="social-copy"><small>SUBSCRIBE ON</small><strong>YOUTUBE</strong></span></a>
+<a class="social-card facebook" href="https://www.facebook.com/share/1CJecmBx9e/" target="_blank" rel="noopener noreferrer" aria-label="FOLLOW $MOMS ON FACEBOOK"><span class="social-emblem" aria-hidden="true">f</span><span class="social-copy"><small>FOLLOW $MOMS ON</small><strong>FACEBOOK</strong></span></a>
+<a class="social-card tiktok" href="https://www.tiktok.com/@yourmomsshow" target="_blank" rel="noopener noreferrer" aria-label="FOLLOW $MOMS ON TIKTOK"><span class="social-emblem" aria-hidden="true">♪</span><span class="social-copy"><small>FOLLOW $MOMS ON</small><strong>TIKTOK</strong></span></a></section><div class="back-row"><a class="back" href="/">HOME</a></div></main></body></html>
