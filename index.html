@@ -1,266 +1,177 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The official Your $MOMS website.">
-  <title>Your $MOMS</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/badges.css?v=1">
-<style id="vault-v17-fix">
-  .badge-earned{display:none!important}
-  .badge-card{display:flex!important;flex-direction:column!important;align-items:center!important}
-  .badge-seal{margin:0 auto 15px!important}
-  .badge-card h3,.badge-card p{text-align:center!important;margin-left:auto!important;margin-right:auto!important}
-  .badges-fab{display:grid!important;place-items:center!important;padding:0!important}
-  .badges-fab-trophy{
-    position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
-    display:grid!important;place-items:center!important;margin:0!important;transform:none!important;
-    font-size:0!important;line-height:1!important;
-  }
-  .trophy-glyph{
-    display:block!important;font-size:3.35rem!important;line-height:1!important;
-    transform:translate(0,-1px)!important;
-    filter:drop-shadow(0 2px 2px #000) drop-shadow(0 0 8px #ffdf61aa);
-  }  @media(max-width:560px){
-    .trophy-glyph{font-size:3rem!important}
-  }
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Your $MOMS</title><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/badges.css?v=1"><style>
+:root{color-scheme:dark;--gold:#f6d58c;--pink:#ff3fa9;--ink:#0c0714}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 65% 5%,#44204d 0%,#170e27 40%,#090711 80%);color:#fff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.3;background-image:radial-gradient(1px 1px at 20px 30px,#fff 99%,transparent),radial-gradient(1px 1px at 120px 100px,#ffd68e 99%,transparent);background-size:179px 151px,263px 231px}a{color:inherit;text-decoration:none}.wrap{width:min(1180px,calc(100% - 36px));margin:auto;position:relative}.top{display:flex;align-items:center;justify-content:space-between;padding:22px 0;gap:15px}.brand{font-weight:950;letter-spacing:.06em;color:var(--gold);font-size:1.1rem}.nav{display:flex;gap:20px;font-size:.85rem;font-weight:700;color:#e8d9e6;margin-right:105px}.nav a:hover{color:var(--gold)}.hero{position:relative;overflow:hidden;border:1px solid #f5d08b4a;border-radius:28px;background:#211024;box-shadow:0 24px 85px #0009}.hero img{display:block;width:100%;height:auto;max-height:none;object-fit:contain}.hero:after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 65px #10071d70}.hero-note{position:absolute;bottom:18px;left:24px;background:#0b0714b8;border:1px solid #ffdd9955;border-radius:30px;padding:9px 15px;font-size:.7rem;letter-spacing:.12em;font-weight:800}.intro{text-align:center;padding:75px 0 32px}.eyebrow{color:var(--gold);font-size:.76rem;letter-spacing:.28em;font-weight:850}.intro h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.02;margin:14px 0;letter-spacing:-.06em}.intro p{color:#d5c5d9;max-width:620px;margin:0 auto;line-height:1.7}.actions{display:flex;justify-content:center;gap:13px;flex-wrap:wrap;margin:28px 0 0}.button{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 25px;border-radius:12px;font-size:.85rem;font-weight:900;letter-spacing:.05em;transition:transform .2s,box-shadow .2s}.button:hover,.card:hover{transform:translateY(-4px)}.primary{background:linear-gradient(115deg,#ff68bf,#f71a8d);box-shadow:0 8px 25px #ed26865a}.secondary{border:1px solid #d8b873;background:#ffffff0c}.section{padding:65px 0}#contract{padding:20px 0 35px}.intro{padding:16px 0 35px}.section-head{margin-bottom:26px}.section-head h2{font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.05em;margin:8px 0}.section-head p{color:#cbbdcc}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{position:relative;display:flex;flex-direction:column;min-height:225px;justify-content:flex-end;padding:29px;border-radius:20px;border:1px solid #e6c48b45;background:radial-gradient(circle at 90% 10%,#77345c88,transparent 55%),linear-gradient(135deg,#27152e,#100c1b);box-shadow:0 14px 32px #0005;transition:transform .2s,border-color .2s}.card:hover{border-color:var(--gold)}.card .icon{font-size:2.1rem;margin-bottom:auto}.card h3{font-size:1.5rem;margin:15px 0 5px}.card p{margin:0;color:#d9c5d5;font-size:.9rem;line-height:1.5}.contract{border:1px solid #e2bf8147;border-radius:20px;background:#110c1cbf;padding:24px;text-align:center}.contract strong{color:var(--gold);letter-spacing:.16em;font-size:.72rem}.address{overflow-wrap:anywhere;color:#f5e5f1;margin:16px 0;font-size:clamp(.83rem,1.7vw,1.13rem);font-weight:750;letter-spacing:.015em}.copy{cursor:pointer;border:2px solid #f5d58c;background:linear-gradient(120deg,#ff339f,#b91578);color:#fff;padding:15px 28px;border-radius:12px;font-weight:950;box-shadow:0 7px 25px #e52b8b66}.chart{width:100%;height:490px;border:1px solid #d3b07850;border-radius:18px;background:#0b0b14}.footer{padding:45px 0 65px;text-align:center;border-top:1px solid #ffffff1b;color:#baa9ba;font-size:.85rem}.footer a{color:var(--gold)}.badges-panel{z-index:10000}.badges-fab{z-index:9999}@media(max-width:680px){.nav{gap:10px;font-size:.72rem;margin-right:72px;flex-wrap:wrap;justify-content:flex-end}.top{padding:15px 0}.hero{border-radius:16px}.hero img{min-height:0;height:auto;object-fit:contain;object-position:center}.hero-note{font-size:.58rem;left:12px;bottom:10px}.intro{padding:12px 0 20px}.grid{grid-template-columns:1fr}.card{min-height:185px}.section{padding:45px 0}.chart{height:390px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
+@media(max-width:420px){.top{align-items:flex-start;flex-direction:column;gap:10px}.nav{margin-right:78px;justify-content:flex-start}.brand{font-size:.9rem}} 
+/* MOMS 2.0 — golden invitation around the main BUY button */
+.buy-inside-contract{justify-content:center;margin:22px 0 0}
+.buy-inside-contract .button.primary{position:relative;isolation:isolate;min-height:70px;min-width:min(340px,100%);padding:18px 42px;border:2px solid #ffe39c;border-radius:18px;background:linear-gradient(120deg,#ff65bc 0%,#ff2199 48%,#d40a79 100%);color:#fff;font-size:clamp(1.15rem,2.1vw,1.42rem);font-weight:950;letter-spacing:.065em;text-shadow:0 2px 7px #72073f;box-shadow:0 0 0 4px #f4c65a25,0 0 22px #ffd16e85,0 0 48px #dca73c55,0 14px 38px #ff248c65,inset 0 2px 3px #ffffff8c;transition:transform .22s ease,box-shadow .22s ease,filter .22s ease;animation:momsBuyAura 3.2s ease-in-out infinite}
+.buy-inside-contract .button.primary:hover,.buy-inside-contract .button.primary:focus-visible{transform:translateY(-5px) scale(1.045);filter:brightness(1.08);box-shadow:0 0 0 5px #ffda7a45,0 0 36px #ffdf8cdd,0 0 75px #f3b84699,0 20px 48px #ff248c99,inset 0 2px 3px #ffffff9e}
+.buy-inside-contract .button.primary:active{transform:scale(.98)}
+@keyframes momsBuyAura{0%,100%{box-shadow:0 0 0 4px #f4c65a25,0 0 20px #ffd16e85,0 0 43px #dca73c55,0 14px 38px #ff248c65,inset 0 2px 3px #ffffff8c}50%{box-shadow:0 0 0 5px #f4c65a40,0 0 32px #ffe19bb5,0 0 67px #dca73c80,0 14px 40px #ff248c75,inset 0 2px 3px #ffffff8c}}
+@media(max-width:560px){.buy-inside-contract .button.primary{min-width:min(310px,100%);min-height:66px;padding:15px 25px}}
+@media(prefers-reduced-motion:reduce){.buy-inside-contract .button.primary{animation:none}}
 
-  .legend-badge-card{
-    width:100%!important;
-    max-width:none!important;
-    height:auto!important;
-    aspect-ratio:auto!important;
-    min-height:150px!important;
-    display:grid!important;
-    grid-template-columns:86px minmax(0,1fr)!important;
-    align-items:center!important;
-    justify-content:initial!important;
-    text-align:left!important;
-    margin:0 0 22px!important;
-    border-radius:22px!important;
-  }
-  .legend-badge-card > div:last-child{
-    display:block!important;
-    text-align:left!important;
-  }
+/* Compact buy CTA, visibly inside the contract panel */
+#contract .contract{padding:28px 22px 32px;overflow:visible}
+#contract .buy-inside-contract{display:flex;justify-content:center;align-items:center;margin:18px auto 0;padding:0;width:100%}
+#contract .buy-inside-contract .button.primary{min-width:0;width:min(280px,85%);min-height:54px;padding:11px 22px;font-size:1.02rem;border-radius:12px;letter-spacing:.035em}
+#contract .copy{min-width:min(390px,100%);max-width:100%}
+#contract #copyStatus{margin:8px 0 0;min-height:0}
+@media(max-width:560px){#contract .buy-inside-contract .button.primary{min-width:0;width:min(265px,85%);min-height:52px;font-size:1rem}#contract .copy{min-width:0;width:100%}}
 
-  .legend-wide{
-    box-sizing:border-box!important;
-    width:100%!important;
-    height:170px!important;
-    min-height:170px!important;
-    max-height:170px!important;
-    aspect-ratio:unset!important;
-    display:grid!important;
-    grid-template-columns:92px minmax(0,1fr)!important;
-    grid-template-rows:1fr!important;
-    flex-direction:initial!important;
-    align-items:center!important;
-    justify-items:stretch!important;
-    gap:18px!important;
-    padding:22px!important;
-    margin:0 0 22px!important;
-    text-align:left!important;
-  }
-  .legend-wide > div:last-child{display:block!important;text-align:left!important}
-  @media(max-width:560px){
-    .legend-wide{
-      height:155px!important;min-height:155px!important;max-height:155px!important;
-      grid-template-columns:70px minmax(0,1fr)!important;
-      gap:13px!important;padding:16px!important;
-    }
-  }
-</style>
-</head>
+/* Smaller BUY button — still inside the contract panel */
+#contract .buy-inside-contract .button.primary{width:min(215px,78%);min-width:0;min-height:46px;padding:9px 17px;font-size:.91rem;border-radius:11px}
+@media(max-width:560px){#contract .buy-inside-contract .button.primary{width:min(205px,78%);min-width:0;min-height:46px;font-size:.9rem}}
 
-<body>
+/* Three premium destinations, ranked by importance */
+.moms-destinations{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.moms-destinations .card{min-height:330px;padding:30px 25px;overflow:hidden;isolation:isolate;border-color:#f7d28b55;box-shadow:inset 0 1px #ffffff12,0 16px 42px #0008}
+.moms-destinations .card:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.7;background:radial-gradient(circle at 82% 12%,#ff76ba45,transparent 49%)}
+.moms-destinations .genesis-card:before{background:radial-gradient(circle at 82% 12%,#e5b95855,transparent 55%)}
+.moms-destinations .games-card:before{background:radial-gradient(circle at 82% 12%,#9b75ff60,transparent 55%)}
+.moms-destinations .card .icon{font-size:3rem;filter:drop-shadow(0 0 14px #fbd8896b)}
+.moms-destinations .card-kicker{color:#f9d795;font-size:.7rem;letter-spacing:.17em;font-weight:900;margin-top:25px}
+.moms-destinations .card h3{font-size:clamp(1.5rem,2.3vw,2rem);letter-spacing:.025em;margin:10px 0}
+.moms-destinations .card p{min-height:3em}
+.moms-destinations .card-cta{margin-top:23px;font-size:.75rem;letter-spacing:.08em;color:#ffe1a6;font-weight:900}
+.moms-destinations .card:hover,.moms-destinations .card:focus-visible{transform:translateY(-7px);border-color:#ffdd96;box-shadow:0 18px 45px #0009,0 0 24px #f2c87938}
+.vault-fab-tooltip{position:fixed;right:95px;top:26px;z-index:9999;white-space:nowrap;padding:10px 14px;border:1px solid #f3ce8b88;border-radius:12px;background:#150d23f2;color:#ffe3a7;font-size:.73rem;font-weight:900;letter-spacing:.08em;pointer-events:none;opacity:0;transform:translateX(8px);transition:opacity .2s,transform .2s;box-shadow:0 8px 22px #0008}
+@media(hover:hover){body:has(#badgesFab:hover) .vault-fab-tooltip,body:has(#badgesFab:focus-visible) .vault-fab-tooltip{opacity:1;transform:none}}
+@media(hover:none){.vault-fab-tooltip{animation:vaultHint 4.8s ease-in-out 1}}
+@keyframes vaultHint{0%,10%{opacity:0}20%,65%{opacity:1;transform:none}85%,100%{opacity:0}}
+@media(max-width:850px){.moms-destinations{grid-template-columns:1fr}.moms-destinations .card{min-height:215px}.moms-destinations .card p{min-height:0}}
+@media(max-width:560px){.vault-fab-tooltip{right:79px;top:18px;font-size:.62rem;padding:9px}}
+@media(prefers-reduced-motion:reduce){.vault-fab-tooltip{animation:none}}
 
-  <div class="floating-world" id="floatingWorld" aria-hidden="true"></div>
-  <div class="effects-layer" id="effectsLayer" aria-hidden="true"></div>
+/* Center and enlarge the destination icons and card content */
+.moms-destinations .card{align-items:center;justify-content:center;text-align:center;min-height:335px;padding:32px 22px}
+.moms-destinations .card .icon{font-size:clamp(5rem,8vw,7rem);line-height:1.15;margin:0 0 22px;filter:drop-shadow(0 0 22px #fbd88977);transition:transform .3s ease}
+.moms-destinations .card:hover .icon{transform:scale(1.09)}
+.moms-destinations .card h3{margin:0 0 12px}
+.moms-destinations .card p{min-height:0;max-width:270px}
+.moms-destinations .card-cta{margin-top:23px}
+@media(max-width:850px){.moms-destinations .card{min-height:310px}}
+@media(prefers-reduced-motion:reduce){.moms-destinations .card .icon{transition:none}}
 
-  <main class="website">
+/* Minimal footer and clean destination cards */
+.footer{display:flex;flex-direction:column;align-items:center;gap:27px;padding:44px 0 52px}
+.footer-contact{display:flex;flex-direction:column;align-items:center;gap:7px;font-weight:850;letter-spacing:.12em;font-size:.75rem;color:var(--gold)}
+.footer-contact span:first-child{font-size:2rem;line-height:1.2}
+.footer-contact:hover,.footer-contact:focus-visible{color:#fff}
+.footer-copyright{font-size:.82rem;letter-spacing:.09em;color:#c5b3c3}
 
-    <header class="banner-section">
-      <img class="banner-image" src="/images/banner.jpg" alt="MOMS laughing in her backyard with a glass of red wine">
-    </header>
+/* Seamless cinematic hero: no frame, no button-like container */
+.wrap>.hero{border:0;border-radius:0;background:transparent;box-shadow:none;overflow:hidden;margin:0 -18px;isolation:isolate}
+.wrap>.hero img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;mask-image:linear-gradient(to right,transparent 0%,#000 11%,#000 89%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 11%,#000 89%,transparent 100%)}
+.wrap>.hero:after{inset:0;box-shadow:none;background:linear-gradient(to bottom,transparent 75%,#170e2700 85%,#170e27 100%);pointer-events:none}
+.wrap{padding-top:0}
+#contract{padding-top:5px}
+@media(max-width:680px){.wrap>.hero{margin:0 -18px}.wrap>.hero img{mask-image:linear-gradient(to right,transparent 0%,#000 6%,#000 94%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 6%,#000 94%,transparent 100%)}}
 
-    <div class="ticker" aria-hidden="true"><div>YOUR MOMS IS HERE <span>✳</span> YOUR MOMS IS HERE <span>✳</span> YOUR MOMS IS HERE <span>✳</span> YOUR MOMS IS HERE <span>✳</span></div></div>
+/* Keep the homepage free of headings outside the interactive panels */
+#universe{padding-top:24px}
+#chart{padding-top:28px}
 
-    <section class="contract-section" id="contractSection" aria-labelledby="contractTitle">
+/* Legendary trophy: animated golden halo, lightning and sparkle */
+#badgesFab{isolation:isolate;filter:drop-shadow(0 0 16px #ffd15faa) drop-shadow(0 0 30px #ffb92777);animation:vaultFloat 3.4s ease-in-out infinite;transition:filter .25s,transform .25s}
+#badgesFab:before{content:"";position:absolute;inset:-10px;border-radius:50%;border:2px solid #ffe8a9aa;box-shadow:0 0 16px #ffd44d,0 0 33px #ffcf4777,inset 0 0 13px #ffe09b88;animation:vaultPulse 2.4s ease-in-out infinite;pointer-events:none}
+#badgesFab:after{content:"✦";position:absolute;top:-19px;right:-12px;font-size:26px;color:#fff0ad;text-shadow:0 0 9px #fff,0 0 23px #ffd400;animation:vaultSpark 1.8s ease-in-out infinite;pointer-events:none}
+#badgesFab .badges-fab-trophy{filter:drop-shadow(0 0 8px #ffe27f)}
+#badgesFab:hover,#badgesFab:focus-visible{transform:scale(1.13) rotate(-5deg);filter:drop-shadow(0 0 22px #fff0aa) drop-shadow(0 0 40px #ffb927)}
+@keyframes vaultFloat{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes vaultPulse{0%,100%{opacity:.65;transform:scale(.94)}50%{opacity:1;transform:scale(1.1)}}
+@keyframes vaultSpark{0%,100%{opacity:.3;transform:scale(.75) rotate(0deg)}50%{opacity:1;transform:scale(1.2) rotate(100deg)}}
+.chart-fallback{display:block;width:max-content;max-width:100%;margin:17px auto 0;padding:13px 22px;border:1px solid #e8c87a88;border-radius:12px;background:#21142b;color:#ffe0a1;font-size:.78rem;font-weight:900;letter-spacing:.04em;text-align:center}
+.chart-fallback:hover{background:#3a2040}
+@media(prefers-reduced-motion:reduce){#badgesFab,#badgesFab:before,#badgesFab:after{animation:none!important}}
 
-      <div class="gold-sparkles" aria-hidden="true">
-        <span class="sparkle s1">✦</span>
-        <span class="sparkle s2">✧</span>
-        <span class="sparkle s3">✦</span>
-        <span class="sparkle s4">✧</span>
-        <span class="sparkle s5">✦</span>
-        <span class="sparkle s6">✧</span>
-        <span class="sparkle s7">✦</span>
-        <span class="sparkle s8">✧</span>
-        <span class="sparkle s9">✦</span>
-        <span class="sparkle s10">✧</span>
-        <span class="sparkle s11">✦</span>
-        <span class="sparkle s12">✧</span>
-        <span class="sparkle s13">✦</span>
-        <span class="sparkle s14">✧</span>
-        <span class="sparkle s15">✦</span>
-        <span class="sparkle s16">✧</span>
-        <span class="sparkle s17">✦</span>
-        <span class="sparkle s18">✧</span>
-        <span class="sparkle s19">✦</span>
-        <span class="sparkle s20">✧</span>
-      </div>
+#badgesFab.vault-portal{position:fixed;top:20px;right:20px;z-index:10000;width:250px;height:72px;border-radius:20px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(120deg,#190b2b,#682051,#190b2b);border:2px solid #ffe1a1;box-shadow:0 0 25px #ff42bbaa,0 0 45px #f6c15d55,inset 0 0 18px #ffb8df33;filter:none;animation:portalGlow 3s ease-in-out infinite;overflow:hidden;translate:none}
+#badgesFab.vault-portal:before{content:"";position:absolute;inset:-60px auto -60px -55px;width:45px;border:0;border-radius:0;background:#fff9c477;box-shadow:0 0 26px #fff8c4;transform:rotate(25deg);animation:portalFlash 5s linear infinite}
+#badgesFab.vault-portal:after{content:"";position:absolute;inset:3px;border:1px solid #ffeab177;border-radius:15px;box-shadow:inset 0 0 13px #ffd97555;animation:none}
+#badgesFab.vault-portal .portal-gem{position:relative;z-index:1;display:grid;place-items:center;width:49px;height:49px;flex:none;border-radius:15px;background:radial-gradient(circle at 35% 25%,#fff6cb,#e6a42e 45%,#8b185e 75%);font-size:37px;color:#fff8d7;text-shadow:0 0 12px #fff;box-shadow:0 0 15px #ffd66c;animation:portalGem 4s ease-in-out infinite}
+#badgesFab.vault-portal .portal-words{position:relative;z-index:1;display:flex;flex-direction:column;text-align:left;gap:5px;white-space:nowrap}
+#badgesFab.vault-portal .portal-words small{font-size:9px;font-weight:900;letter-spacing:.18em;color:#ffd0e9}
+#badgesFab.vault-portal .portal-words strong{font-size:14px;letter-spacing:.05em;color:#ffefb8;text-shadow:0 0 10px #ffca79}
+#badgesFab.vault-portal .portal-arrow{position:relative;z-index:1;font-size:29px;color:#ffe2a0}
+#badgesFab.vault-portal:hover,#badgesFab.vault-portal:focus-visible{transform:scale(1.06);filter:none;box-shadow:0 0 40px #ff42bb,0 0 55px #ffd36f99}
+@keyframes portalGlow{0%,100%{box-shadow:0 0 18px #ff42bb77,0 0 25px #f6c15d33}50%{box-shadow:0 0 33px #ff42bbbb,0 0 45px #f6c15d88}}
+@keyframes portalFlash{0%,15%{left:-65px}45%,100%{left:320px}}
+@keyframes portalGem{0%,100%{transform:rotate(-12deg) scale(.94)}50%{transform:rotate(12deg) scale(1.08)}}
+@media(max-width:600px){#badgesFab.vault-portal{top:10px;right:10px;width:190px;height:59px;padding:7px;gap:7px;border-radius:16px}#badgesFab.vault-portal .portal-gem{width:41px;height:41px;font-size:29px}#badgesFab.vault-portal .portal-words strong{font-size:11px}#badgesFab.vault-portal .portal-words small{font-size:8px}#badgesFab.vault-portal .portal-arrow{font-size:23px}}
+@media(prefers-reduced-motion:reduce){#badgesFab.vault-portal,#badgesFab.vault-portal:before,#badgesFab.vault-portal .portal-gem{animation:none!important}}
 
-      <div class="contract-inner">
+/* Keep the royal banner completely unobstructed: portal lives beneath it */
+.vault-portal-row{display:flex;justify-content:flex-end;margin:12px 0 0;position:relative;z-index:2}
+#badgesFab.vault-portal{position:relative!important;top:auto!important;right:auto!important;left:auto!important;bottom:auto!important;margin:0!important}
+@media(max-width:600px){.vault-portal-row{justify-content:center;margin-top:10px}}
 
-        <div class="contract-label" id="contractTitle">
-          CONTRACT ADDRESS
-        </div>
+/* Crystal-ball Vault: compact fixed corner artifact, no banner-sized panel */
+#badgesFab.vault-portal{position:fixed!important;top:16px!important;right:16px!important;left:auto!important;bottom:auto!important;width:76px!important;height:76px!important;padding:7px!important;border-radius:50%!important;display:grid!important;place-items:center!important;background:radial-gradient(circle at 28% 18%,#7545a9,#230b43 63%,#0d0825)!important;border:2px solid #f6d5ff!important;box-shadow:0 0 0 4px #d57bff33,0 0 19px #cb66ff,0 0 38px #ff61d688,inset 0 0 17px #ed9aff88!important;animation:orbAura 3s ease-in-out infinite!important;overflow:visible!important;transform:none;filter:none!important;z-index:10000}
+#badgesFab.vault-portal:before{content:"";position:absolute;inset:-8px;border:1px dashed #ffc7fb;border-radius:50%;box-shadow:0 0 17px #d873ff;animation:orbRing 12s linear infinite!important;pointer-events:none}
+#badgesFab.vault-portal:after{content:"✦";position:absolute;right:-13px;top:-15px;inset:auto;background:none;font-size:25px;color:#fff4c7;text-shadow:0 0 8px white,0 0 17px #ffb2f6;animation:orbSpark 2.2s ease-in-out infinite!important;pointer-events:none}
+#badgesFab.vault-portal .crystal-orb{position:relative;display:block;width:56px;height:56px;border-radius:50%;background:radial-gradient(ellipse at 28% 20%,#fff9ff 0%,#d2b7ff 10%,#9c65eb 25%,#6035ae 46%,#2a135e 73%,#0b092c 100%);border:1px solid #e7d6ff;box-shadow:inset -8px -10px 14px #08072fbb,inset 5px 5px 9px #ffffff88,0 0 16px #ca84ff;overflow:hidden}
+#badgesFab.vault-portal .orb-nebula{position:absolute;inset:9px;border-radius:50%;background:conic-gradient(from 20deg,#fa8bff66,#8eebff99,#e9b5ff66,#7c38e7bb,#fa8bff66);filter:blur(5px);animation:orbRing 7s linear infinite!important}
+#badgesFab.vault-portal .orb-glint{position:absolute;inset:0;display:grid;place-items:center;font-size:32px;color:#fff8ff;text-shadow:0 0 8px white,0 0 17px #e7b4ff;animation:orbSpark 3s ease-in-out infinite!important}
+#badgesFab.vault-portal:hover,#badgesFab.vault-portal:focus-visible{transform:scale(1.12)!important;box-shadow:0 0 0 5px #e8aaff66,0 0 35px #e0a5ff,0 0 60px #ff67e4!important}
+@keyframes orbAura{0%,100%{box-shadow:0 0 0 4px #d57bff33,0 0 19px #cb66ff,0 0 38px #ff61d688,inset 0 0 17px #ed9aff88}50%{box-shadow:0 0 0 7px #d57bff22,0 0 28px #e2aaff,0 0 51px #ff61d6bb,inset 0 0 22px #ed9affaa}}
+@keyframes orbRing{to{transform:rotate(360deg)}}
+@keyframes orbSpark{0%,100%{opacity:.5;scale:.75}50%{opacity:1;scale:1.15}}
+@media(max-width:600px){#badgesFab.vault-portal{top:10px!important;right:10px!important;width:61px!important;height:61px!important;padding:5px!important}#badgesFab.vault-portal .crystal-orb{width:46px;height:46px}#badgesFab.vault-portal .orb-glint{font-size:26px}}
+@media(prefers-reduced-motion:reduce){#badgesFab.vault-portal,#badgesFab.vault-portal:before,#badgesFab.vault-portal:after,#badgesFab.vault-portal .orb-nebula,#badgesFab.vault-portal .orb-glint{animation:none!important}}
 
-        <div class="contract-address" id="contractAddress">
-          HDYP5e1dUM3zjqw3tQvDHDxtt6CKxkgyEN3NdNcXTRiX
-        </div>
+/* Vault crystal — deliberately contrasting icy cyan, aurora green and white */
+#badgesFab.vault-portal{background:radial-gradient(circle at 28% 18%,#d8ffff,#007c9a 46%,#032c46 77%,#001522)!important;border-color:#a7fff3!important;box-shadow:0 0 0 4px #46fff044,0 0 24px #36f9ff,0 0 46px #00f6a888,inset 0 0 18px #c6ffff99!important;animation:iceAura 3s ease-in-out infinite!important}
+#badgesFab.vault-portal:before{border-color:#8effe9!important;box-shadow:0 0 18px #32fff2!important}
+#badgesFab.vault-portal:after{color:#ffffff!important;text-shadow:0 0 9px #fff,0 0 19px #52fff2!important}
+#badgesFab.vault-portal .crystal-orb{background:radial-gradient(ellipse at 27% 18%,#ffffff 0%,#d9ffff 10%,#79faff 25%,#00b8cc 48%,#005c7e 70%,#002439 100%)!important;border-color:#dcffff!important;box-shadow:inset -8px -10px 15px #002339cc,inset 5px 5px 10px #ffffffbb,0 0 20px #64fff2!important}
+#badgesFab.vault-portal .orb-nebula{background:conic-gradient(from 20deg,#b8fff988,#46ffcbbb,#ffffff99,#36cfffbb,#b8fff988)!important}
+#badgesFab.vault-portal .orb-glint{color:#ffffff!important;text-shadow:0 0 8px white,0 0 19px #67ffe5!important}
+#badgesFab.vault-portal:hover,#badgesFab.vault-portal:focus-visible{box-shadow:0 0 0 5px #7ffffc88,0 0 40px #46fff2,0 0 68px #00ffb8!important}
+@keyframes iceAura{0%,100%{box-shadow:0 0 0 4px #46fff044,0 0 24px #36f9ff,0 0 46px #00f6a888,inset 0 0 18px #c6ffff99}50%{box-shadow:0 0 0 8px #46fff022,0 0 38px #8bffff,0 0 65px #00ffb8cc,inset 0 0 23px #e0ffffbb}}
 
-        <button
-          class="contract-copy-button"
-          id="copyButton"
-          type="button"
-          aria-label="Copy contract address"
-        >
-          📋 COPY CA
-        </button>
+/* Destination cards: jewel-tone identity, oversized icon medallions, kinetic light */
+.moms-destinations .card{min-height:315px!important;padding:30px 18px!important;justify-content:center;gap:0;border-width:2px!important;transition:transform .3s ease,box-shadow .3s ease,filter .3s ease!important}
+.moms-destinations .social-card{background:radial-gradient(ellipse at 50% 6%,#ffb5e077,transparent 56%),linear-gradient(155deg,#7f135d,#410d51 56%,#1b0a35)!important;border-color:#ff8ee1!important;box-shadow:0 14px 32px #0008,0 0 28px #ff4ca155,inset 0 0 40px #ff84d02c!important}
+.moms-destinations .genesis-card{background:radial-gradient(ellipse at 50% 0%,#fff6b6bb,transparent 53%),linear-gradient(145deg,#b98226,#76500e 52%,#2e1a0b)!important;border-color:#fff0a2!important;box-shadow:0 14px 32px #0008,0 0 34px #fbd65c88,inset 0 0 32px #fff0a644!important}
+.moms-destinations .games-card{background:radial-gradient(ellipse at 50% 5%,#a1f9ff88,transparent 56%),linear-gradient(150deg,#126b8a,#153669 52%,#100f37)!important;border-color:#7aefff!important;box-shadow:0 14px 32px #0008,0 0 30px #38d8ff66,inset 0 0 35px #60eaff33!important}
+.moms-destinations .card:before{content:"";position:absolute;inset:-65% -45%;background:linear-gradient(110deg,transparent 38%,#ffffff24 49%,transparent 59%);transform:translateX(-100%) rotate(12deg);transition:transform .7s ease;pointer-events:none;z-index:0}
+.moms-destinations .card:hover:before,.moms-destinations .card:focus-visible:before{transform:translateX(100%) rotate(12deg)}
+.moms-destinations .card:after{content:"✦       ✧       ✦";position:absolute;top:16px;left:0;right:0;font-size:17px;letter-spacing:12px;color:#fff6ccbb;text-shadow:0 0 10px #fff8c0;pointer-events:none}
+.moms-destinations .card>*{position:relative;z-index:1}
+.moms-destinations .card .icon{display:grid!important;place-items:center;width:118px;height:118px;flex:none;margin:5px 0 14px!important;border-radius:50%;font-size:4.6rem!important;background:radial-gradient(circle at 35% 25%,#ffffff66,#ffffff0b 60%,#00000022);border:2px solid #ffffff99;box-shadow:inset 0 4px 18px #ffffff3d,0 0 23px #ffffff66,0 8px 19px #0005;filter:none!important;animation:cardIconHover 3.7s ease-in-out infinite}
+.moms-destinations .genesis-card .icon{background:radial-gradient(circle at 30% 20%,#fff7d8,#edb849 50%,#86500d);border-color:#fff5bf;box-shadow:0 0 25px #fff1a5,inset 0 0 18px #ffffff77}
+.moms-destinations .social-card .icon{box-shadow:0 0 26px #ffb4e9,inset 0 0 20px #ffffff55}
+.moms-destinations .games-card .icon{box-shadow:0 0 26px #79f3ff,inset 0 0 20px #ffffff55}
+.moms-destinations .card h3{font-size:clamp(1.65rem,2.5vw,2.2rem)!important;font-weight:1000;line-height:1.05;letter-spacing:.035em;text-shadow:0 2px 10px #0009,0 0 19px #ffffff44;margin:3px 0 10px!important}
+.moms-destinations .card p{font-size:.91rem;line-height:1.45;color:#fff7ed!important;text-shadow:0 1px 6px #000a;max-width:265px;margin:0!important}
+.moms-destinations .card:hover,.moms-destinations .card:focus-visible{transform:translateY(-9px) scale(1.025)!important;filter:brightness(1.15);box-shadow:0 18px 40px #000a,0 0 43px currentColor!important}
+.moms-destinations .social-card{color:#ff90d9}.moms-destinations .genesis-card{color:#ffe389}.moms-destinations .games-card{color:#81eaff}
+@keyframes cardIconHover{0%,100%{translate:0 0}50%{translate:0 -6px}}
+@media(max-width:850px){.moms-destinations .card{min-height:255px!important;padding:24px 16px!important}.moms-destinations .card .icon{width:100px;height:100px;font-size:4rem!important;margin-bottom:12px!important}.moms-destinations .card:after{top:9px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.moms-destinations .card .icon{animation:none!important}}
 
-        <p class="copy-message" id="copyMessage" aria-live="polite"></p>
+/* Make crystal ball reliably clickable above every visual effect */
+#badgesFab.vault-portal{pointer-events:auto!important;cursor:pointer!important;z-index:10010!important;touch-action:manipulation}
+#badgesFab.vault-portal *,#badgesFab.vault-portal:before,#badgesFab.vault-portal:after{pointer-events:none!important}
+.badges-backdrop{z-index:10011!important}.badges-panel{z-index:10012!important}
 
-      </div>
+.vault-readonly-notice{display:flex;flex-direction:column;gap:10px;text-align:center;margin:22px auto 18px;padding:17px 16px;max-width:430px;border:1px solid #7bead18c;border-radius:16px;background:linear-gradient(145deg,#0c3936bb,#13202cdd);box-shadow:inset 0 0 22px #2cf3cf12}
+.vault-readonly-notice strong{font-size:.85rem;letter-spacing:.08em;color:#a8fff0}
+.vault-readonly-notice span{font-size:.83rem;line-height:1.5;color:#f2f7f5}
+.vault-readonly-notice b{font-size:.78rem;line-height:1.5;color:#d2ffe9}
 
-    </section>
+/* Reliable mobile chart access: avoid a third-party iframe stuck on Loading pair in privacy browsers. */
+.chart-mobile-access{display:none}
+@media(max-width:680px){#chart .chart{display:none}#chart .chart-mobile-access{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;min-height:210px;padding:30px 22px;border:1px solid #d3b07880;border-radius:20px;background:linear-gradient(145deg,#26142f,#100c1b);text-align:center;color:#f7dfad;box-shadow:inset 0 0 32px #b9735b13}#chart .chart-mobile-icon{font-size:3rem}#chart .chart-mobile-access strong{font-size:1.2rem;letter-spacing:.08em}#chart .chart-mobile-access p{max-width:290px;margin:0;color:#dcc6dc;font-size:.9rem;line-height:1.55}#chart .chart-fallback{width:100%;max-width:370px;padding:17px 16px;border:2px solid #ffe39c;background:linear-gradient(120deg,#9d236f,#542045);color:#fff2c8;font-size:.85rem}}
 
-    <nav class="main-links" aria-label="Your MOMS links">
-
-      <div class="links-intro"><h2>EXPLORE THE MOMS UNIVERSE</h2></div>
-
-      <a class="main-button mint-nft-button" href="/mint/">
-        <span class="button-sparkles" aria-hidden="true">✦ ✧ ✦</span>
-        <span class="button-text">✦ MINT GENESIS MOMS NFT ✦</span>
-      </a>
-
-      <a
-        class="main-button buy-button"
-        href="https://jup.ag/?sell=So11111111111111111111111111111111111111112&buy=HDYP5e1dUM3zjqw3tQvDHDxtt6CKxkgyEN3NdNcXTRiX"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span class="button-text">BUY $MOMS</span>
-      </a>
-
-      <a
-        class="main-button chart-button"
-        href="https://dexscreener.com/search?q=HDYP5e1dUM3zjqw3tQvDHDxtt6CKxkgyEN3NdNcXTRiX"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <svg class="candle-art" viewBox="0 0 620 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 92H620M0 50H620M0 8H620" fill="none" stroke="#8dffc2" stroke-opacity=".13"/><g stroke="#73ffac" stroke-width="3"><path d="M55 43v55M126 24v64M197 53v51M268 25v69M339 14v65M410 37v55M481 11v70M552 0v74"/></g><g fill="#49eb8c"><rect x="44" y="60" width="22" height="27" rx="2"/><rect x="115" y="39" width="22" height="32" rx="2"/><rect x="186" y="61" width="22" height="29" rx="2"/><rect x="257" y="45" width="22" height="34" rx="2"/><rect x="328" y="26" width="22" height="39" rx="2"/><rect x="399" y="48" width="22" height="31" rx="2"/><rect x="470" y="25" width="22" height="41" rx="2"/><rect x="541" y="10" width="22" height="48" rx="2"/></g></svg><span class="button-text">DEXSCREENER</span>
-      </a>
-
-      <a class="main-button game-button" href="/game/">
-        <span class="game-emojis" aria-hidden="true">🍷 ☕ 🥂 🍷 ☕ 🥂</span><span class="button-text">PLAY MOMS WINE RUSH</span>
-      </a>
-
-      <a class="main-button socials-button" href="/socials/">
-        <span class="heart-pop heart-one" aria-hidden="true">♥</span>
-        <span class="heart-pop heart-two" aria-hidden="true">♥</span>
-        <span class="social-icons" aria-hidden="true"><span class="social-x">𝕏</span><span class="social-youtube">▶</span><span class="social-telegram">➤</span><span class="social-facebook">f</span></span><span class="button-text">SOCIALS</span>
-      </a>
-
-    </nav>
-
-    <section class="panic-section" aria-label="Summon your MOMS">
-      <div class="panic-copy"><h2>Come on, you know you want to push it!</h2></div>
-      <button class="panic-button" id="panicButton" type="button" aria-controls="panicOverlay">
-        DO NOT PUSH
-      </button>
-    </section>
-
-    <section class="live-chart-section" aria-labelledby="liveChartTitle">
-
-      <div class="chart-intro"><p>For the chart watchers.</p></div>
-
-      <div class="live-chart-heading">
-        <span class="live-dot" aria-hidden="true"></span>
-        <h2 id="liveChartTitle">LIVE $MOMS CHART</h2>
-      </div>
-
-      <div class="chart-frame">
-        <iframe
-          src="https://dexscreener.com/solana/C7saQrX3feJRESyC3ggSkCDPAKLPYrwcFuFNRcPk9wUo?embed=1&info=0&theme=dark&trades=0"
-          title="Live $MOMS trading chart"
-          loading="lazy"
-          referrerpolicy="no-referrer"
-          allowfullscreen>
-        </iframe>
-      </div>
-
-    </section>
-
-    <footer class="site-footer">
-      <div class="footer-title">💗 YOUR $MOMS © 2026</div>
-      <div class="footer-tagline">
-        Built with love, memes &amp; questionable decisions.
-      </div>
-      <a class="footer-contact" href="mailto:yourmomsonsol@gmail.com">✉️ CONTACT</a>
-    </footer>
-
-  </main>
-
-  <div
-    class="panic-overlay"
-    id="panicOverlay"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="panicTitle"
-    aria-hidden="true"
-    hidden
-  >
-
-    <div class="panic-flash" aria-hidden="true"></div>
-    <div class="panic-stars" id="panicStars" aria-hidden="true"></div>
-
-    <div class="panic-card">
-
-      <button class="panic-close" id="panicClose" type="button" aria-label="Close MOMS event">
-        ×
-      </button>
-
-      <p class="panic-alert" id="panicAlert">MOMS ALERT</p>
-
-      <h2 id="panicTitle">
-        You pressed it? Go to your room!!
-      </h2>
-
-      <img
-        class="panic-moms"
-        src="/images/shock.jpg?v=2"
-        alt="Shocked MOMS holding red wine as chaos erupts behind her"
-      >
-
-      <p class="panic-goodbye" id="panicGoodbye">
-        She’ll be back.
-      </p>
-
-    </div>
-
-  </div>
+/* One direct DexScreener action below BUY $MOMS, replacing the unreliable embedded chart. */
+.dex-launch{display:flex;align-items:center;justify-content:center;gap:12px;width:max-content;max-width:100%;min-height:56px;margin:17px auto 0;padding:14px 22px;border:1px solid #f1d18e;border-radius:15px;background:linear-gradient(120deg,#21172e,#38223c);color:#ffe8b5;font-size:.85rem;font-weight:900;letter-spacing:.025em;text-align:center;text-decoration:none;box-shadow:0 5px 18px #0005;transition:transform .2s,box-shadow .2s}
+.dex-launch:hover,.dex-launch:focus-visible{transform:translateY(-2px);box-shadow:0 8px 25px #dcb56c44}
+.dex-launch-logo{width:28px;height:28px;flex:none;object-fit:contain}
+@media(max-width:420px){.dex-launch{font-size:.73rem;padding:14px 12px;gap:9px}.dex-launch-logo{width:24px;height:24px}}
+</style></head><body><div class="wrap"><section class="hero"><img src="/itsmoms2point0youmofo/moms2-banner-final.png.png?banner=final-20261015" alt="Royal Moms laughing on her golden throne, holding red wine beneath the I love your MOMS headline" fetchpriority="high"></section><section class="section" id="contract"><div class="contract"><strong>OFFICIAL SOLANA CONTRACT</strong><div class="address" id="ca">HDYP5e1dUM3zjqw3tQvDHDxtt6CKxkgyEN3NdNcXTRiX</div><button class="copy" id="copyCa">COPY CONTRACT ADDRESS</button><p id="copyStatus" aria-live="polite"></p><div class="actions buy-inside-contract"><a class="button primary" href="https://jup.ag/?sell=So11111111111111111111111111111111111111112&buy=HDYP5e1dUM3zjqw3tQvDHDxtt6CKxkgyEN3NdNcXTRiX" target="_blank" rel="noopener noreferrer">BUY $MOMS ↗</a></div><a class="dex-launch" href="https://dexscreener.com/solana/C7saQrX3feJRESyC3ggSkCDPAKLPYrwcFuFNRcPk9wUo" target="_blank" rel="noopener noreferrer"><img class="dex-launch-logo" src="https://dexscreener.com/favicon.png" alt="" loading="lazy"><span>OPEN LIVE CHART ON DEXSCREENER ↗</span></a></div></section><section class="section" id="universe"><div class="grid moms-destinations"><a class="card social-card" href="/socials/"><span class="icon" aria-hidden="true">💖</span><h3>SOCIALS</h3><p>Follow your $MOMS everywhere. Join the family.</p></a><a class="card genesis-card" href="/mint/"><span class="icon" aria-hidden="true">👑</span><h3>GENESIS MOMS</h3><p>69 exclusive Genesis Moms NFTs. Only 69 will ever exist.</p></a><a class="card games-card" href="/arcade/"><span class="icon" aria-hidden="true">🎮</span><h3>GAMES</h3><p>Enter the arcade.</p></a></div></section><footer class="footer"><a class="footer-contact" href="mailto:yourmomsonsol@gmail.com" aria-label="Contact Your Moms by email"><span aria-hidden="true">✉️</span><span>CONTACT</span></a><div class="footer-copyright">I ❤️ YOUR $MOMS © 2026</div></footer></div>
   <!-- $MOMS LEGACY VAULT -->
-  <button class="badges-fab" id="badgesFab" aria-label="Open The Legacy Vault" aria-expanded="false">
-    <span class="vault-electricity vault-electricity-a" aria-hidden="true"></span>
-    <span class="vault-electricity vault-electricity-b" aria-hidden="true"></span>
-    <span class="vault-electricity vault-electricity-c" aria-hidden="true"></span>
-    <span class="badges-fab-trophy" aria-hidden="true"><span class="trophy-glyph">🏆</span></span>
-  </button>
-  <div class="badges-backdrop" id="badgesBackdrop" hidden></div>
+  
+  <button class="badges-fab vault-portal" id="badgesFab" type="button" aria-label="Open The Legacy Vault" aria-expanded="false"><span class="crystal-orb" aria-hidden="true"><span class="orb-nebula"></span><span class="orb-glint">✧</span></span></button><div class="badges-backdrop" id="badgesBackdrop" hidden></div>
   <aside class="badges-panel" id="badgesPanel" aria-hidden="true" aria-labelledby="badgesTitle">
     <div class="badges-panel-inner">
       <button class="badges-close" id="badgesClose" type="button" aria-label="Close badges">×</button>
@@ -271,8 +182,8 @@
         <div class="vault-connect-icon" aria-hidden="true">🏆</div>
         <h3>WHAT HAS YOUR WALLET EARNED?</h3>
         <p>Connect your wallet to open your Vault and reveal the badges hidden in your $MOMS history.</p>
+        <div class="vault-readonly-notice" role="note"><strong>🔒 READ-ONLY WALLET CONNECTION</strong><span>We check your public wallet address, $MOMS holdings, and transaction history to discover your badges.</span><b>No transactions. No signatures requested by the Vault. No access to your funds.</b></div>
         <button class="vault-connect-button" id="vaultConnectButton" type="button">CONNECT WALLET</button>
-        <p class="badges-footnote">Read-only connection. The Legacy Vault only uses your public wallet address to check your $MOMS history and Genesis Moms. It cannot access your funds or make transactions.</p>
         <p class="vault-connect-message" id="vaultConnectMessage" aria-live="polite"></p>
       </div>
 
@@ -406,7 +317,7 @@
     }
   }
   if (fab && panel && close && backdrop) {
-    fab.onclick=openBadges; close.onclick=closeBadges; backdrop.onclick=closeBadges;
+    fab.addEventListener('click',function(event){event.preventDefault();openBadges();}); close.onclick=closeBadges; backdrop.onclick=closeBadges;
     document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBadges();});
   }
   if (connectButton) connectButton.onclick=connectWallet;
@@ -414,11 +325,5 @@
 })();
 </script>
 
-  <script
-    data-goatcounter="https://yourmoms.goatcounter.com/count"
-    async
-    src="//gc.zgo.at/count.js">
-  </script>
 
-</body>
-</html>
+<script>document.getElementById('copyCa').addEventListener('click',async function(){try{await navigator.clipboard.writeText(document.getElementById('ca').textContent.trim());document.getElementById('copyStatus').textContent='Copied!'}catch(e){document.getElementById('copyStatus').textContent='Please select and copy the address above.'}});</script></body></html>
